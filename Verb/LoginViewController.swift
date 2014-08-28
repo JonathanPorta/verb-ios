@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class ViewController: UIViewController, FBLoginViewDelegate {
+class LoginViewController: UIViewController, FBLoginViewDelegate {
     
     @IBOutlet var fbLoginView : FBLoginView!
 
@@ -18,6 +18,7 @@ class ViewController: UIViewController, FBLoginViewDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         self.fbLoginView.delegate = self
         self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,10 +28,7 @@ class ViewController: UIViewController, FBLoginViewDelegate {
 
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
         println("User Logged In")
-    }
-    
-    func refreshActivityView() {
-        
+        self.performSegueWithIdentifier("LoginToActivity", sender: self)
     }
     
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
