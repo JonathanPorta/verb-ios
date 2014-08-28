@@ -12,6 +12,9 @@
 		11944F8B19AEDF5100D5BF6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8919AEDF5100D5BF6D /* Main.storyboard */; };
 		11944F8D19AEDF5100D5BF6D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8C19AEDF5100D5BF6D /* Images.xcassets */; };
 		11944F9919AEDF5100D5BF6D /* VerbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F9819AEDF5100D5BF6D /* VerbTests.swift */; };
+		11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944FA219AEE1A200D5BF6D /* ActivityModel.swift */; };
+		11944FA519AEE1B100D5BF6D /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944FA419AEE1B100D5BF6D /* MessageModel.swift */; };
+		11944FA819AEE62100D5BF6D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11944FA719AEE62100D5BF6D /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,13 +30,17 @@
 /* Begin PBXFileReference section */
 		11944F8019AEDF5100D5BF6D /* Verb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11944F8419AEDF5100D5BF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		11944F8519AEDF5100D5BF6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		11944F8519AEDF5100D5BF6D /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; wrapsLines = 0; };
 		11944F8719AEDF5100D5BF6D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		11944F8A19AEDF5100D5BF6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11944F8C19AEDF5100D5BF6D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		11944F9219AEDF5100D5BF6D /* VerbTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerbTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11944F9719AEDF5100D5BF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11944F9819AEDF5100D5BF6D /* VerbTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbTests.swift; sourceTree = "<group>"; };
+		11944FA219AEE1A200D5BF6D /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
+		11944FA419AEE1B100D5BF6D /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		11944FA719AEE62100D5BF6D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		11944FA919AEEABC00D5BF6D /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Verb/Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11944FA819AEE62100D5BF6D /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +65,10 @@
 		11944F7719AEDF5000D5BF6D = {
 			isa = PBXGroup;
 			children = (
+				11944FA919AEEABC00D5BF6D /* Bridging-Header.h */,
+				11944FA619AEE60B00D5BF6D /* Frameworks */,
+				11944FA219AEE1A200D5BF6D /* ActivityModel.swift */,
+				11944FA419AEE1B100D5BF6D /* MessageModel.swift */,
 				11944F8219AEDF5100D5BF6D /* Verb */,
 				11944F9519AEDF5100D5BF6D /* VerbTests */,
 				11944F8119AEDF5100D5BF6D /* Products */,
@@ -107,6 +119,14 @@
 				11944F9719AEDF5100D5BF6D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		11944FA619AEE60B00D5BF6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11944FA719AEE62100D5BF6D /* FacebookSDK.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +230,8 @@
 			files = (
 				11944F8819AEDF5100D5BF6D /* ViewController.swift in Sources */,
 				11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */,
+				11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */,
+				11944FA519AEE1B100D5BF6D /* MessageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,9 +349,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Verb/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Verb/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -338,9 +366,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Verb/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Verb/Bridging-Header.h";
 			};
 			name = Release;
 		};

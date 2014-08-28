@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Foundation
 
-class ViewController: UIViewController {
-                            
+class ViewController: UIViewController, FBLoginViewDelegate {
+    
+    @IBOutlet var fbLoginView : FBLoginView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.fbLoginView.delegate = self
+        self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +25,25 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
+        println("User Logged In")
+    }
+    
+    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
+        println("User: \(user)")
+        println("User ID: \(user.objectID)")
+        println("User Name: \(user.name)")
+        var userEmail = user.objectForKey("email") as String
+        println("User Email: \(userEmail)")
+    }
+    
+    func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
+        println("User Logged Out")
+    }
+    
+    func loginView(loginView : FBLoginView!, handleError:NSError) {
+        println("Error: \(handleError.localizedDescription)")
+    }
 
 }
 
