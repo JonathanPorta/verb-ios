@@ -29,6 +29,10 @@ class ViewController: UIViewController, FBLoginViewDelegate {
         println("User Logged In")
     }
     
+    func refreshActivityView() {
+        
+    }
+    
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
         println("User: \(user)")
         println("User ID: \(user.objectID)")
@@ -46,4 +50,3 @@ class ViewController: UIViewController, FBLoginViewDelegate {
     }
 
 }
-
