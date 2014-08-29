@@ -148,7 +148,7 @@
             </objects>
             <point key="canvasLocation" x="1549" y="-271"/>
         </scene>
-        <!--Table View Controller - How do you feel?-->
+        <!--Table View Controller - Action Categories-->
         <scene sceneID="uQ2-Tw-MPL">
             <objects>
                 <tableViewController id="c57-6h-a5l" sceneMemberID="viewController">
@@ -210,7 +210,7 @@
                             <outlet property="delegate" destination="c57-6h-a5l" id="AF5-CD-sqJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="How do you feel?" id="twa-sP-eEF"/>
+                    <navigationItem key="navigationItem" title="Action Categories" id="twa-sP-eEF"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ch0-U3-xOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
