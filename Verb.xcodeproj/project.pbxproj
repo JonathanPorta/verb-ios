@@ -17,6 +17,10 @@
 		11944FA819AEE62100D5BF6D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11944FA719AEE62100D5BF6D /* FacebookSDK.framework */; };
 		11944FAB19AF0CA300D5BF6D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944FAA19AF0CA300D5BF6D /* UserModel.swift */; };
 		11944FAF19AF100000D5BF6D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944FAE19AF100000D5BF6D /* ActivityViewController.swift */; };
+		11CC2B5A19B0607500E99EC9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CC2B5919B0607500E99EC9 /* Login.storyboard */; };
+		11CC2B5C19B0699200E99EC9 /* ActionCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CC2B5B19B0699200E99EC9 /* ActionCategoryModel.swift */; };
+		11CC2B5E19B069A200E99EC9 /* ActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CC2B5D19B069A200E99EC9 /* ActionModel.swift */; };
+		11CC2B6219B077AC00E99EC9 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +48,11 @@
 		11944FA719AEE62100D5BF6D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		11944FA919AEEABC00D5BF6D /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Verb/Bridging-Header.h"; sourceTree = "<group>"; };
 		11944FAA19AF0CA300D5BF6D /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		11944FAE19AF100000D5BF6D /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		11944FAE19AF100000D5BF6D /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
+		11CC2B5919B0607500E99EC9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		11CC2B5B19B0699200E99EC9 /* ActionCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCategoryModel.swift; sourceTree = "<group>"; };
+		11CC2B5D19B069A200E99EC9 /* ActionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionModel.swift; sourceTree = "<group>"; };
+		11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,8 @@
 				11944FA219AEE1A200D5BF6D /* ActivityModel.swift */,
 				11944FAA19AF0CA300D5BF6D /* UserModel.swift */,
 				11944FA419AEE1B100D5BF6D /* MessageModel.swift */,
+				11CC2B5B19B0699200E99EC9 /* ActionCategoryModel.swift */,
+				11CC2B5D19B069A200E99EC9 /* ActionModel.swift */,
 				11944F8219AEDF5100D5BF6D /* Verb */,
 				11944F9519AEDF5100D5BF6D /* VerbTests */,
 				11944F8119AEDF5100D5BF6D /* Products */,
@@ -95,7 +105,9 @@
 				11944F8519AEDF5100D5BF6D /* AppDelegate.swift */,
 				11944F8719AEDF5100D5BF6D /* LoginViewController.swift */,
 				11944FAE19AF100000D5BF6D /* ActivityViewController.swift */,
+				11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */,
 				11944F8919AEDF5100D5BF6D /* Main.storyboard */,
+				11CC2B5919B0607500E99EC9 /* Login.storyboard */,
 				11944F8C19AEDF5100D5BF6D /* Images.xcassets */,
 				11944F8319AEDF5100D5BF6D /* Supporting Files */,
 			);
@@ -184,6 +196,7 @@
 				TargetAttributes = {
 					11944F7F19AEDF5100D5BF6D = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 52KRCFBNVN;
 					};
 					11944F9119AEDF5100D5BF6D = {
 						CreatedOnToolsVersion = 6.0;
@@ -217,6 +230,7 @@
 			files = (
 				11944F8B19AEDF5100D5BF6D /* Main.storyboard in Resources */,
 				11944F8D19AEDF5100D5BF6D /* Images.xcassets in Resources */,
+				11CC2B5A19B0607500E99EC9 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,8 +251,11 @@
 				11944F8819AEDF5100D5BF6D /* LoginViewController.swift in Sources */,
 				11944FAF19AF100000D5BF6D /* ActivityViewController.swift in Sources */,
 				11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */,
+				11CC2B5E19B069A200E99EC9 /* ActionModel.swift in Sources */,
 				11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */,
+				11CC2B5C19B0699200E99EC9 /* ActionCategoryModel.swift in Sources */,
 				11944FAB19AF0CA300D5BF6D /* UserModel.swift in Sources */,
+				11CC2B6219B077AC00E99EC9 /* LogoutViewController.swift in Sources */,
 				11944FA519AEE1B100D5BF6D /* MessageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -366,6 +384,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Verb/Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -374,6 +393,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -383,6 +403,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Verb/Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -441,6 +462,7 @@
 				11944F9E19AEDF5100D5BF6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		11944F9F19AEDF5100D5BF6D /* Build configuration list for PBXNativeTarget "VerbTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +471,7 @@
 				11944FA119AEDF5100D5BF6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -13,12 +13,13 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     
     @IBOutlet var fbLoginView : FBLoginView!
 
+    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.fbLoginView.delegate = self
         self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +29,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
 
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
         println("User Logged In")
-        self.performSegueWithIdentifier("LoginToActivity", sender: self)
+        appDelegate.changeStoryBoard("Main")
     }
     
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {

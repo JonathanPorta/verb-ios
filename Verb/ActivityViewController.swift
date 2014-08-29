@@ -9,13 +9,18 @@
 import Foundation
 
 class ActivityViewController: UITableViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // Do any additional setup after loading the view, typically from a nib.
+    //var activeSession = FBSession.activeSession()
+    //if activeSession.isOpen {
+    //  self.performSegueWithIdentifier("ShowLogin", sender: self)
+    //}
+  }
+
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+  }
 }

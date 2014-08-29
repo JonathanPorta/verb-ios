@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="XlH-ZN-syh">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="9HM-tQ-q4c">
+            <objects>
+                <viewController storyboardIdentifier="LoginView" id="XlH-ZN-syh" customClass="LoginViewController" customModule="Verb" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dH3-Eu-D00"/>
+                        <viewControllerLayoutGuide type="bottom" id="hfd-X7-aJS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QeU-h2-8Ux">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJX-OW-kXR" customClass="FBLoginView">
+                                <rect key="frame" x="20" y="383" width="280" height="153"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Please Login or Create an Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ZZ-oL-6WI">
+                                <rect key="frame" x="27" y="61" width="267" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="MJX-OW-kXR" firstAttribute="top" secondItem="QeU-h2-8Ux" secondAttribute="top" constant="383" id="07q-oF-R7s"/>
+                            <constraint firstItem="3ZZ-oL-6WI" firstAttribute="top" secondItem="dH3-Eu-D00" secondAttribute="bottom" constant="43" id="1Hg-d3-RAt"/>
+                            <constraint firstItem="hfd-X7-aJS" firstAttribute="top" secondItem="MJX-OW-kXR" secondAttribute="bottom" constant="32" id="70U-RH-wlp"/>
+                            <constraint firstItem="MJX-OW-kXR" firstAttribute="leading" secondItem="QeU-h2-8Ux" secondAttribute="leading" constant="20" symbolic="YES" id="SaI-nn-Y9I"/>
+                            <constraint firstAttribute="trailing" secondItem="MJX-OW-kXR" secondAttribute="trailing" constant="20" symbolic="YES" id="obG-ko-LE7"/>
+                            <constraint firstItem="3ZZ-oL-6WI" firstAttribute="centerX" secondItem="MJX-OW-kXR" secondAttribute="centerX" id="xID-gP-sZ3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fbLoginView" destination="MJX-OW-kXR" id="YgC-X6-JrV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="afF-Fb-p5s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="201" y="-352"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
