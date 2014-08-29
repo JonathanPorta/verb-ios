@@ -37,21 +37,21 @@
 		11944F8019AEDF5100D5BF6D /* Verb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11944F8419AEDF5100D5BF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11944F8519AEDF5100D5BF6D /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; wrapsLines = 0; };
-		11944F8719AEDF5100D5BF6D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		11944F8719AEDF5100D5BF6D /* LoginViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		11944F8A19AEDF5100D5BF6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11944F8C19AEDF5100D5BF6D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		11944F9219AEDF5100D5BF6D /* VerbTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerbTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11944F9719AEDF5100D5BF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11944F9819AEDF5100D5BF6D /* VerbTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbTests.swift; sourceTree = "<group>"; };
-		11944FA219AEE1A200D5BF6D /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
-		11944FA419AEE1B100D5BF6D /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		11944FA219AEE1A200D5BF6D /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; tabWidth = 2; };
+		11944FA419AEE1B100D5BF6D /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		11944FA719AEE62100D5BF6D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		11944FA919AEEABC00D5BF6D /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Verb/Bridging-Header.h"; sourceTree = "<group>"; };
-		11944FAA19AF0CA300D5BF6D /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		11944FAE19AF100000D5BF6D /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
+		11944FAA19AF0CA300D5BF6D /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; tabWidth = 2; };
+		11944FAE19AF100000D5BF6D /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; tabWidth = 2; wrapsLines = 0; };
 		11CC2B5919B0607500E99EC9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		11CC2B5B19B0699200E99EC9 /* ActionCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCategoryModel.swift; sourceTree = "<group>"; };
-		11CC2B5D19B069A200E99EC9 /* ActionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionModel.swift; sourceTree = "<group>"; };
+		11CC2B5B19B0699200E99EC9 /* ActionCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ActionCategoryModel.swift; sourceTree = "<group>"; tabWidth = 2; };
+		11CC2B5D19B069A200E99EC9 /* ActionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ActionModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
