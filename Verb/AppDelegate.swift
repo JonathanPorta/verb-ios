@@ -13,6 +13,7 @@ import Foundation
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
   var window: UIWindow?
+  var verbAPI: VerbAPI?
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
     // Override point for customization after application launch.
@@ -22,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var storyBoard : UIStoryboard!
     FBSession.openActiveSessionWithAllowLoginUI(false)
     var activeSession = FBSession.activeSession()
+
+    
     //activeSession.closeAndClearTokenInformation()
 
     println("AppDelegate")
@@ -36,9 +39,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       changeStoryBoard("Login")
     }
 
+    self.getVerbAPI().doLogin()
+    
     return true
   }
 
+  func getVerbAPI() -> VerbAPI {
+    var accessToken = FBSession.activeSession().accessTokenData.accessToken
+
+    //return VerbAPI(hostname: "http://10.0.16.153:3000/", accessToken: accessToken)
+    return VerbAPI(hostname: "http://192.168.42.75:3000/", accessToken: accessToken)
+  }
+  
   func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
     var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
     return wasHandled
