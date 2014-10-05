@@ -102,8 +102,9 @@ class ActivityViewController: UITableViewController {
 
     var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
 
-    var reciprocate = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "\(activity.message.verb) Back!", handler:{action, indexpath in
+    var reciprocate = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "\(activity.message.verb) back!", handler:{action, indexpath in
       println("RECIPROCATE•ACTION");
+      self.tableView.setEditing(false, animated: true)
       self.verbAPI.reciprocateMessage(activity.message, callback: { response in
         self.loadData()
       })
@@ -115,10 +116,10 @@ class ActivityViewController: UITableViewController {
     });
 
     if activity.type == "received" {
-      return [deleteRowAction, reciprocate]
+      return [reciprocate]
     }
     else {
-      return [deleteRowAction]
+      return []
     }
   }
 

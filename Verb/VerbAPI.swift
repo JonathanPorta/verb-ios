@@ -37,7 +37,7 @@ class VerbAPI {
     func getActivities(callback: Callback) -> Void {
         self.request.GET("/activities.json", params: nil, successHandler: { responseData in
             var json = JSON(data: responseData.data)
-            NSLog("Activities: \(json)")
+            //NSLog("Activities: \(json)")
             callback(json)
         }, failureHandler: { error in
             NSLog("Error")
