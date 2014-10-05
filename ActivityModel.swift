@@ -9,20 +9,44 @@
 import Foundation
 
 class ActivityModel {
-  var userId: NSInteger
-  var messageId: NSInteger
-  var body: NSString
-  var acknowledgedAt: NSDate
-  var createdAt: NSDate
-  var updatedAt: NSDate
+  var id: Int
+  var type: String
+  var activityMessage: String
+  var message: MessageModel
   
-  init(userId:Int, messageId:Int, body:String, acknowledgedAt:NSDate, createdAt:NSDate, updatedAt:NSDate) {
-    self.userId = userId
-    self.messageId = messageId
-    self.body = body
-    self.acknowledgedAt = acknowledgedAt
-    self.createdAt = createdAt
-    self.updatedAt = updatedAt
-  }
+  init(activity: JSON, message: MessageModel) {
+    self.id = activity["id"].integerValue
+    self.type = activity["type"].stringValue
+    self.activityMessage = activity["activity_message"].stringValue
+    self.message = message
 
+    //self.message = MessageModel(message: JSON(object: activity["messsage"]!.object))
+  }
 }
+
+
+//{
+//  "id": 14,
+//  "type": "received",
+//  "activity_message": "Jessica slapped you.",
+//  "message": {
+//    "id": 9,
+//    "verb": "slap",
+//    "sender": {
+//      "id": 1,
+//      "email": "volleygirl1005@gmail.com",
+//      "first_name": "Jessica",
+//      "last_name": "Porta"
+//    },
+//    "recipient": {
+//      "id": 2,
+//      "email": "wjporta@hotmail.com",
+//      "first_name": "Jonathan",
+//      "last_name": "Porta"
+//    },
+//    "acknowledged_at": 1411939218,
+//    "acknowledged_at_in_words": "6 days",
+//    "created_at": 1411928464,
+//    "created_at_in_words": "6 days"
+//  }
+//},
