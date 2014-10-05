@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */; };
-		1136FC7119D8DFA200A14DFA /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC7019D8DFA200A14DFA /* Agent.swift */; };
 		1136FC7B19D946D600A14DFA /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC7319D946D600A14DFA /* GCD.swift */; };
 		1136FC7C19D946D600A14DFA /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC7419D946D600A14DFA /* Net.swift */; };
 		1136FC7D19D946D600A14DFA /* NetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC7519D946D600A14DFA /* NetData.swift */; };
@@ -46,7 +45,6 @@
 
 /* Begin PBXFileReference section */
 		1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbAPI.swift; sourceTree = "<group>"; };
-		1136FC7019D8DFA200A14DFA /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		1136FC7319D946D600A14DFA /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 		1136FC7419D946D600A14DFA /* Net.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
 		1136FC7519D946D600A14DFA /* NetData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetData.swift; sourceTree = "<group>"; };
@@ -65,15 +63,15 @@
 		11944F9219AEDF5100D5BF6D /* VerbTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerbTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11944F9719AEDF5100D5BF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11944F9819AEDF5100D5BF6D /* VerbTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbTests.swift; sourceTree = "<group>"; };
-		11944FA219AEE1A200D5BF6D /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; tabWidth = 2; };
-		11944FA419AEE1B100D5BF6D /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; tabWidth = 2; };
+		11944FA219AEE1A200D5BF6D /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; name = ActivityModel.swift; path = ../ActivityModel.swift; sourceTree = "<group>"; tabWidth = 2; };
+		11944FA419AEE1B100D5BF6D /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; name = MessageModel.swift; path = ../MessageModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		11944FA719AEE62100D5BF6D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		11944FA919AEEABC00D5BF6D /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Verb/Bridging-Header.h"; sourceTree = "<group>"; };
-		11944FAA19AF0CA300D5BF6D /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; tabWidth = 2; };
+		11944FAA19AF0CA300D5BF6D /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = ../UserModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		11944FAE19AF100000D5BF6D /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; tabWidth = 2; wrapsLines = 0; };
 		11CC2B5919B0607500E99EC9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		11CC2B5B19B0699200E99EC9 /* ActionCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ActionCategoryModel.swift; sourceTree = "<group>"; tabWidth = 2; };
-		11CC2B5D19B069A200E99EC9 /* ActionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ActionModel.swift; sourceTree = "<group>"; tabWidth = 2; };
+		11CC2B5B19B0699200E99EC9 /* ActionCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; name = ActionCategoryModel.swift; path = ../ActionCategoryModel.swift; sourceTree = "<group>"; tabWidth = 2; };
+		11CC2B5D19B069A200E99EC9 /* ActionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; name = ActionModel.swift; path = ../ActionModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
@@ -96,14 +94,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1136FC6F19D8DF3700A14DFA /* lib */ = {
+		1136FC6F19D8DF3700A14DFA /* Lib */ = {
 			isa = PBXGroup;
 			children = (
 				1136FC8319E0E0C300A14DFA /* SwiftyJSON.swift */,
 				1136FC7219D946D600A14DFA /* Net */,
-				1136FC7019D8DFA200A14DFA /* Agent.swift */,
 			);
-			name = lib;
+			name = Lib;
 			sourceTree = "<group>";
 		};
 		1136FC7219D946D600A14DFA /* Net */ = {
@@ -126,12 +123,7 @@
 			children = (
 				11944FA919AEEABC00D5BF6D /* Bridging-Header.h */,
 				11944FA619AEE60B00D5BF6D /* Frameworks */,
-				1136FC6F19D8DF3700A14DFA /* lib */,
-				11944FAA19AF0CA300D5BF6D /* UserModel.swift */,
-				11944FA219AEE1A200D5BF6D /* ActivityModel.swift */,
-				11944FA419AEE1B100D5BF6D /* MessageModel.swift */,
-				11CC2B5B19B0699200E99EC9 /* ActionCategoryModel.swift */,
-				11CC2B5D19B069A200E99EC9 /* ActionModel.swift */,
+				1136FC6F19D8DF3700A14DFA /* Lib */,
 				11944F8219AEDF5100D5BF6D /* Verb */,
 				11944F9519AEDF5100D5BF6D /* VerbTests */,
 				11944F8119AEDF5100D5BF6D /* Products */,
@@ -150,6 +142,7 @@
 		11944F8219AEDF5100D5BF6D /* Verb */ = {
 			isa = PBXGroup;
 			children = (
+				1195679A19E150C500D015CA /* Model */,
 				11944F8519AEDF5100D5BF6D /* AppDelegate.swift */,
 				1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */,
 				11944F8719AEDF5100D5BF6D /* LoginViewController.swift */,
@@ -194,6 +187,18 @@
 				11944FA719AEE62100D5BF6D /* FacebookSDK.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1195679A19E150C500D015CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11944FAA19AF0CA300D5BF6D /* UserModel.swift */,
+				11944FA219AEE1A200D5BF6D /* ActivityModel.swift */,
+				11944FA419AEE1B100D5BF6D /* MessageModel.swift */,
+				11CC2B5B19B0699200E99EC9 /* ActionCategoryModel.swift */,
+				11CC2B5D19B069A200E99EC9 /* ActionModel.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,7 +316,6 @@
 				1136FC7F19D946D600A14DFA /* NetHelper.swift in Sources */,
 				11CC2B5C19B0699200E99EC9 /* ActionCategoryModel.swift in Sources */,
 				11944FAB19AF0CA300D5BF6D /* UserModel.swift in Sources */,
-				1136FC7119D8DFA200A14DFA /* Agent.swift in Sources */,
 				11CC2B6219B077AC00E99EC9 /* LogoutViewController.swift in Sources */,
 				1136FC7D19D946D600A14DFA /* NetData.swift in Sources */,
 				11944FA519AEE1B100D5BF6D /* MessageModel.swift in Sources */,
