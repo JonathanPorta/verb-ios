@@ -11,8 +11,8 @@ import Foundation
 
 class LogoutViewController: UIViewController {
 
-  @IBOutlet var logoutButton: UIButton
-  @IBOutlet var cancelButton: UIButton
+  @IBOutlet var logoutButton: UIButton!
+  @IBOutlet var cancelButton: UIButton!
 
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
@@ -34,7 +34,7 @@ class LogoutViewController: UIViewController {
 
   @IBAction func cancel(sender : AnyObject) {
     println("cancel func")
-    self.view.window.rootViewController.dismissModalViewControllerAnimated(true)
+    self.view.window!.rootViewController!.dismissViewControllerAnimated(true, completion: nil)
     //self.navigationController.dismissViewControllerAnimated(true, nil)
   }
 }
