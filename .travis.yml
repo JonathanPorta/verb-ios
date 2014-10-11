@@ -1,4 +1,4 @@
-language: swift
+language: objective-c
 
 before_script:
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/verbtravis.mobileprovision.enc -d -a -out scripts/profile/verbtravis.mobileprovision
