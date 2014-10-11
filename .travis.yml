@@ -1,2 +1,4 @@
 language: swift
-script: xcodebuild -project Verb.xcodeproj -target Verb -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+script:
+ - xcodebuild -project Verb.xcodeproj -target Verb -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+ - xctool test -project Verb.xcodeproj -scheme Verb-travis -sdk iphonesimulator
