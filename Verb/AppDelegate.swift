@@ -40,6 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     self.getVerbAPI().doLogin()
+
+    self.getVerbAPI().getVerbs({ verbs in
+      for (index: String, verb: JSON) in verbs {
+        NSLog(index)
+      }
+    })
+
     
     return true
   }
