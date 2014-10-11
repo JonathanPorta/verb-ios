@@ -2,3 +2,7 @@ language: swift
 script:
  - xcodebuild -project Verb.xcodeproj -target Verb -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
  - xctool test -project Verb.xcodeproj -scheme Verb-travis -sdk iphonesimulator
+notifications:
+  slack:
+    secure: ok4VxHIJUgOdgRjidmqB8rVmmCUzuUOn4QQh6afJguC3M5WxUGH8/mU6k9D1N8HB7It3aohfRNNmtySMgUSPG1vNiLnXx79nDsnRQK6OK6Ljae6ByEiQA5oiDgTxAeyH9lX+cZ+3ZyEsgdFNDhnHOlD4A4zM2ZcWss1rJVODULo=
+
