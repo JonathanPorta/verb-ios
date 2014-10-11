@@ -1,8 +1,32 @@
 language: swift
+
+before_script:
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/verbtravis.mobileprovision.enc -d -a -out scripts/profile/verbtravis.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
+- ./scripts/add-key.sh
+- ./scripts/set-bundle.sh
+
 script:
- - xcodebuild -project Verb.xcodeproj -target Verb -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
- - xctool test -project Verb.xcodeproj -scheme Verb-travis -sdk iphonesimulator
+- xctool -project Verb.xcodeproj -scheme Verb-travis -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
+- xctool test -project Verb.xcodeproj -scheme Verb-travis -sdk iphonesimulator
+
+after_script:
+- ./scripts/cleanup.sh
+
+after_success:
+- ./scripts/sign-build.sh
+
 notifications:
   slack:
     secure: ok4VxHIJUgOdgRjidmqB8rVmmCUzuUOn4QQh6afJguC3M5WxUGH8/mU6k9D1N8HB7It3aohfRNNmtySMgUSPG1vNiLnXx79nDsnRQK6OK6Ljae6ByEiQA5oiDgTxAeyH9lX+cZ+3ZyEsgdFNDhnHOlD4A4zM2ZcWss1rJVODULo=
 
+env:
+  global:
+  - APP_NAME="Verb"
+  - BUNDLE_DISPLAY_NAME="Verb Travis"
+  - INFO_PLIST="Verb/Info.plist"
+  - 'DEVELOPER_NAME="iPhone Developer: William Porta (F7L5MLW335)"'
+  - PROFILE_NAME="verbtravis"
+  - secure: BW7OnSwBmbhj31/eqBDquxEzcnD0ChtlHzLBFJ9lfVnfmCN331LRpvIuKjSu0ppc5ZUJtdxo8f5lXkVm3Uks20HeuDENwOWwU+squbKTJAZuKSJviyx2TZMSGFIGc+M+hRMN4ZCs/gIuyNDWMVbNpJe+oVl925nSVE/XVAVb2yQ=
+  - secure: LtNBu6jGqM/3fTscPx7/3jOzV+CX8kyyNL5uGeGuxYaXBBVqwL3Zlp45MUP5xi+j4S8Czr1HlIhDsJzdQ5vCZdPvpAZzv7L/N+/Vqh+LNbQv4uGIYO+pnNLXp4PDhtM4mXl4YWBEWk4Zko6P5R09L2fW4YBhJ3SDQdOvUwM7+bg=
