@@ -1,1 +1,2 @@
 language: swift
+script: xcodebuild -project Verb.xcodeproj -target Verb -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
