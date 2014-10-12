@@ -13,9 +13,14 @@ build/
 *.xcworkspace
 !default.xcworkspace
 xcuserdata
-profile
 *.moved-aside
 DerivedData
 .idea/
 # Pods - for those of you who use CocoaPods
 Pods
+
+# Secrets before being encrypted
+scripts/profile/verbtravis.mobileprovision
+scripts/certs/dist.cer
+scripts/certs/dist.p12
+scripts/config.sh

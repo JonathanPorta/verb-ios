@@ -1,0 +1,32 @@
+language: objective-c
+before_script:
+- brew update && brew uninstall xctool && brew install xctool --build-from-source
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/verbtravis.mobileprovision.enc
+  -d -a -out scripts/profile/verbtravis.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a
+  -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a
+  -out scripts/certs/dist.p12
+- "./scripts/add-key.sh"
+- "./scripts/set-bundle.sh"
+script:
+- xctool -project Verb.xcodeproj -scheme Verb-travis -sdk iphoneos -configuration
+  Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
+after_script:
+- "./scripts/cleanup.sh"
+after_success:
+- "./scripts/sign-build.sh"
+notifications:
+  slack:
+    secure: UpeGsSKLug2mKo5oYS48QHbzP7mBI+FXlBVFE+czOXKfC3dYZy3/cnNQUUFQ+iKsFVUgQKrvM1BEScEq/fYvNM1ivN8AreGHcjZT1SsHkMKBKUYyvdfaemVLtFTTBLwaH0dtbnUiqSWd0Yy8IKim1MrJdvMR3bq7SoFjqsT/2/w=
+env:
+  global:
+  - APP_NAME="Verb"
+  - BUNDLE_DISPLAY_NAME="Verb Travis"
+  - INFO_PLIST="Verb/Info.plist"
+  - 'DEVELOPER_NAME="iPhone Developer: William Porta (F7L5MLW335)"'
+  - PROFILE_NAME="verbtravis"
+  - secure: BW7OnSwBmbhj31/eqBDquxEzcnD0ChtlHzLBFJ9lfVnfmCN331LRpvIuKjSu0ppc5ZUJtdxo8f5lXkVm3Uks20HeuDENwOWwU+squbKTJAZuKSJviyx2TZMSGFIGc+M+hRMN4ZCs/gIuyNDWMVbNpJe+oVl925nSVE/XVAVb2yQ=
+  - secure: LtNBu6jGqM/3fTscPx7/3jOzV+CX8kyyNL5uGeGuxYaXBBVqwL3Zlp45MUP5xi+j4S8Czr1HlIhDsJzdQ5vCZdPvpAZzv7L/N+/Vqh+LNbQv4uGIYO+pnNLXp4PDhtM4mXl4YWBEWk4Zko6P5R09L2fW4YBhJ3SDQdOvUwM7+bg=
+  - secure: OzvfltBFHpJSzzdYHaYgp9XeJa8hOUiBUlFmZ8+ZAnXXhn6oCiHVgm4xCbnUAGl8+xR9yCAzEqPM1DQwUchOCnKW+ZYV84HOzvbqx09ZCjCQUFhvtfYZ3DRbxO1ocXHCoE2Mlp/FPfw5ltvg/PfzhMKkGW4IgVrPmX6Qhqo+dM8=
+  - secure: Co8sckC7ubGPHkkI1FTBwzV4esrAFOuOlscc9z8IuKyXm6mQ+3zB469VjGQFzYGtb+/OP00ZppsI06nWHc7Nq60GgI/ljhACLl+/lYMpxd3SR6RjPmxilL6Jn26uUp/2q+7F1TKWm+rH7BQxf+jOxq5DIjE/UI8Y+H0EcofB5Xw=

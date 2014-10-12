@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1108B3C119EA10A5008379E6 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119567B419E153C000D015CA /* FacebookSDK.framework */; };
+		1108B3C219EA17D9008379E6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A119E1539600D015CA /* SwiftyJSON.swift */; };
+		1108B3C319EA17E0008379E6 /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A419E153AE00D015CA /* GCD.swift */; };
+		1108B3C419EA17E0008379E6 /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A519E153AE00D015CA /* Net.swift */; };
+		1108B3C519EA17E0008379E6 /* NetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A619E153AE00D015CA /* NetData.swift */; };
+		1108B3C619EA17E0008379E6 /* NetDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A719E153AE00D015CA /* NetDownloadTask.swift */; };
+		1108B3C719EA17E0008379E6 /* NetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A819E153AE00D015CA /* NetHelper.swift */; };
+		1108B3C819EA17E0008379E6 /* NetRequestSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A919E153AE00D015CA /* NetRequestSerialization.swift */; };
+		1108B3C919EA17E0008379E6 /* NetResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567AA19E153AE00D015CA /* NetResponseData.swift */; };
+		1108B3CA19EA17E0008379E6 /* NetUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567AB19E153AE00D015CA /* NetUploadTask.swift */; };
+		1108B3D519EA1842008379E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8C19AEDF5100D5BF6D /* Images.xcassets */; };
 		1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */; };
 		11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8519AEDF5100D5BF6D /* AppDelegate.swift */; };
 		11944F8819AEDF5100D5BF6D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8719AEDF5100D5BF6D /* LoginViewController.swift */; };
@@ -88,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1108B3C119EA10A5008379E6 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +297,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1108B3D519EA1842008379E6 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +334,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1108B3C619EA17E0008379E6 /* NetDownloadTask.swift in Sources */,
+				1108B3C319EA17E0008379E6 /* GCD.swift in Sources */,
 				11944F9919AEDF5100D5BF6D /* VerbTests.swift in Sources */,
+				1108B3C519EA17E0008379E6 /* NetData.swift in Sources */,
+				1108B3C219EA17D9008379E6 /* SwiftyJSON.swift in Sources */,
+				1108B3CA19EA17E0008379E6 /* NetUploadTask.swift in Sources */,
+				1108B3C719EA17E0008379E6 /* NetHelper.swift in Sources */,
+				1108B3C919EA17E0008379E6 /* NetResponseData.swift in Sources */,
+				1108B3C819EA17E0008379E6 /* NetRequestSerialization.swift in Sources */,
+				1108B3C419EA17E0008379E6 /* Net.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,8 +453,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: William Porta (52KRCFBNVN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Porta (F7L5MLW335)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -442,7 +464,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "25d85a6b-970b-4459-9d84-c28e74d1dee2";
 				SWIFT_OBJC_BRIDGING_HEADER = "Verb/Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -453,8 +475,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: William Porta (52KRCFBNVN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: William Porta (52KRCFBNVN)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -464,7 +486,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "25d85a6b-970b-4459-9d84-c28e74d1dee2";
 				SWIFT_OBJC_BRIDGING_HEADER = "Verb/Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -477,6 +499,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Lib",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -497,6 +520,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Lib",
 				);
 				INFOPLIST_FILE = VerbTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
