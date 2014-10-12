@@ -24,7 +24,7 @@ env:
   - APP_NAME="Verb"
   - BUNDLE_DISPLAY_NAME="Verb Travis"
   - INFO_PLIST="Verb/Info.plist"
-  - 'DEVELOPER_NAME="iPhone Developer: William Porta (F7L5MLW335)"'
+  - 'DEVELOPER_NAME="iPhone Distribution: William Porta (52KRCFBNVN)"'
   - PROFILE_NAME="verbtravis"
   - secure: BW7OnSwBmbhj31/eqBDquxEzcnD0ChtlHzLBFJ9lfVnfmCN331LRpvIuKjSu0ppc5ZUJtdxo8f5lXkVm3Uks20HeuDENwOWwU+squbKTJAZuKSJviyx2TZMSGFIGc+M+hRMN4ZCs/gIuyNDWMVbNpJe+oVl925nSVE/XVAVb2yQ=
   - secure: LtNBu6jGqM/3fTscPx7/3jOzV+CX8kyyNL5uGeGuxYaXBBVqwL3Zlp45MUP5xi+j4S8Czr1HlIhDsJzdQ5vCZdPvpAZzv7L/N+/Vqh+LNbQv4uGIYO+pnNLXp4PDhtM4mXl4YWBEWk4Zko6P5R09L2fW4YBhJ3SDQdOvUwM7+bg=
