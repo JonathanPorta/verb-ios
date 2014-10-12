@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Verb
 
 class VerbTests: XCTestCase {
     
