@@ -8,7 +8,6 @@ before_script:
 - "./scripts/set-bundle.sh"
 script:
 - xctool -project Verb.xcodeproj -scheme Verb-travis -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
-- xctool test -project Verb.xcodeproj -scheme Verb-travis -sdk iphonesimulator
 after_script:
 - "./scripts/cleanup.sh"
 after_success:

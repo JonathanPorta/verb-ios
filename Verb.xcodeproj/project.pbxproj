@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1108B3C119EA10A5008379E6 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119567B419E153C000D015CA /* FacebookSDK.framework */; };
+		1108B3C219EA17D9008379E6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A119E1539600D015CA /* SwiftyJSON.swift */; };
+		1108B3C319EA17E0008379E6 /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A419E153AE00D015CA /* GCD.swift */; };
+		1108B3C419EA17E0008379E6 /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A519E153AE00D015CA /* Net.swift */; };
+		1108B3C519EA17E0008379E6 /* NetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A619E153AE00D015CA /* NetData.swift */; };
+		1108B3C619EA17E0008379E6 /* NetDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A719E153AE00D015CA /* NetDownloadTask.swift */; };
+		1108B3C719EA17E0008379E6 /* NetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A819E153AE00D015CA /* NetHelper.swift */; };
+		1108B3C819EA17E0008379E6 /* NetRequestSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A919E153AE00D015CA /* NetRequestSerialization.swift */; };
+		1108B3C919EA17E0008379E6 /* NetResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567AA19E153AE00D015CA /* NetResponseData.swift */; };
+		1108B3CA19EA17E0008379E6 /* NetUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567AB19E153AE00D015CA /* NetUploadTask.swift */; };
+		1108B3D519EA1842008379E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8C19AEDF5100D5BF6D /* Images.xcassets */; };
 		1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */; };
 		11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8519AEDF5100D5BF6D /* AppDelegate.swift */; };
 		11944F8819AEDF5100D5BF6D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8719AEDF5100D5BF6D /* LoginViewController.swift */; };
@@ -287,6 +297,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1108B3D519EA1842008379E6 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +334,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1108B3C619EA17E0008379E6 /* NetDownloadTask.swift in Sources */,
+				1108B3C319EA17E0008379E6 /* GCD.swift in Sources */,
 				11944F9919AEDF5100D5BF6D /* VerbTests.swift in Sources */,
+				1108B3C519EA17E0008379E6 /* NetData.swift in Sources */,
+				1108B3C219EA17D9008379E6 /* SwiftyJSON.swift in Sources */,
+				1108B3CA19EA17E0008379E6 /* NetUploadTask.swift in Sources */,
+				1108B3C719EA17E0008379E6 /* NetHelper.swift in Sources */,
+				1108B3C919EA17E0008379E6 /* NetResponseData.swift in Sources */,
+				1108B3C819EA17E0008379E6 /* NetRequestSerialization.swift in Sources */,
+				1108B3C419EA17E0008379E6 /* Net.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
