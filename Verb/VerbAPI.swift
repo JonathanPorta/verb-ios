@@ -64,7 +64,7 @@ class VerbAPI {
       })
     }
 
-    func getVerbs(message: MessageModel, callback: Callback) -> Void {
+    func getVerbs(callback: Callback) -> Void {
       self.request.GET("/verbs", params: nil, successHandler: { responseData in
         var json = JSON(data: responseData.data)
         NSLog("Get Verbs Message: \(json)")
