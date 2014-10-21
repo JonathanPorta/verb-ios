@@ -24,12 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     FBSession.openActiveSessionWithAllowLoginUI(false)
     var activeSession = FBSession.activeSession()
 
-    
-    //activeSession.closeAndClearTokenInformation()
-
     println("AppDelegate")
     if activeSession.isOpen {
       //Logged in.
+      self.getVerbAPI().doLogin()
       println("LOGGED IN!")
       changeStoryBoard("Main")
     }
@@ -38,17 +36,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       println("NOT LOGGED IN!")
       changeStoryBoard("Login")
     }
-
-    self.getVerbAPI().doLogin()
     
     return true
   }
 
   func getVerbAPI() -> VerbAPI {
-    var accessToken = FBSession.activeSession().accessTokenData.accessToken
-
-    //return VerbAPI(hostname: "http://10.0.16.153:3000/", accessToken: accessToken)
-    return VerbAPI(hostname: "http://192.168.42.75:3000/", accessToken: accessToken)
+    var activeSession = FBSession.activeSession()
+    var accessToken = ""
+    if activeSession.isOpen {
+      accessToken = activeSession.accessTokenData.accessToken
+    }
+    return VerbAPI(hostname: "http://development.verb.social/", accessToken: accessToken)
   }
   
   func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
@@ -81,6 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func changeStoryBoard(name :String) {
     var storyBoard = UIStoryboard(name:name, bundle: nil)
     var viewController: AnyObject! = storyBoard.instantiateInitialViewController() ;
-    self.window!.rootViewController = viewController as UIViewController
+    self.window!.rootViewController = viewController as? UIViewController
   }
 }
