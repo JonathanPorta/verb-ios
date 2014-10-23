@@ -57,11 +57,26 @@ class ActivityViewController: UITableViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-  
+
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
+    if self.activityModelList.count > 0 {
+      return 1
+    }
+    else {
+      var messageLabel = UILabel(frame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height));
+
+      messageLabel.text = "No data is currently available. Please pull down to refresh.";
+      messageLabel.numberOfLines = 0;
+      messageLabel.textAlignment = NSTextAlignment.Center;
+      messageLabel.font = UIFont(name:"Palatino-Italic", size:20);
+      messageLabel.sizeToFit();
+
+      self.tableView.backgroundView = messageLabel;
+      self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
+      return 0
+    }
   }
-  
+
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) ->
     Int {
      return self.activityModelList.count

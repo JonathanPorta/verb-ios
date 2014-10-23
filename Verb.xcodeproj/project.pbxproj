@@ -18,6 +18,7 @@
 		1108B3C919EA17E0008379E6 /* NetResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567AA19E153AE00D015CA /* NetResponseData.swift */; };
 		1108B3CA19EA17E0008379E6 /* NetUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567AB19E153AE00D015CA /* NetUploadTask.swift */; };
 		1108B3D519EA1842008379E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8C19AEDF5100D5BF6D /* Images.xcassets */; };
+		110E1C1E19F734AB007BC736 /* VerbCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E1C1D19F734AB007BC736 /* VerbCategoryViewController.swift */; };
 		1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */; };
 		11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8519AEDF5100D5BF6D /* AppDelegate.swift */; };
 		11944F8819AEDF5100D5BF6D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8719AEDF5100D5BF6D /* LoginViewController.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		110E1C1D19F734AB007BC736 /* VerbCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbCategoryViewController.swift; sourceTree = "<group>"; };
 		1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbAPI.swift; sourceTree = "<group>"; };
 		11944F8019AEDF5100D5BF6D /* Verb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11944F8419AEDF5100D5BF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				11944FAE19AF100000D5BF6D /* ActivityViewController.swift */,
 				11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */,
 				11944F8919AEDF5100D5BF6D /* Main.storyboard */,
+				110E1C1D19F734AB007BC736 /* VerbCategoryViewController.swift */,
 				11CC2B5919B0607500E99EC9 /* Login.storyboard */,
 				11944F8C19AEDF5100D5BF6D /* Images.xcassets */,
 				11944F8319AEDF5100D5BF6D /* Supporting Files */,
@@ -318,6 +321,7 @@
 				119567B219E153AE00D015CA /* NetResponseData.swift in Sources */,
 				1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */,
 				11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */,
+				110E1C1E19F734AB007BC736 /* VerbCategoryViewController.swift in Sources */,
 				119567B119E153AE00D015CA /* NetRequestSerialization.swift in Sources */,
 				119567AC19E153AE00D015CA /* GCD.swift in Sources */,
 				11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */,
