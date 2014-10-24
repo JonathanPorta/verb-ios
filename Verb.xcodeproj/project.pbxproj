@@ -9,17 +9,17 @@
 /* Begin PBXBuildFile section */
 		1108B3C119EA10A5008379E6 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119567B419E153C000D015CA /* FacebookSDK.framework */; };
 		1108B3C219EA17D9008379E6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A119E1539600D015CA /* SwiftyJSON.swift */; };
-		1108B3C319EA17E0008379E6 /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A419E153AE00D015CA /* GCD.swift */; };
-		1108B3C419EA17E0008379E6 /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A519E153AE00D015CA /* Net.swift */; };
-		1108B3C519EA17E0008379E6 /* NetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A619E153AE00D015CA /* NetData.swift */; };
-		1108B3C619EA17E0008379E6 /* NetDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A719E153AE00D015CA /* NetDownloadTask.swift */; };
-		1108B3C719EA17E0008379E6 /* NetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A819E153AE00D015CA /* NetHelper.swift */; };
-		1108B3C819EA17E0008379E6 /* NetRequestSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A919E153AE00D015CA /* NetRequestSerialization.swift */; };
-		1108B3C919EA17E0008379E6 /* NetResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567AA19E153AE00D015CA /* NetResponseData.swift */; };
-		1108B3CA19EA17E0008379E6 /* NetUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567AB19E153AE00D015CA /* NetUploadTask.swift */; };
 		1108B3D519EA1842008379E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8C19AEDF5100D5BF6D /* Images.xcassets */; };
 		110E1C1E19F734AB007BC736 /* VerbCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E1C1D19F734AB007BC736 /* VerbCategoryViewController.swift */; };
 		1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */; };
+		116D268019FA02470039A948 /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267819FA02470039A948 /* GCD.swift */; };
+		116D268119FA02470039A948 /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267919FA02470039A948 /* Net.swift */; };
+		116D268219FA02470039A948 /* NetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267A19FA02470039A948 /* NetData.swift */; };
+		116D268319FA02470039A948 /* NetDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267B19FA02470039A948 /* NetDownloadTask.swift */; };
+		116D268419FA02470039A948 /* NetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267C19FA02470039A948 /* NetHelper.swift */; };
+		116D268519FA02470039A948 /* NetRequestSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267D19FA02470039A948 /* NetRequestSerialization.swift */; };
+		116D268619FA02470039A948 /* NetResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267E19FA02470039A948 /* NetResponseData.swift */; };
+		116D268719FA02470039A948 /* NetUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267F19FA02470039A948 /* NetUploadTask.swift */; };
 		11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8519AEDF5100D5BF6D /* AppDelegate.swift */; };
 		11944F8819AEDF5100D5BF6D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8719AEDF5100D5BF6D /* LoginViewController.swift */; };
 		11944F8B19AEDF5100D5BF6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8919AEDF5100D5BF6D /* Main.storyboard */; };
@@ -32,14 +32,6 @@
 		1195679F19E1530E00D015CA /* ActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1195679C19E1530E00D015CA /* ActionModel.swift */; };
 		119567A019E1530E00D015CA /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1195679D19E1530E00D015CA /* MessageModel.swift */; };
 		119567A219E1539600D015CA /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A119E1539600D015CA /* SwiftyJSON.swift */; };
-		119567AC19E153AE00D015CA /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A419E153AE00D015CA /* GCD.swift */; };
-		119567AD19E153AE00D015CA /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A519E153AE00D015CA /* Net.swift */; };
-		119567AE19E153AE00D015CA /* NetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A619E153AE00D015CA /* NetData.swift */; };
-		119567AF19E153AE00D015CA /* NetDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A719E153AE00D015CA /* NetDownloadTask.swift */; };
-		119567B019E153AE00D015CA /* NetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A819E153AE00D015CA /* NetHelper.swift */; };
-		119567B119E153AE00D015CA /* NetRequestSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A919E153AE00D015CA /* NetRequestSerialization.swift */; };
-		119567B219E153AE00D015CA /* NetResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567AA19E153AE00D015CA /* NetResponseData.swift */; };
-		119567B319E153AE00D015CA /* NetUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567AB19E153AE00D015CA /* NetUploadTask.swift */; };
 		119567B519E153C000D015CA /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119567B419E153C000D015CA /* FacebookSDK.framework */; };
 		11CC2B5A19B0607500E99EC9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CC2B5919B0607500E99EC9 /* Login.storyboard */; };
 		11CC2B6219B077AC00E99EC9 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */; };
@@ -58,6 +50,14 @@
 /* Begin PBXFileReference section */
 		110E1C1D19F734AB007BC736 /* VerbCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbCategoryViewController.swift; sourceTree = "<group>"; };
 		1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbAPI.swift; sourceTree = "<group>"; };
+		116D267819FA02470039A948 /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
+		116D267919FA02470039A948 /* Net.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
+		116D267A19FA02470039A948 /* NetData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetData.swift; sourceTree = "<group>"; };
+		116D267B19FA02470039A948 /* NetDownloadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetDownloadTask.swift; sourceTree = "<group>"; };
+		116D267C19FA02470039A948 /* NetHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetHelper.swift; sourceTree = "<group>"; };
+		116D267D19FA02470039A948 /* NetRequestSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetRequestSerialization.swift; sourceTree = "<group>"; };
+		116D267E19FA02470039A948 /* NetResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetResponseData.swift; sourceTree = "<group>"; };
+		116D267F19FA02470039A948 /* NetUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetUploadTask.swift; sourceTree = "<group>"; };
 		11944F8019AEDF5100D5BF6D /* Verb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11944F8419AEDF5100D5BF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11944F8519AEDF5100D5BF6D /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; wrapsLines = 0; };
@@ -75,14 +75,6 @@
 		1195679C19E1530E00D015CA /* ActionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionModel.swift; path = Model/ActionModel.swift; sourceTree = "<group>"; };
 		1195679D19E1530E00D015CA /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageModel.swift; path = Model/MessageModel.swift; sourceTree = "<group>"; };
 		119567A119E1539600D015CA /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Lib/SwiftyJSON.swift; sourceTree = "<group>"; };
-		119567A419E153AE00D015CA /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
-		119567A519E153AE00D015CA /* Net.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
-		119567A619E153AE00D015CA /* NetData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetData.swift; sourceTree = "<group>"; };
-		119567A719E153AE00D015CA /* NetDownloadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetDownloadTask.swift; sourceTree = "<group>"; };
-		119567A819E153AE00D015CA /* NetHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetHelper.swift; sourceTree = "<group>"; };
-		119567A919E153AE00D015CA /* NetRequestSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetRequestSerialization.swift; sourceTree = "<group>"; };
-		119567AA19E153AE00D015CA /* NetResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetResponseData.swift; sourceTree = "<group>"; };
-		119567AB19E153AE00D015CA /* NetUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetUploadTask.swift; sourceTree = "<group>"; };
 		119567B419E153C000D015CA /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Lib/FacebookSDK.framework; sourceTree = "<group>"; };
 		11CC2B5919B0607500E99EC9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
@@ -111,11 +103,27 @@
 		1136FC6F19D8DF3700A14DFA /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				116D267719FA02470039A948 /* Net */,
 				119567B419E153C000D015CA /* FacebookSDK.framework */,
-				119567A319E153AE00D015CA /* Net */,
 				119567A119E1539600D015CA /* SwiftyJSON.swift */,
 			);
 			name = Lib;
+			sourceTree = "<group>";
+		};
+		116D267719FA02470039A948 /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				116D267819FA02470039A948 /* GCD.swift */,
+				116D267919FA02470039A948 /* Net.swift */,
+				116D267A19FA02470039A948 /* NetData.swift */,
+				116D267B19FA02470039A948 /* NetDownloadTask.swift */,
+				116D267C19FA02470039A948 /* NetHelper.swift */,
+				116D267D19FA02470039A948 /* NetRequestSerialization.swift */,
+				116D267E19FA02470039A948 /* NetResponseData.swift */,
+				116D267F19FA02470039A948 /* NetUploadTask.swift */,
+			);
+			name = Net;
+			path = Lib/Net/Net;
 			sourceTree = "<group>";
 		};
 		11944F7719AEDF5000D5BF6D = {
@@ -191,22 +199,6 @@
 				11944FA219AEE1A200D5BF6D /* ActivityModel.swift */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		119567A319E153AE00D015CA /* Net */ = {
-			isa = PBXGroup;
-			children = (
-				119567A419E153AE00D015CA /* GCD.swift */,
-				119567A519E153AE00D015CA /* Net.swift */,
-				119567A619E153AE00D015CA /* NetData.swift */,
-				119567A719E153AE00D015CA /* NetDownloadTask.swift */,
-				119567A819E153AE00D015CA /* NetHelper.swift */,
-				119567A919E153AE00D015CA /* NetRequestSerialization.swift */,
-				119567AA19E153AE00D015CA /* NetResponseData.swift */,
-				119567AB19E153AE00D015CA /* NetUploadTask.swift */,
-			);
-			name = Net;
-			path = Lib/Net;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,25 +304,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				11944F8819AEDF5100D5BF6D /* LoginViewController.swift in Sources */,
-				119567B019E153AE00D015CA /* NetHelper.swift in Sources */,
+				116D268019FA02470039A948 /* GCD.swift in Sources */,
+				116D268619FA02470039A948 /* NetResponseData.swift in Sources */,
+				116D268319FA02470039A948 /* NetDownloadTask.swift in Sources */,
 				119567A219E1539600D015CA /* SwiftyJSON.swift in Sources */,
-				119567B319E153AE00D015CA /* NetUploadTask.swift in Sources */,
-				119567AD19E153AE00D015CA /* Net.swift in Sources */,
+				116D268719FA02470039A948 /* NetUploadTask.swift in Sources */,
 				1195679F19E1530E00D015CA /* ActionModel.swift in Sources */,
 				11944FAF19AF100000D5BF6D /* ActivityViewController.swift in Sources */,
-				119567B219E153AE00D015CA /* NetResponseData.swift in Sources */,
 				1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */,
 				11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */,
 				110E1C1E19F734AB007BC736 /* VerbCategoryViewController.swift in Sources */,
-				119567B119E153AE00D015CA /* NetRequestSerialization.swift in Sources */,
-				119567AC19E153AE00D015CA /* GCD.swift in Sources */,
+				116D268419FA02470039A948 /* NetHelper.swift in Sources */,
 				11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */,
-				119567AF19E153AE00D015CA /* NetDownloadTask.swift in Sources */,
 				1195679E19E1530E00D015CA /* ActionCategoryModel.swift in Sources */,
 				119567A019E1530E00D015CA /* MessageModel.swift in Sources */,
-				119567AE19E153AE00D015CA /* NetData.swift in Sources */,
 				11944FAB19AF0CA300D5BF6D /* UserModel.swift in Sources */,
+				116D268219FA02470039A948 /* NetData.swift in Sources */,
 				11CC2B6219B077AC00E99EC9 /* LogoutViewController.swift in Sources */,
+				116D268519FA02470039A948 /* NetRequestSerialization.swift in Sources */,
+				116D268119FA02470039A948 /* Net.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,16 +330,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1108B3C619EA17E0008379E6 /* NetDownloadTask.swift in Sources */,
-				1108B3C319EA17E0008379E6 /* GCD.swift in Sources */,
 				11944F9919AEDF5100D5BF6D /* VerbTests.swift in Sources */,
-				1108B3C519EA17E0008379E6 /* NetData.swift in Sources */,
 				1108B3C219EA17D9008379E6 /* SwiftyJSON.swift in Sources */,
-				1108B3CA19EA17E0008379E6 /* NetUploadTask.swift in Sources */,
-				1108B3C719EA17E0008379E6 /* NetHelper.swift in Sources */,
-				1108B3C919EA17E0008379E6 /* NetResponseData.swift in Sources */,
-				1108B3C819EA17E0008379E6 /* NetRequestSerialization.swift in Sources */,
-				1108B3C419EA17E0008379E6 /* Net.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,8 +442,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: William Porta (F7L5MLW335)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Porta (F7L5MLW335)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -469,7 +453,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e4626c3-7b34-4775-a9dd-e5540b2c1f29";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Verb/Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -491,7 +475,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e4626c3-7b34-4775-a9dd-e5540b2c1f29";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Verb/Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

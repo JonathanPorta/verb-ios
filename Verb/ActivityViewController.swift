@@ -8,23 +8,6 @@
 
 import Foundation
 
-//class CustomTableViewCell : UITableViewCell {
-//
-//  @IBOutlet var mylabel: UILabel!
-//  @IBOutlet var button1: UIButton!
-//  @IBOutlet var button2: UIButton!
-//  @IBOutlet var myContentView: UIView!
-//  var model: ActivityModel?
-//
-//  required init(coder aDecoder: NSCoder) {
-//    super.init(coder: aDecoder)
-//  }
-//
-//  @IBAction func buttonClicked(sender: AnyObject) {
-//    
-//  }
-//}
-
 class ActivityViewController: UITableViewController {
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
   var verbAPI: VerbAPI
@@ -36,20 +19,13 @@ class ActivityViewController: UITableViewController {
   }
 
   override func viewDidLoad() {
-    
-    
-//    var nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
-//    
-//    tableView.registerNib(nib, forCellReuseIdentifier: "customCell")
-    
     super.viewDidLoad()
-    // adds the pull to refresh interface
+
     var refresh = UIRefreshControl()
     refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
     refresh.addTarget(self, action:"loadData", forControlEvents:.ValueChanged)
     self.refreshControl = refresh
-    
-    // get the initial data
+
     loadData()
   }
 
@@ -60,19 +36,21 @@ class ActivityViewController: UITableViewController {
 
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     if self.activityModelList.count > 0 {
+      self.tableView.backgroundView = nil
+      self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
       return 1
     }
     else {
       var messageLabel = UILabel(frame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height));
 
-      messageLabel.text = "No data is currently available. Please pull down to refresh.";
-      messageLabel.numberOfLines = 0;
-      messageLabel.textAlignment = NSTextAlignment.Center;
-      messageLabel.font = UIFont(name:"Palatino-Italic", size:20);
-      messageLabel.sizeToFit();
+      messageLabel.text = "No data is currently available. Please pull down to refresh."
+      messageLabel.numberOfLines = 0
+      messageLabel.textAlignment = NSTextAlignment.Center
+      messageLabel.font = UIFont(name:"Palatino-Italic", size:20)
+      messageLabel.sizeToFit()
 
-      self.tableView.backgroundView = messageLabel;
-      self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
+      self.tableView.backgroundView = messageLabel
+      self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
       return 0
     }
   }
@@ -83,11 +61,9 @@ class ActivityViewController: UITableViewController {
     }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    //let CellIdentifier: NSString = "ListPrototypeCell"
-    //var cell : CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("Cell") as CustomTableViewCell
     var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
     var activityModel: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
-    cell.textLabel!.text = activityModel.activityMessage
+    cell.textLabel.text = activityModel.activityMessage
     return cell
   }
 
@@ -123,12 +99,12 @@ class ActivityViewController: UITableViewController {
       self.verbAPI.reciprocateMessage(activity.message, callback: { response in
         self.loadData()
       })
-    });
+    })
     reciprocate.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
     
     var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
       println("DELETE•ACTION");
-    });
+    })
 
     if activity.type == "received" {
       return [reciprocate]

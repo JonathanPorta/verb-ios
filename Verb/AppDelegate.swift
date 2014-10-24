@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if activeSession.isOpen {
       accessToken = activeSession.accessTokenData.accessToken
     }
-    return VerbAPI(hostname: "http://development.verb.social/", accessToken: accessToken)
+    return VerbAPI(hostname: "http://development.verb.social", accessToken: accessToken)
   }
   
   func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {

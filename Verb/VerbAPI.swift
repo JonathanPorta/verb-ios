@@ -23,7 +23,7 @@ class VerbAPI {
     }
     
     func doLogin() -> Void {
-        let url = "auth/facebook_access_token/callback"
+        let url = "/auth/facebook_access_token/callback"
         let params = ["access_token": self.accessToken]
 
         self.request.GET(url, params: params, successHandler: { responseData in
@@ -37,7 +37,7 @@ class VerbAPI {
     func getActivities(callback: Callback) -> Void {
         self.request.GET("/activities.json", params: nil, successHandler: { responseData in
             var json = JSON(data: responseData.data)
-            //NSLog("Activities: \(json)")
+            NSLog("Activities: \(json)")
             callback(json)
         }, failureHandler: { error in
             NSLog("Error")
