@@ -15,7 +15,6 @@ class VerbCategoryViewController : UITableViewController {
 
   override func viewDidLoad() {
 
-
     super.viewDidLoad()
 
     // get the initial data
@@ -38,8 +37,8 @@ class VerbCategoryViewController : UITableViewController {
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
-    var activityModel: ActivityModel = self.categoryList.objectAtIndex(indexPath.row) as ActivityModel
-    cell.textLabel!.text = activityModel.activityMessage
+    //var activityModel: ActivityModel = self.categoryList.objectAtIndex(indexPath.row) as ActivityModel
+    cell.textLabel.text = "hi"//activityModel.activityMessage
     return cell
   }
 
