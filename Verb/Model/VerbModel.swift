@@ -1,5 +1,5 @@
 //
-//  ActionCategoryModel.swift
+//  VerbModel.swift
 //  Verb
 //
 //  Created by Jonathan Porta on 8/29/14.
@@ -8,6 +8,10 @@
 
 import Foundation
 
-class ActionCategoryModel {
-    
+class VerbModel {
+  var name: String
+
+  init(name: String) {
+    self.name = name
+  }
 }

@@ -1,5 +1,5 @@
 //
-//  VerbCategoryViewController.swift
+//  VerbViewController.swift
 //  Verb
 //
 //  Created by Jonathan Porta on 10/21/14.
@@ -7,17 +7,13 @@
 //
 
 import Foundation
-import UIKit
 
-class VerbCategoryViewController : UITableViewController {
-
-  var categoryList: NSMutableArray = []
+class VerbViewController : UITableViewController {
+  var categoryModel: CategoryModel?
+  var verbModelList: NSMutableArray = []
 
   override func viewDidLoad() {
-
     super.viewDidLoad()
-
-    // get the initial data
     loadData()
   }
 
@@ -32,13 +28,13 @@ class VerbCategoryViewController : UITableViewController {
 
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) ->
     Int {
-      return self.categoryList.count
+      return self.verbModelList.count
     }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
-    //var activityModel: ActivityModel = self.categoryList.objectAtIndex(indexPath.row) as ActivityModel
-    cell.textLabel.text = "hi"//activityModel.activityMessage
+    var verbModel: VerbModel = self.verbModelList.objectAtIndex(indexPath.row) as VerbModel
+    cell.textLabel.text = verbModel.name
     return cell
   }
 
@@ -47,6 +43,6 @@ class VerbCategoryViewController : UITableViewController {
   }
 
   func loadData() {
-    self.tableView.reloadData()
+    self.verbModelList = self.categoryModel!.verbs
   }
 }

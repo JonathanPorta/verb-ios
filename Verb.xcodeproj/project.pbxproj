@@ -10,7 +10,7 @@
 		1108B3C119EA10A5008379E6 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119567B419E153C000D015CA /* FacebookSDK.framework */; };
 		1108B3C219EA17D9008379E6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A119E1539600D015CA /* SwiftyJSON.swift */; };
 		1108B3D519EA1842008379E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8C19AEDF5100D5BF6D /* Images.xcassets */; };
-		110E1C1E19F734AB007BC736 /* VerbCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E1C1D19F734AB007BC736 /* VerbCategoryViewController.swift */; };
+		110E1C1E19F734AB007BC736 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E1C1D19F734AB007BC736 /* CategoryViewController.swift */; };
 		1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */; };
 		116D268019FA02470039A948 /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267819FA02470039A948 /* GCD.swift */; };
 		116D268119FA02470039A948 /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267919FA02470039A948 /* Net.swift */; };
@@ -20,6 +20,9 @@
 		116D268519FA02470039A948 /* NetRequestSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267D19FA02470039A948 /* NetRequestSerialization.swift */; };
 		116D268619FA02470039A948 /* NetResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267E19FA02470039A948 /* NetResponseData.swift */; };
 		116D268719FA02470039A948 /* NetUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D267F19FA02470039A948 /* NetUploadTask.swift */; };
+		116D268919FB8EA00039A948 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268819FB8EA00039A948 /* CategoryModel.swift */; };
+		116D268B19FB990D0039A948 /* VerbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268A19FB990D0039A948 /* VerbViewController.swift */; };
+		116D268D19FB9B3C0039A948 /* VerbModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268C19FB9B3C0039A948 /* VerbModel.swift */; };
 		11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8519AEDF5100D5BF6D /* AppDelegate.swift */; };
 		11944F8819AEDF5100D5BF6D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8719AEDF5100D5BF6D /* LoginViewController.swift */; };
 		11944F8B19AEDF5100D5BF6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8919AEDF5100D5BF6D /* Main.storyboard */; };
@@ -28,8 +31,6 @@
 		11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944FA219AEE1A200D5BF6D /* ActivityModel.swift */; };
 		11944FAB19AF0CA300D5BF6D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944FAA19AF0CA300D5BF6D /* UserModel.swift */; };
 		11944FAF19AF100000D5BF6D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944FAE19AF100000D5BF6D /* ActivityViewController.swift */; };
-		1195679E19E1530E00D015CA /* ActionCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1195679B19E1530E00D015CA /* ActionCategoryModel.swift */; };
-		1195679F19E1530E00D015CA /* ActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1195679C19E1530E00D015CA /* ActionModel.swift */; };
 		119567A019E1530E00D015CA /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1195679D19E1530E00D015CA /* MessageModel.swift */; };
 		119567A219E1539600D015CA /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119567A119E1539600D015CA /* SwiftyJSON.swift */; };
 		119567B519E153C000D015CA /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119567B419E153C000D015CA /* FacebookSDK.framework */; };
@@ -48,7 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		110E1C1D19F734AB007BC736 /* VerbCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbCategoryViewController.swift; sourceTree = "<group>"; };
+		110E1C1D19F734AB007BC736 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbAPI.swift; sourceTree = "<group>"; };
 		116D267819FA02470039A948 /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 		116D267919FA02470039A948 /* Net.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
@@ -58,6 +59,9 @@
 		116D267D19FA02470039A948 /* NetRequestSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetRequestSerialization.swift; sourceTree = "<group>"; };
 		116D267E19FA02470039A948 /* NetResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetResponseData.swift; sourceTree = "<group>"; };
 		116D267F19FA02470039A948 /* NetUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetUploadTask.swift; sourceTree = "<group>"; };
+		116D268819FB8EA00039A948 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryModel.swift; path = Model/CategoryModel.swift; sourceTree = "<group>"; };
+		116D268A19FB990D0039A948 /* VerbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbViewController.swift; sourceTree = "<group>"; };
+		116D268C19FB9B3C0039A948 /* VerbModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerbModel.swift; path = Model/VerbModel.swift; sourceTree = "<group>"; };
 		11944F8019AEDF5100D5BF6D /* Verb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11944F8419AEDF5100D5BF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11944F8519AEDF5100D5BF6D /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; wrapsLines = 0; };
@@ -71,8 +75,6 @@
 		11944FA919AEEABC00D5BF6D /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Verb/Bridging-Header.h"; sourceTree = "<group>"; };
 		11944FAA19AF0CA300D5BF6D /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = Verb/Model/UserModel.swift; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		11944FAE19AF100000D5BF6D /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; tabWidth = 2; wrapsLines = 0; };
-		1195679B19E1530E00D015CA /* ActionCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionCategoryModel.swift; path = Model/ActionCategoryModel.swift; sourceTree = "<group>"; };
-		1195679C19E1530E00D015CA /* ActionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionModel.swift; path = Model/ActionModel.swift; sourceTree = "<group>"; };
 		1195679D19E1530E00D015CA /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageModel.swift; path = Model/MessageModel.swift; sourceTree = "<group>"; };
 		119567A119E1539600D015CA /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Lib/SwiftyJSON.swift; sourceTree = "<group>"; };
 		119567B419E153C000D015CA /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Lib/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -153,10 +155,11 @@
 				11944F8519AEDF5100D5BF6D /* AppDelegate.swift */,
 				1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */,
 				11944F8719AEDF5100D5BF6D /* LoginViewController.swift */,
+				116D268A19FB990D0039A948 /* VerbViewController.swift */,
 				11944FAE19AF100000D5BF6D /* ActivityViewController.swift */,
 				11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */,
 				11944F8919AEDF5100D5BF6D /* Main.storyboard */,
-				110E1C1D19F734AB007BC736 /* VerbCategoryViewController.swift */,
+				110E1C1D19F734AB007BC736 /* CategoryViewController.swift */,
 				11CC2B5919B0607500E99EC9 /* Login.storyboard */,
 				11944F8C19AEDF5100D5BF6D /* Images.xcassets */,
 				11944F8319AEDF5100D5BF6D /* Supporting Files */,
@@ -192,8 +195,8 @@
 		1195679A19E150C500D015CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1195679B19E1530E00D015CA /* ActionCategoryModel.swift */,
-				1195679C19E1530E00D015CA /* ActionModel.swift */,
+				116D268819FB8EA00039A948 /* CategoryModel.swift */,
+				116D268C19FB9B3C0039A948 /* VerbModel.swift */,
 				1195679D19E1530E00D015CA /* MessageModel.swift */,
 				11944FAA19AF0CA300D5BF6D /* UserModel.swift */,
 				11944FA219AEE1A200D5BF6D /* ActivityModel.swift */,
@@ -309,20 +312,21 @@
 				116D268319FA02470039A948 /* NetDownloadTask.swift in Sources */,
 				119567A219E1539600D015CA /* SwiftyJSON.swift in Sources */,
 				116D268719FA02470039A948 /* NetUploadTask.swift in Sources */,
-				1195679F19E1530E00D015CA /* ActionModel.swift in Sources */,
 				11944FAF19AF100000D5BF6D /* ActivityViewController.swift in Sources */,
 				1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */,
 				11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */,
-				110E1C1E19F734AB007BC736 /* VerbCategoryViewController.swift in Sources */,
+				110E1C1E19F734AB007BC736 /* CategoryViewController.swift in Sources */,
 				116D268419FA02470039A948 /* NetHelper.swift in Sources */,
 				11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */,
-				1195679E19E1530E00D015CA /* ActionCategoryModel.swift in Sources */,
+				116D268B19FB990D0039A948 /* VerbViewController.swift in Sources */,
+				116D268919FB8EA00039A948 /* CategoryModel.swift in Sources */,
 				119567A019E1530E00D015CA /* MessageModel.swift in Sources */,
 				11944FAB19AF0CA300D5BF6D /* UserModel.swift in Sources */,
 				116D268219FA02470039A948 /* NetData.swift in Sources */,
 				11CC2B6219B077AC00E99EC9 /* LogoutViewController.swift in Sources */,
 				116D268519FA02470039A948 /* NetRequestSerialization.swift in Sources */,
 				116D268119FA02470039A948 /* Net.swift in Sources */,
+				116D268D19FB9B3C0039A948 /* VerbModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

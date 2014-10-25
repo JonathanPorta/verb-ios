@@ -8,11 +8,11 @@
 
 import Foundation
 
-class ActivityViewController: UITableViewController {
+class ActivityViewController: UITableViewController, VerbAPIProtocol {
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
   var verbAPI: VerbAPI
   var activityModelList: NSMutableArray = []
-  
+
   required init(coder aDecoder: NSCoder) {
     self.verbAPI = appDelegate.getVerbAPI()
     super.init(coder: aDecoder)
@@ -59,7 +59,7 @@ class ActivityViewController: UITableViewController {
     Int {
      return self.activityModelList.count
     }
-  
+
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
     var activityModel: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
@@ -74,12 +74,12 @@ class ActivityViewController: UITableViewController {
     })
     println("You selected cell #\(indexPath.row): \(activity.activityMessage)!")
   }
-  
+
   override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     // Return false if you do not want the specified item to be editable.
     return true
   }
-  
+
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
       activityModelList.removeObjectAtIndex(indexPath.row)
@@ -88,7 +88,7 @@ class ActivityViewController: UITableViewController {
       // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
   }
-  
+
   override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
 
     var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
@@ -101,7 +101,7 @@ class ActivityViewController: UITableViewController {
       })
     })
     reciprocate.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
-    
+
     var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
       println("DELETE•ACTION");
     })
@@ -114,41 +114,46 @@ class ActivityViewController: UITableViewController {
     }
   }
 
+  func didReceiveAPIResults(results: JSON){
+    var activities: NSMutableArray = []
+    for (index: String, activity: JSON) in results {
+      // Wow, this sucks.
+      var senderUserModel = UserModel(
+        id: activity["message"]["sender"]["id"].integerValue,
+        email: activity["message"]["sender"]["email"].stringValue,
+        firstName: activity["message"]["sender"]["first_name"].stringValue,
+        lastName: activity["message"]["sender"]["last_name"].stringValue
+      )
+
+      var recipientUserModel = UserModel(
+        id: activity["message"]["recipient"]["id"].integerValue,
+        email: activity["message"]["recipient"]["email"].stringValue,
+        firstName: activity["message"]["recipient"]["first_name"].stringValue,
+        lastName: activity["message"]["recipient"]["last_name"].stringValue
+      )
+
+      var messageModel = MessageModel(
+        id: activity["message"]["id"].integerValue,
+        verb: activity["message"]["verb"].stringValue,
+        acknowledgedAt: activity["message"]["acknowledged_at"].integerValue,
+        acknowlegedAtInWords: activity["message"]["acknowledged_at_in_words"].stringValue,
+        createdAt: activity["message"]["created_at"].integerValue,
+        createdAtInWords: activity["message"]["created_at_in_words"].stringValue,
+        sender: senderUserModel,
+        recipient: recipientUserModel
+      )
+
+      var activityModel = ActivityModel(activity: activity, message: messageModel)
+      activities.addObject(activityModel)
+    }
+
+    self.refreshControl!.endRefreshing()
+    self.tableView.reloadData()
+    self.activityModelList = activities
+  }
+
   func loadData() {
-    verbAPI.getActivities({ activities in
-      self.activityModelList = []
-      for (index: String, activity: JSON) in activities {
-        // Wow, this sucks.
-        var senderUserModel = UserModel(
-          id: activity["message"]["sender"]["id"].integerValue,
-          email: activity["message"]["sender"]["email"].stringValue,
-          firstName: activity["message"]["sender"]["first_name"].stringValue,
-          lastName: activity["message"]["sender"]["last_name"].stringValue
-        )
-
-        var recipientUserModel = UserModel(
-          id: activity["message"]["recipient"]["id"].integerValue,
-          email: activity["message"]["recipient"]["email"].stringValue,
-          firstName: activity["message"]["recipient"]["first_name"].stringValue,
-          lastName: activity["message"]["recipient"]["last_name"].stringValue
-        )
-
-        var messageModel = MessageModel(
-          id: activity["message"]["id"].integerValue,
-          verb: activity["message"]["verb"].stringValue,
-          acknowledgedAt: activity["message"]["acknowledged_at"].integerValue,
-          acknowlegedAtInWords: activity["message"]["acknowledged_at_in_words"].stringValue,
-          createdAt: activity["message"]["created_at"].integerValue,
-          createdAtInWords: activity["message"]["created_at_in_words"].stringValue,
-          sender: senderUserModel,
-          recipient: recipientUserModel
-        )
-
-        var activityModel = ActivityModel(activity: activity, message: messageModel)
-        self.activityModelList.addObject(activityModel)
-      }
-      self.refreshControl!.endRefreshing()
-      self.tableView.reloadData()
-    })
+    verbAPI.getActivities()
+    verbAPI.delegate = self
   }
 }
