@@ -1,6 +1,6 @@
 [submodule "Lib/Net"]
 	path = Lib/Net
-	url = git@github.com:JonathanPorta/Net.git
+	url = https://github.com/JonathanPorta/Net.git
 [submodule "Lib/SwiftyJSON"]
 	path = Lib/SwiftyJSON
 	url = https://github.com/SwiftyJSON/SwiftyJSON.git
