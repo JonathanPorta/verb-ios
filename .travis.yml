@@ -1,6 +1,8 @@
 language: objective-c
 before_script:
 - brew update && brew uninstall xctool && brew install xctool --build-from-source
+- gem install cocoapods
+- pod install
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/verbtravis.mobileprovision.enc
   -d -a -out scripts/profile/verbtravis.mobileprovision
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a
@@ -10,7 +12,7 @@ before_script:
 - "./scripts/add-key.sh"
 - "./scripts/set-bundle.sh"
 script:
-- xctool -project Verb.xcodeproj -scheme Verb-travis -sdk iphoneos -configuration
+- xctool -workspace Verb.xcworkspace -scheme Verb-travis -sdk iphoneos -configuration
   Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
 after_script:
 - "./scripts/cleanup.sh"
