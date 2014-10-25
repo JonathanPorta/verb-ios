@@ -15,7 +15,7 @@ class ActivityModel {
   var message: MessageModel
   
   init(activity: JSON, message: MessageModel) {
-    self.id = activity["id"].integerValue
+    self.id = activity["id"].intValue
     self.type = activity["type"].stringValue
     self.activityMessage = activity["activity_message"].stringValue
     self.message = message

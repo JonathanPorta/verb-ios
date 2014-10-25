@@ -119,25 +119,25 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
     for (index: String, activity: JSON) in results {
       // Wow, this sucks.
       var senderUserModel = UserModel(
-        id: activity["message"]["sender"]["id"].integerValue,
+        id: activity["message"]["sender"]["id"].intValue,
         email: activity["message"]["sender"]["email"].stringValue,
         firstName: activity["message"]["sender"]["first_name"].stringValue,
         lastName: activity["message"]["sender"]["last_name"].stringValue
       )
 
       var recipientUserModel = UserModel(
-        id: activity["message"]["recipient"]["id"].integerValue,
+        id: activity["message"]["recipient"]["id"].intValue,
         email: activity["message"]["recipient"]["email"].stringValue,
         firstName: activity["message"]["recipient"]["first_name"].stringValue,
         lastName: activity["message"]["recipient"]["last_name"].stringValue
       )
 
       var messageModel = MessageModel(
-        id: activity["message"]["id"].integerValue,
+        id: activity["message"]["id"].intValue,
         verb: activity["message"]["verb"].stringValue,
-        acknowledgedAt: activity["message"]["acknowledged_at"].integerValue,
+        acknowledgedAt: activity["message"]["acknowledged_at"].intValue,
         acknowlegedAtInWords: activity["message"]["acknowledged_at_in_words"].stringValue,
-        createdAt: activity["message"]["created_at"].integerValue,
+        createdAt: activity["message"]["created_at"].intValue,
         createdAtInWords: activity["message"]["created_at_in_words"].stringValue,
         sender: senderUserModel,
         recipient: recipientUserModel
