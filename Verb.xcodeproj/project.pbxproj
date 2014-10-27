@@ -22,6 +22,8 @@
 		116D268B19FB990D0039A948 /* VerbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268A19FB990D0039A948 /* VerbViewController.swift */; };
 		116D268D19FB9B3C0039A948 /* VerbModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268C19FB9B3C0039A948 /* VerbModel.swift */; };
 		116D268F19FC2C750039A948 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268E19FC2C750039A948 /* SwiftyJSON.swift */; };
+		116D269119FE12890039A948 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D269019FE12890039A948 /* FriendViewController.swift */; };
+		116D269319FE30000039A948 /* SelectableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D269219FE30000039A948 /* SelectableModel.swift */; };
 		11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8519AEDF5100D5BF6D /* AppDelegate.swift */; };
 		11944F8819AEDF5100D5BF6D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8719AEDF5100D5BF6D /* LoginViewController.swift */; };
 		11944F8B19AEDF5100D5BF6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8919AEDF5100D5BF6D /* Main.storyboard */; };
@@ -62,6 +64,8 @@
 		116D268A19FB990D0039A948 /* VerbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbViewController.swift; sourceTree = "<group>"; };
 		116D268C19FB9B3C0039A948 /* VerbModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerbModel.swift; path = Model/VerbModel.swift; sourceTree = "<group>"; };
 		116D268E19FC2C750039A948 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Lib/SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		116D269019FE12890039A948 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		116D269219FE30000039A948 /* SelectableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectableModel.swift; path = Model/SelectableModel.swift; sourceTree = "<group>"; };
 		11944F8019AEDF5100D5BF6D /* Verb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11944F8419AEDF5100D5BF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11944F8519AEDF5100D5BF6D /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; wrapsLines = 0; };
@@ -155,11 +159,12 @@
 				11944F8519AEDF5100D5BF6D /* AppDelegate.swift */,
 				1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */,
 				11944F8719AEDF5100D5BF6D /* LoginViewController.swift */,
-				116D268A19FB990D0039A948 /* VerbViewController.swift */,
 				11944FAE19AF100000D5BF6D /* ActivityViewController.swift */,
+				110E1C1D19F734AB007BC736 /* CategoryViewController.swift */,
+				116D268A19FB990D0039A948 /* VerbViewController.swift */,
+				116D269019FE12890039A948 /* FriendViewController.swift */,
 				11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */,
 				11944F8919AEDF5100D5BF6D /* Main.storyboard */,
-				110E1C1D19F734AB007BC736 /* CategoryViewController.swift */,
 				11CC2B5919B0607500E99EC9 /* Login.storyboard */,
 				11944F8C19AEDF5100D5BF6D /* Images.xcassets */,
 				11944F8319AEDF5100D5BF6D /* Supporting Files */,
@@ -200,6 +205,7 @@
 				1195679D19E1530E00D015CA /* MessageModel.swift */,
 				11944FAA19AF0CA300D5BF6D /* UserModel.swift */,
 				11944FA219AEE1A200D5BF6D /* ActivityModel.swift */,
+				116D269219FE30000039A948 /* SelectableModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 				11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */,
 				110E1C1E19F734AB007BC736 /* CategoryViewController.swift in Sources */,
 				116D268419FA02470039A948 /* NetHelper.swift in Sources */,
+				116D269319FE30000039A948 /* SelectableModel.swift in Sources */,
 				11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */,
 				116D268B19FB990D0039A948 /* VerbViewController.swift in Sources */,
 				116D268F19FC2C750039A948 /* SwiftyJSON.swift in Sources */,
@@ -378,6 +385,7 @@
 				11CC2B6219B077AC00E99EC9 /* LogoutViewController.swift in Sources */,
 				116D268519FA02470039A948 /* NetRequestSerialization.swift in Sources */,
 				116D268119FA02470039A948 /* Net.swift in Sources */,
+				116D269119FE12890039A948 /* FriendViewController.swift in Sources */,
 				116D268D19FB9B3C0039A948 /* VerbModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

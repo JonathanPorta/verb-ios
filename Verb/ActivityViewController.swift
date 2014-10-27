@@ -18,6 +18,19 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
     super.init(coder: aDecoder)
   }
 
+  @IBAction func sendMessages(segue: UIStoryboardSegue) {
+    let source = segue.sourceViewController as FriendViewController
+    let recipients = source.selection
+    let verb = source.verbModel!
+
+    for var i = 0; i < recipients.count; ++i {
+      var recipient: UserModel = recipients.objectAtIndex(i) as UserModel
+      verbAPI.sendMessage(recipient, verb: verb, callback: { response in
+        self.loadData()
+      })
+    }
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -147,9 +160,12 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
       activities.addObject(activityModel)
     }
 
-    self.refreshControl!.endRefreshing()
-    self.tableView.reloadData()
     self.activityModelList = activities
+
+    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+      self.refreshControl!.endRefreshing()
+      self.tableView.reloadData()
+    })
   }
 
   func loadData() {

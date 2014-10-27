@@ -8,12 +8,12 @@
 
 import Foundation
 
-class UserModel {
+class UserModel: SelectableModel {
   var id: Int
   var email: String
   var firstName: String
   var lastName: String
-  
+
   init(id: Int, email: String, firstName: String, lastName: String) {
     self.id = id
     self.email = email

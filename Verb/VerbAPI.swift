@@ -74,10 +74,31 @@ class VerbAPI {
   func getCategories() -> Void {
     self.request.GET("/verbs", params: nil, successHandler: { responseData in
       var json = JSON(data: responseData.data)
-      NSLog("Get Verbs Message: \(json)")
+      NSLog("Get Verbs: \(json)")
       self.delegate?.didReceiveAPIResults(json)
     }, failureHandler: { error in
       NSLog("Error")
+    })
+  }
+
+  func getFriends() -> Void {
+    self.request.GET("/friends", params: nil, successHandler: { responseData in
+      var json = JSON(data: responseData.data)
+      NSLog("Get Friends: \(json)")
+      self.delegate?.didReceiveAPIResults(json)
+      }, failureHandler: { error in
+        NSLog("Error")
+    })
+  }
+
+  func sendMessage(recipient: UserModel, verb: VerbModel, callback: Callback) -> Void {
+    let params = ["message[recipient_id]": recipient.id, "message[verb]": verb.name]
+    self.request.POST("/messages.json", params: params, successHandler: { responseData in
+      var json = JSON(data: responseData.data)
+      NSLog("New Message: \(json)")
+      callback(json)
+      }, failureHandler: { error in
+        NSLog("Error")
     })
   }
 }

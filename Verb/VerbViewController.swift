@@ -12,6 +12,13 @@ class VerbViewController : UITableViewController {
   var categoryModel: CategoryModel?
   var verbModelList: NSMutableArray = []
 
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    var friendViewController: FriendViewController = segue.destinationViewController as FriendViewController
+    var verbIndex = self.tableView!.indexPathForSelectedRow()!.row
+    var verb = self.verbModelList[verbIndex] as VerbModel
+    friendViewController.verbModel = verb
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     loadData()
