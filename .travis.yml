@@ -1,7 +1,10 @@
 language: objective-c
-install:
+rvm:
+  - 2.1.2
+before_install:
   - travis_retry brew update && travis_retry brew uninstall xctool && travis_retry brew install xctool --build-from-source
-  - travis_retry gem update && travis_retry gem uninstall -a cocoapods && travis_retry gem install cocoapods
+  - travis_retry gem update --system && travis_retry gem update && travis_retry gem uninstall -a cocoapods && travis_retry gem install cocoapods
+install:
   - travis_retry pod install
 before_script:
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/verbtravis.mobileprovision.enc -d -a -out scripts/profile/verbtravis.mobileprovision
