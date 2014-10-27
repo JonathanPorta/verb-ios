@@ -18,4 +18,4 @@ export HOCKEY_APP_TOKEN=...
 # This just emulates Travis vars locally
 export TRAVIS_PULL_REQUEST=false
 export TRAVIS_BRANCH=master
-export TRAVIS_BUILD_NUMBER=0
+export TRAVIS_BUILD_NUMBER=$(date +%s)
