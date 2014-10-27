@@ -8,3 +8,8 @@ Verb iOS app written in Swift.
 Configure ./scripts/config.sh based on sample in ./scripts/config.sh.sample
 
 `source ./scripts/config.sh && ./scripts/run-locally.sh`
+
+#### Updating Encrypted Certs/Profiles
+Configure ./scripts/config.sh based on sample in ./scripts/config.sh.sample
+
+`source ./scripts/config.sh && ./scripts/encrypt.sh`
