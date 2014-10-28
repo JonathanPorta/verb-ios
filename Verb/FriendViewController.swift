@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class FriendViewController : UITableViewController, VerbAPIProtocol {
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -90,7 +91,7 @@ class FriendViewController : UITableViewController, VerbAPIProtocol {
     }
   }
 
-  func didReceiveAPIResults(results: JSON){
+  func didReceiveResult(results: JSON){
     var friends: NSMutableArray = []
     for (index: String, friend: JSON) in results {
       friends.addObject(
@@ -111,7 +112,6 @@ class FriendViewController : UITableViewController, VerbAPIProtocol {
   }
 
   func loadData() {
-    verbAPI.getFriends()
-    verbAPI.delegate = self
+    verbAPI.getFriends(self)
   }
 }

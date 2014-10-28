@@ -7,98 +7,66 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 protocol VerbAPIProtocol {
-  func didReceiveAPIResults(results: JSON)
+  func didReceiveResult(results: JSON)
 }
 
-class VerbAPI {
-
-  var delegate: VerbAPIProtocol?
+class VerbAPI: VerbAPIProtocol {
 
   typealias Callback = (JSON) -> ()
 
   var hostname: String
   var accessToken: String
-  var request: Net
+  var verbRequest: VerbRequest
 
   init(hostname: String, accessToken: String) {
     self.hostname = hostname
     self.accessToken = accessToken
-    self.request = Net(baseUrlString: self.hostname, headers: ["access_token": self.accessToken])
+    self.verbRequest = VerbRequest(hostname: hostname, accessToken: accessToken)
   }
 
-  func doLogin() -> Void {
-    let url = "/auth/facebook_access_token/callback"
-    let params = ["access_token": self.accessToken]
-
-    self.request.GET(url, params: params, successHandler: { responseData in
-      var json = JSON(data: responseData.data)
-      NSLog("Login Result: \(json)")
-    }, failureHandler: { error in
-      NSLog("Error")
-    })
+  func didReceiveResult(result: JSON){
+    NSLog("VerbAPI.onResponse: \(result)")
   }
 
-  func getActivities() -> Void {
-    self.request.GET("/activities.json", params: nil, successHandler: { responseData in
-      var json = JSON(data: responseData.data)
-      NSLog("Activities: \(json)")
-      self.delegate?.didReceiveAPIResults(json)
-      // callback(json)
-    }, failureHandler: { error in
-      NSLog("Error")
-    })
+  func doLogin(){
+    var url = "/auth/facebook_access_token/callback"
+    var params = ["access_token": self.accessToken]
+
+    self.verbRequest.get(url, parameters: params, delegate: self)
   }
 
-  func acknowledgeMessage(message: MessageModel, callback: Callback) -> Void {
-    self.request.GET("/messages/\(message.id)/acknowledge", params: nil, successHandler: { responseData in
-      var json = JSON(data: responseData.data)
-      NSLog("Acknowledge Message: \(json)")
-      callback(json)
-    }, failureHandler: { error in
-      NSLog("Error")
-    })
+  func getActivities(delegate: VerbAPIProtocol){
+    var url = "/activities.json"
+    self.verbRequest.get(url, delegate: delegate)
   }
 
-  func reciprocateMessage(message: MessageModel, callback: Callback) -> Void {
-    self.request.GET("/messages/\(message.id)/reciprocate", params: nil, successHandler: { responseData in
-      var json = JSON(data: responseData.data)
-      NSLog("Reciprocate Message: \(json)")
-      callback(json)
-      }, failureHandler: { error in
-        NSLog("Error")
-    })
+  func acknowledgeMessage(message: MessageModel){
+    var url = "/messages/\(message.id)/acknowledge.json"
+    self.verbRequest.get(url)
   }
 
-  func getCategories() -> Void {
-    self.request.GET("/verbs", params: nil, successHandler: { responseData in
-      var json = JSON(data: responseData.data)
-      NSLog("Get Verbs: \(json)")
-      self.delegate?.didReceiveAPIResults(json)
-    }, failureHandler: { error in
-      NSLog("Error")
-    })
+  func reciprocateMessage(message: MessageModel){
+    var url = "/messages/\(message.id)/reciprocate.json"
+    self.verbRequest.get(url)
   }
 
-  func getFriends() -> Void {
-    self.request.GET("/friends", params: nil, successHandler: { responseData in
-      var json = JSON(data: responseData.data)
-      NSLog("Get Friends: \(json)")
-      self.delegate?.didReceiveAPIResults(json)
-      }, failureHandler: { error in
-        NSLog("Error")
-    })
+  func getCategories(delegate: VerbAPIProtocol){
+    var url = "/verbs.json"
+    self.verbRequest.get(url, delegate: delegate)
   }
 
-  func sendMessage(recipient: UserModel, verb: VerbModel, callback: Callback) -> Void {
-    let params = ["message[recipient_id]": recipient.id, "message[verb]": verb.name]
-    self.request.POST("/messages.json", params: params, successHandler: { responseData in
-      var json = JSON(data: responseData.data)
-      NSLog("New Message: \(json)")
-      callback(json)
-      }, failureHandler: { error in
-        NSLog("Error")
-    })
+  func getFriends(delegate: VerbAPIProtocol){
+    var url = "/friends.json"
+    self.verbRequest.get(url, delegate: delegate)
+  }
+
+  func sendMessage(recipient: UserModel, verb: VerbModel){
+    var url = "/messages.json"
+    var params:[String:AnyObject] = ["recipient_id": recipient.id, "verb": verb.name]
+
+    self.verbRequest.post(url, parameters: params)
   }
 }

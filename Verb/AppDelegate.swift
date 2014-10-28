@@ -11,9 +11,8 @@ import Foundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-                            
+
   var window: UIWindow?
-  var verbAPI: VerbAPI?
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
     // Override point for customization after application launch.
@@ -36,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       println("NOT LOGGED IN!")
       changeStoryBoard("Login")
     }
-    
+
     return true
   }
 
@@ -48,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     return VerbAPI(hostname: "http://development.verb.social", accessToken: accessToken)
   }
-  
+
   func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
     var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
     return wasHandled

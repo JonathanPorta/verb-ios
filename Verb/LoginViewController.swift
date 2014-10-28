@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 class LoginViewController: UIViewController, FBLoginViewDelegate {
-    
+
     @IBOutlet var fbLoginView : FBLoginView!
 
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -29,9 +29,10 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
 
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
         println("User Logged In")
+        appDelegate.getVerbAPI().doLogin()
         appDelegate.changeStoryBoard("Main")
     }
-    
+
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
         println("User: \(user)")
         println("User ID: \(user.objectID)")
@@ -39,11 +40,11 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         var userEmail = user.objectForKey("email") as String
         println("User Email: \(userEmail)")
     }
-    
+
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
         println("User Logged Out")
     }
-    
+
     func loginView(loginView : FBLoginView!, handleError:NSError) {
         println("Error: \(handleError.localizedDescription)")
     }

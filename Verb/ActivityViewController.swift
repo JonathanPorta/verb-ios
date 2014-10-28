@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class ActivityViewController: UITableViewController, VerbAPIProtocol {
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -25,9 +26,7 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
 
     for var i = 0; i < recipients.count; ++i {
       var recipient: UserModel = recipients.objectAtIndex(i) as UserModel
-      verbAPI.sendMessage(recipient, verb: verb, callback: { response in
-        self.loadData()
-      })
+      verbAPI.sendMessage(recipient, verb: verb)
     }
   }
 
@@ -82,9 +81,7 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
 
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
-    verbAPI.acknowledgeMessage(activity.message, callback: { response in
-      self.loadData()
-    })
+    verbAPI.acknowledgeMessage(activity.message)
     println("You selected cell #\(indexPath.row): \(activity.activityMessage)!")
   }
 
@@ -109,9 +106,7 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
     var reciprocate = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "\(activity.message.verb) back!", handler:{action, indexpath in
       println("RECIPROCATE•ACTION");
       self.tableView.setEditing(false, animated: true)
-      self.verbAPI.reciprocateMessage(activity.message, callback: { response in
-        self.loadData()
-      })
+      self.verbAPI.reciprocateMessage(activity.message)
     })
     reciprocate.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
 
@@ -127,7 +122,7 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
     }
   }
 
-  func didReceiveAPIResults(results: JSON){
+  func didReceiveResult(results: JSON){
     var activities: NSMutableArray = []
     for (index: String, activity: JSON) in results {
       // Wow, this sucks.
@@ -169,7 +164,6 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
   }
 
   func loadData() {
-    verbAPI.getActivities()
-    verbAPI.delegate = self
+    verbAPI.getActivities(self)
   }
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class CategoryViewController : UITableViewController, VerbAPIProtocol {
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -55,7 +56,7 @@ class CategoryViewController : UITableViewController, VerbAPIProtocol {
     println("You selected cell #\(indexPath.row)")
   }
 
-  func didReceiveAPIResults(results: JSON){
+  func didReceiveResult(results: JSON){
     var categories: NSMutableArray = []
     for (category: String, subcategories: JSON) in results {
       var verbs: NSMutableArray = []
@@ -73,7 +74,6 @@ class CategoryViewController : UITableViewController, VerbAPIProtocol {
   }
 
   func loadData() {
-    verbAPI.getCategories()
-    verbAPI.delegate = self
+    verbAPI.getCategories(self)
   }
 }
