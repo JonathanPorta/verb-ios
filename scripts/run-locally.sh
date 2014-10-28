@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Put the provisioning profile in place
+mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+cp "./scripts/profile/$PROFILE_NAME.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
+
 echo "Settings Bundle Data"
 ./scripts/set-bundle.sh
 
