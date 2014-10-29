@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 class ActivityViewController: UITableViewController, VerbAPIProtocol {
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 protocol VerbAPIProtocol {
   func didReceiveResult(results: JSON)
@@ -66,6 +65,13 @@ class VerbAPI: VerbAPIProtocol {
   func sendMessage(recipient: UserModel, verb: VerbModel){
     var url = "/messages.json"
     var params:[String:AnyObject] = ["recipient_id": recipient.id, "verb": verb.name]
+
+    self.verbRequest.post(url, parameters: params)
+  }
+
+  func registerDevice(token: String){
+    var url = "/devices.json"
+    var params:[String:AnyObject] = ["token": token]
 
     self.verbRequest.post(url, parameters: params)
   }

@@ -14,11 +14,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
-    // Override point for customization after application launch.
+  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool{
+
+    // Push Notifications
+    var types: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
+    var settings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+
+    application.registerUserNotificationSettings( settings )
+    application.registerForRemoteNotifications()
+
+    // FB SDK
     FBLoginView.self
     FBProfilePictureView.self
-
     var storyBoard : UIStoryboard!
     FBSession.openActiveSessionWithAllowLoginUI(false)
     var activeSession = FBSession.activeSession()
@@ -48,9 +55,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return VerbAPI(hostname: "http://development.verb.social", accessToken: accessToken)
   }
 
-  func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
+  func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool{
     var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
     return wasHandled
+  }
+
+  func application(application: UIApplication!, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData!){
+    println("Push Notifications Approved")
+    var characterSet: NSCharacterSet = NSCharacterSet(charactersInString: "<>")
+    var deviceTokenString: String = (deviceToken.description as NSString).stringByTrimmingCharactersInSet(characterSet).stringByReplacingOccurrencesOfString(" ", withString: "") as String
+    getVerbAPI().registerDevice(deviceTokenString)
+    println(deviceTokenString)
+  }
+
+  func application(application: UIApplication!, didFailToRegisterForRemoteNotificationsWithError error: NSError!){
+    println("Push Notifications NOT Approved")
+    println(error.localizedDescription)
   }
 
   func applicationWillResignActive(application: UIApplication) {
