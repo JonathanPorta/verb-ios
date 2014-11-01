@@ -13,14 +13,86 @@ class ActivityModel {
   var type: String
   var activityMessage: String
   var message: MessageModel
-  
+
   init(activity: JSON, message: MessageModel) {
     self.id = activity["id"].intValue
     self.type = activity["type"].stringValue
     self.activityMessage = activity["activity_message"].stringValue
     self.message = message
+  }
+}
 
-    //self.message = MessageModel(message: JSON(object: activity["messsage"]!.object))
+class Activity: VerbAPIProtocol, VerbAPIModelProtocol {
+
+  let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+
+  class var sharedInstance: Activity {
+    struct Static {
+      static let instance: Activity = Activity(endpoint: "activities.json")
+    }
+    return Static.instance
+  }
+
+  var endpoint: String
+
+  init(endpoint: String) {
+    self.endpoint = endpoint
+  }
+
+  func New(properties: [String: AnyObject]) {
+
+  }
+
+  func All() {
+    var verbAPI = appDelegate.getVerbAPI()
+    verbAPI.getActivities(self)
+  }
+
+  func didReceiveResult(result: JSON) {
+    var activities: NSMutableArray = []
+
+    NSLog("Activity.didReceiveResult: \(result)")
+
+    for (index: String, activity: JSON) in result {
+      // Wow, this sucks.
+
+      var msg = activity["message"]
+      var sndr = msg["sender"]
+
+      println(sndr["id"].intValue)
+      println(msg)
+
+      var senderUserModel = UserModel(
+        id: activity["message"]["sender"]["id"].intValue,
+        email: activity["message"]["sender"]["email"].stringValue,
+        firstName: activity["message"]["sender"]["first_name"].stringValue,
+        lastName: activity["message"]["sender"]["last_name"].stringValue
+      )
+
+      var recipientUserModel = UserModel(
+        id: activity["message"]["recipient"]["id"].intValue,
+        email: activity["message"]["recipient"]["email"].stringValue,
+        firstName: activity["message"]["recipient"]["first_name"].stringValue,
+        lastName: activity["message"]["recipient"]["last_name"].stringValue
+      )
+
+      var messageModel = MessageModel(
+        id: activity["message"]["id"].intValue,
+        verb: activity["message"]["verb"].stringValue,
+        acknowledgedAt: activity["message"]["acknowledged_at"].intValue,
+        acknowlegedAtInWords: activity["message"]["acknowledged_at_in_words"].stringValue,
+        createdAt: activity["message"]["created_at"].intValue,
+        createdAtInWords: activity["message"]["created_at_in_words"].stringValue,
+        sender: senderUserModel,
+        recipient: recipientUserModel
+      )
+
+      var activityModel = ActivityModel(activity: activity, message: messageModel)
+      activities.addObject(activityModel)
+    }
+
+    var userInfo: NSDictionary = ["activities": activities]
+    NSNotificationCenter.defaultCenter().postNotificationName("newActivityData", object: nil, userInfo: userInfo)
   }
 }
 

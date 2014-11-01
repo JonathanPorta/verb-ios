@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool{
 
     // Push Notifications
-    
+
 
 
     var types: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
@@ -71,6 +71,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool{
     var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
     return wasHandled
+  }
+
+  func application(application: UIApplication!, didReceiveRemoteNotification userInfo:NSDictionary!) {
+    println("RECEIVED REMOTE PUSH NOTIFICATION")
+    NSNotificationCenter.defaultCenter().postNotificationName("reloadActivities", object: nil)
   }
 
   func application(application: UIApplication!, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData!){

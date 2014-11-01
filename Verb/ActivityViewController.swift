@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ActivityViewController: UITableViewController, VerbAPIProtocol {
+class ActivityViewController: UITableViewController {
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
   var verbAPI: VerbAPI
   var activityModelList: NSMutableArray = []
@@ -32,10 +32,16 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    // Get notified when we need to refresh
+    NSNotificationCenter.defaultCenter().addObserver( self, selector: "loadData", name: "reloadActivities", object: nil )
+
+    // Get notified when new data arrives
+    NSNotificationCenter.defaultCenter().addObserver( self, selector: "updateData:", name: "newActivityData", object: nil )
+
     var refresh = UIRefreshControl()
-    refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
     refresh.addTarget(self, action:"loadData", forControlEvents:.ValueChanged)
     self.refreshControl = refresh
+    self.refreshControl!.beginRefreshing()
 
     loadData()
   }
@@ -52,15 +58,19 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
       return 1
     }
     else {
-      var messageLabel = UILabel(frame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height));
+      if !self.refreshControl!.refreshing {
+        // Only show a message that there is no data if we couldn't find data.
+        var messageLabel = UILabel(frame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height));
 
-      messageLabel.text = "No data is currently available. Please pull down to refresh."
-      messageLabel.numberOfLines = 0
-      messageLabel.textAlignment = NSTextAlignment.Center
-      messageLabel.font = UIFont(name:"Palatino-Italic", size:20)
-      messageLabel.sizeToFit()
+        messageLabel.text = "No data is currently available. Please pull down to refresh."
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = NSTextAlignment.Center
+        messageLabel.font = UIFont(name:"Palatino-Italic", size:20)
+        messageLabel.sizeToFit()
 
-      self.tableView.backgroundView = messageLabel
+        self.tableView.backgroundView = messageLabel
+      }
+
       self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
       return 0
     }
@@ -68,7 +78,7 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
 
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) ->
     Int {
-     return self.activityModelList.count
+      return self.activityModelList.count
     }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -79,9 +89,22 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
   }
 
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    // Deselect the row so it doesn't stay highlighted
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
     var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
-    verbAPI.acknowledgeMessage(activity.message)
-    println("You selected cell #\(indexPath.row): \(activity.activityMessage)!")
+    Async.background {
+      self.verbAPI.acknowledgeMessage(activity.message)
+    }
+  }
+
+  override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath?{
+    var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
+    if activity.type == "received" && activity.message.acknowledgedAt == 0 {
+      // Only allow user to acknowledge a message that was sent to them.
+      return indexPath
+    } else {
+      return nil
+    }
   }
 
   override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -105,7 +128,9 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
     var reciprocate = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "\(activity.message.verb) back!", handler:{action, indexpath in
       println("RECIPROCATE•ACTION");
       self.tableView.setEditing(false, animated: true)
+      //Async.background {
       self.verbAPI.reciprocateMessage(activity.message)
+      //}
     })
     reciprocate.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
 
@@ -121,48 +146,19 @@ class ActivityViewController: UITableViewController, VerbAPIProtocol {
     }
   }
 
-  func didReceiveResult(results: JSON){
-    var activities: NSMutableArray = []
-    for (index: String, activity: JSON) in results {
-      // Wow, this sucks.
-      var senderUserModel = UserModel(
-        id: activity["message"]["sender"]["id"].intValue,
-        email: activity["message"]["sender"]["email"].stringValue,
-        firstName: activity["message"]["sender"]["first_name"].stringValue,
-        lastName: activity["message"]["sender"]["last_name"].stringValue
-      )
+  @objc func updateData(notification: NSNotification){
+    var userInfo: NSDictionary = notification.userInfo!
+    self.activityModelList = userInfo.objectForKey("activities") as NSMutableArray
 
-      var recipientUserModel = UserModel(
-        id: activity["message"]["recipient"]["id"].intValue,
-        email: activity["message"]["recipient"]["email"].stringValue,
-        firstName: activity["message"]["recipient"]["first_name"].stringValue,
-        lastName: activity["message"]["recipient"]["last_name"].stringValue
-      )
-
-      var messageModel = MessageModel(
-        id: activity["message"]["id"].intValue,
-        verb: activity["message"]["verb"].stringValue,
-        acknowledgedAt: activity["message"]["acknowledged_at"].intValue,
-        acknowlegedAtInWords: activity["message"]["acknowledged_at_in_words"].stringValue,
-        createdAt: activity["message"]["created_at"].intValue,
-        createdAtInWords: activity["message"]["created_at_in_words"].stringValue,
-        sender: senderUserModel,
-        recipient: recipientUserModel
-      )
-
-      var activityModel = ActivityModel(activity: activity, message: messageModel)
-      activities.addObject(activityModel)
-    }
-
-    self.activityModelList = activities
-
-    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+    Async.main {
       self.refreshControl!.endRefreshing()
       self.tableView.reloadData()
-    })
+    }
   }
 
   func loadData() {
-    verbAPI.getActivities(self)
+    Async.background {
+      Activity.sharedInstance.All()
+    }
   }
 }

@@ -26,12 +26,18 @@ class VerbRequest {
 
     Alamofire.request(.GET, url, parameters: parameters)
       .responseJSON { (req, res, json, error) in
-        var json = JSON(json!)
-        NSLog("GET Result: \(json)")
-        NSLog("GET Error: \(error)")
+        if(error != nil) {
+          NSLog("GET Error: \(error)")
+          println(req)
+          println(res)
+        }
+        else {
+          var json = JSON(json!)
+          NSLog("GET Result: \(json)")
 
-        if (delegate != nil) {
-          delegate!.didReceiveResult(json)
+          if (delegate != nil) {
+            delegate!.didReceiveResult(json)
+          }
         }
       }
   }

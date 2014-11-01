@@ -4,3 +4,6 @@
 [submodule "Lib/Alamofire"]
 	path = Lib/Alamofire
 	url = https://github.com/Alamofire/Alamofire.git
+[submodule "Lib/Async"]
+	path = Lib/Async
+	url = https://github.com/duemunk/Async.git

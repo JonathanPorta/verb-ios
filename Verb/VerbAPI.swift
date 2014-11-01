@@ -12,7 +12,12 @@ protocol VerbAPIProtocol {
   func didReceiveResult(results: JSON)
 }
 
-class VerbAPI: VerbAPIProtocol {
+protocol VerbAPIModelProtocol {
+  func New(properties: [String:AnyObject])
+  func All()
+}
+
+class VerbAPI {
 
   typealias Callback = (JSON) -> ()
 
@@ -26,15 +31,11 @@ class VerbAPI: VerbAPIProtocol {
     self.verbRequest = VerbRequest(hostname: hostname, accessToken: accessToken)
   }
 
-  func didReceiveResult(result: JSON){
-    NSLog("VerbAPI.onResponse: \(result)")
-  }
-
   func doLogin(){
     var url = "/auth/facebook_access_token/callback"
     var params = ["access_token": self.accessToken]
 
-    self.verbRequest.get(url, parameters: params, delegate: self)
+    self.verbRequest.get(url, parameters: params)
   }
 
   func getActivities(delegate: VerbAPIProtocol){

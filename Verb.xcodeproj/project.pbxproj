@@ -12,6 +12,8 @@
 		1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */; };
 		11406D8819FFA97500676EC6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11406D8719FFA97500676EC6 /* SwiftyJSON.swift */; };
 		11406D8C19FFAC9D00676EC6 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 11C81F3419FF8534004EB2C6 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		11406D8E1A04C55300676EC6 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11406D8D1A04C55300676EC6 /* Async.swift */; };
+		11406D901A04D90900676EC6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11406D8F1A04D90900676EC6 /* Model.swift */; };
 		116D268919FB8EA00039A948 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268819FB8EA00039A948 /* CategoryModel.swift */; };
 		116D268B19FB990D0039A948 /* VerbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268A19FB990D0039A948 /* VerbViewController.swift */; };
 		116D268D19FB9B3C0039A948 /* VerbModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268C19FB9B3C0039A948 /* VerbModel.swift */; };
@@ -82,6 +84,8 @@
 		110E1C1D19F734AB007BC736 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbAPI.swift; sourceTree = "<group>"; };
 		11406D8719FFA97500676EC6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Lib/SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		11406D8D1A04C55300676EC6 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Lib/Async/Async.swift; sourceTree = "<group>"; };
+		11406D8F1A04D90900676EC6 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = Model/Model.swift; sourceTree = "<group>"; };
 		116D268819FB8EA00039A948 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryModel.swift; path = Model/CategoryModel.swift; sourceTree = "<group>"; };
 		116D268A19FB990D0039A948 /* VerbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbViewController.swift; sourceTree = "<group>"; };
 		116D268C19FB9B3C0039A948 /* VerbModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerbModel.swift; path = Model/VerbModel.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 		1136FC6F19D8DF3700A14DFA /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				11406D8D1A04C55300676EC6 /* Async.swift */,
 				11406D8719FFA97500676EC6 /* SwiftyJSON.swift */,
 			);
 			name = Lib;
@@ -212,6 +217,7 @@
 				116D268C19FB9B3C0039A948 /* VerbModel.swift */,
 				1195679D19E1530E00D015CA /* MessageModel.swift */,
 				11944FAA19AF0CA300D5BF6D /* UserModel.swift */,
+				11406D8F1A04D90900676EC6 /* Model.swift */,
 				11944FA219AEE1A200D5BF6D /* ActivityModel.swift */,
 				116D269219FE30000039A948 /* SelectableModel.swift */,
 			);
@@ -409,11 +415,13 @@
 				11944F8819AEDF5100D5BF6D /* LoginViewController.swift in Sources */,
 				11C81F5519FF93B8004EB2C6 /* VerbRequest.swift in Sources */,
 				11944FAF19AF100000D5BF6D /* ActivityViewController.swift in Sources */,
+				11406D8E1A04C55300676EC6 /* Async.swift in Sources */,
 				1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */,
 				11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */,
 				110E1C1E19F734AB007BC736 /* CategoryViewController.swift in Sources */,
 				116D269319FE30000039A948 /* SelectableModel.swift in Sources */,
 				11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */,
+				11406D901A04D90900676EC6 /* Model.swift in Sources */,
 				116D268B19FB990D0039A948 /* VerbViewController.swift in Sources */,
 				116D268919FB8EA00039A948 /* CategoryModel.swift in Sources */,
 				119567A019E1530E00D015CA /* MessageModel.swift in Sources */,
