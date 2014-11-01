@@ -17,10 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool{
 
     // Push Notifications
+    
+
+
     var types: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
     var settings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
 
-    application.registerUserNotificationSettings( settings )
+    application.registerUserNotificationSettings(settings)
     application.registerForRemoteNotifications()
 
     // FB SDK
@@ -28,10 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     FBProfilePictureView.self
     var storyBoard : UIStoryboard!
     FBSession.openActiveSessionWithAllowLoginUI(false)
-    var activeSession = FBSession.activeSession()
+
 
     println("AppDelegate")
-    if activeSession.isOpen {
+    if hasValidFacebookSession() {
       //Logged in.
       self.getVerbAPI().doLogin()
       println("LOGGED IN!")
@@ -46,12 +49,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
 
-  func getVerbAPI() -> VerbAPI {
+  func hasValidFacebookSession() -> Bool {
+    var activeSession = FBSession.activeSession()
+    return activeSession.isOpen
+  }
+
+  func getFacebookAccessToken() -> String {
     var activeSession = FBSession.activeSession()
     var accessToken = ""
     if activeSession.isOpen {
       accessToken = activeSession.accessTokenData.accessToken
     }
+    return accessToken
+  }
+
+  func getVerbAPI() -> VerbAPI {
+    var accessToken = getFacebookAccessToken()
     return VerbAPI(hostname: "http://development.verb.social", accessToken: accessToken)
   }
 
@@ -64,7 +77,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     println("Push Notifications Approved")
     var characterSet: NSCharacterSet = NSCharacterSet(charactersInString: "<>")
     var deviceTokenString: String = (deviceToken.description as NSString).stringByTrimmingCharactersInSet(characterSet).stringByReplacingOccurrencesOfString(" ", withString: "") as String
-    getVerbAPI().registerDevice(deviceTokenString)
+    if hasValidFacebookSession() {
+       getVerbAPI().registerDevice(deviceTokenString)
+    }
+
     println(deviceTokenString)
   }
 
