@@ -12,11 +12,6 @@ protocol VerbAPIProtocol {
   func didReceiveResult(results: JSON)
 }
 
-protocol VerbAPIModelProtocol {
-  func New(properties: [String:AnyObject])
-  func All()
-}
-
 class VerbAPI {
 
   typealias Callback = (JSON) -> ()
@@ -43,14 +38,14 @@ class VerbAPI {
     self.verbRequest.get(url, delegate: delegate)
   }
 
-  func acknowledgeMessage(message: MessageModel){
+  func acknowledgeMessage(message: MessageModel, delegate: VerbAPIProtocol){
     var url = "/messages/\(message.id)/acknowledge.json"
-    self.verbRequest.get(url)
+    self.verbRequest.get(url, delegate: delegate)
   }
 
-  func reciprocateMessage(message: MessageModel){
+  func reciprocateMessage(message: MessageModel, delegate: VerbAPIProtocol){
     var url = "/messages/\(message.id)/reciprocate.json"
-    self.verbRequest.get(url)
+    self.verbRequest.get(url, delegate: delegate)
   }
 
   func getCategories(delegate: VerbAPIProtocol){
@@ -63,11 +58,11 @@ class VerbAPI {
     self.verbRequest.get(url, delegate: delegate)
   }
 
-  func sendMessage(recipient: UserModel, verb: VerbModel){
+  func sendMessage(recipient: UserModel, verb: VerbModel, delegate: VerbAPIProtocol){
     var url = "/messages.json"
     var params:[String:AnyObject] = ["recipient_id": recipient.id, "verb": verb.name]
 
-    self.verbRequest.post(url, parameters: params)
+    self.verbRequest.post(url, parameters: params, delegate: delegate)
   }
 
   func registerDevice(token: String){

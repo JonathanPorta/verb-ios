@@ -10,23 +10,13 @@ import Foundation
 
 class ActivityViewController: UITableViewController {
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-  var verbAPI: VerbAPI
   var activityModelList: NSMutableArray = []
-
-  required init(coder aDecoder: NSCoder) {
-    self.verbAPI = appDelegate.getVerbAPI()
-    super.init(coder: aDecoder)
-  }
 
   @IBAction func sendMessages(segue: UIStoryboardSegue) {
     let source = segue.sourceViewController as FriendViewController
     let recipients = source.selection
     let verb = source.verbModel!
-
-    for var i = 0; i < recipients.count; ++i {
-      var recipient: UserModel = recipients.objectAtIndex(i) as UserModel
-      verbAPI.sendMessage(recipient, verb: verb)
-    }
+    MessageFactory.New(recipients, verb: verb)
   }
 
   override func viewDidLoad() {
@@ -36,7 +26,7 @@ class ActivityViewController: UITableViewController {
     NSNotificationCenter.defaultCenter().addObserver( self, selector: "loadData", name: "reloadActivities", object: nil )
 
     // Get notified when new data arrives
-    NSNotificationCenter.defaultCenter().addObserver( self, selector: "updateData:", name: "newActivityData", object: nil )
+    NSNotificationCenter.defaultCenter().addObserver( self, selector: "updateData:", name: "onActivityAll", object: nil )
 
     var refresh = UIRefreshControl()
     refresh.addTarget(self, action:"loadData", forControlEvents:.ValueChanged)
@@ -93,7 +83,7 @@ class ActivityViewController: UITableViewController {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
     var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
     Async.background {
-      self.verbAPI.acknowledgeMessage(activity.message)
+      activity.message.acknowledge()
     }
   }
 
@@ -126,17 +116,12 @@ class ActivityViewController: UITableViewController {
     var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
 
     var reciprocate = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "\(activity.message.verb) back!", handler:{action, indexpath in
-      println("RECIPROCATE•ACTION");
       self.tableView.setEditing(false, animated: true)
-      //Async.background {
-      self.verbAPI.reciprocateMessage(activity.message)
-      //}
+      Async.background {
+        activity.message.reciprocate()
+      }
     })
     reciprocate.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
-
-    var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
-      println("DELETE•ACTION");
-    })
 
     if activity.type == "received" {
       return [reciprocate]
@@ -146,7 +131,7 @@ class ActivityViewController: UITableViewController {
     }
   }
 
-  @objc func updateData(notification: NSNotification){
+  func updateData(notification: NSNotification){
     var userInfo: NSDictionary = notification.userInfo!
     self.activityModelList = userInfo.objectForKey("activities") as NSMutableArray
 
@@ -158,7 +143,7 @@ class ActivityViewController: UITableViewController {
 
   func loadData() {
     Async.background {
-      Activity.sharedInstance.All()
+      ActivityFactory.All()
     }
   }
 }

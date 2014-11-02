@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1108B3D519EA1842008379E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8C19AEDF5100D5BF6D /* Images.xcassets */; };
 		110E1C1E19F734AB007BC736 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E1C1D19F734AB007BC736 /* CategoryViewController.swift */; };
+		112B604E1A063E01004D9F33 /* ActivityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B604C1A063E01004D9F33 /* ActivityFactory.swift */; };
+		112B604F1A063E01004D9F33 /* MessageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B604D1A063E01004D9F33 /* MessageFactory.swift */; };
 		1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */; };
 		11406D8819FFA97500676EC6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11406D8719FFA97500676EC6 /* SwiftyJSON.swift */; };
 		11406D8C19FFAC9D00676EC6 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 11C81F3419FF8534004EB2C6 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -82,6 +84,8 @@
 /* Begin PBXFileReference section */
 		02FCC3E059841AC18C0A8134 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		110E1C1D19F734AB007BC736 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		112B604C1A063E01004D9F33 /* ActivityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFactory.swift; sourceTree = "<group>"; };
+		112B604D1A063E01004D9F33 /* MessageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFactory.swift; sourceTree = "<group>"; };
 		1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbAPI.swift; sourceTree = "<group>"; };
 		11406D8719FFA97500676EC6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Lib/SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		11406D8D1A04C55300676EC6 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Lib/Async/Async.swift; sourceTree = "<group>"; };
@@ -132,6 +136,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		112B604B1A063E01004D9F33 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				112B604C1A063E01004D9F33 /* ActivityFactory.swift */,
+				112B604D1A063E01004D9F33 /* MessageFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		1136FC6F19D8DF3700A14DFA /* Lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +180,7 @@
 		11944F8219AEDF5100D5BF6D /* Verb */ = {
 			isa = PBXGroup;
 			children = (
+				112B604B1A063E01004D9F33 /* Factory */,
 				1195679A19E150C500D015CA /* Model */,
 				11944F8519AEDF5100D5BF6D /* AppDelegate.swift */,
 				11C81F5419FF93B8004EB2C6 /* VerbRequest.swift */,
@@ -419,6 +433,8 @@
 				1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */,
 				11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */,
 				110E1C1E19F734AB007BC736 /* CategoryViewController.swift in Sources */,
+				112B604E1A063E01004D9F33 /* ActivityFactory.swift in Sources */,
+				112B604F1A063E01004D9F33 /* MessageFactory.swift in Sources */,
 				116D269319FE30000039A948 /* SelectableModel.swift in Sources */,
 				11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */,
 				11406D901A04D90900676EC6 /* Model.swift in Sources */,

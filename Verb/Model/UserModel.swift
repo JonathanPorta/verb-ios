@@ -14,17 +14,10 @@ class UserModel: SelectableModel {
   var firstName: String
   var lastName: String
 
-  init(id: Int, email: String, firstName: String, lastName: String) {
-    self.id = id
-    self.email = email
-    self.firstName = firstName
-    self.lastName = lastName
+  init(user: JSON) {
+    self.id = user["id"].intValue
+    self.email = user["email"].stringValue
+    self.firstName = user["first_name"].stringValue
+    self.lastName = user["last_name"].stringValue
   }
 }
-
-//    "sender": {
-//      "id": 1,
-//      "email": "volleygirl1005@gmail.com",
-//      "first_name": "Jessica",
-//      "last_name": "Porta"
-//    },

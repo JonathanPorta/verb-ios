@@ -93,21 +93,15 @@ class FriendViewController : UITableViewController, VerbAPIProtocol {
   func didReceiveResult(results: JSON){
     var friends: NSMutableArray = []
     for (index: String, friend: JSON) in results {
-      friends.addObject(
-        UserModel(
-          id: friend["id"].intValue,
-          email: friend["email"].stringValue,
-          firstName: friend["first_name"].stringValue,
-          lastName: friend["last_name"].stringValue
-        )
-      )
+      var friend = UserModel(user: friend)
+      friends.addObject(friend)
     }
 
     self.userModelList = friends
 
-    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+    Async.main {
       self.tableView.reloadData()
-    })
+    }
   }
 
   func loadData() {
