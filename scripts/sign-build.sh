@@ -36,5 +36,5 @@ curl http://testflightapp.com/api/builds.json \
   -F api_token="$TESTFLIGHT_API_TOKEN" \
   -F team_token="$TESTFLIGHT_TEAM_TOKEN" \
   -F distribution_lists='verb-dev' \
-  -F notify=false \
+  -F notify=true \
   -F notes="$RELEASE_NOTES"
