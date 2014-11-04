@@ -81,6 +81,11 @@ class ActivityViewController: UITableViewController {
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     // Deselect the row so it doesn't stay highlighted
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+    var spinner : UIActivityIndicatorView = UIActivityIndicatorView()
+    spinner.startAnimating()
+    cell.accessoryView = spinner
+
     var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
     Async.background {
       activity.message.acknowledge()
