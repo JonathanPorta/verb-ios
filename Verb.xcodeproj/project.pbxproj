@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1108B3D519EA1842008379E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8C19AEDF5100D5BF6D /* Images.xcassets */; };
 		110E1C1E19F734AB007BC736 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E1C1D19F734AB007BC736 /* CategoryViewController.swift */; };
+		1111AC9B1A0F643D006B3993 /* CategoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1111AC9A1A0F643D006B3993 /* CategoryFactory.swift */; };
+		1111AC9E1A0F6C82006B3993 /* FriendFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1111AC9D1A0F6C82006B3993 /* FriendFactory.swift */; };
 		112B604E1A063E01004D9F33 /* ActivityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B604C1A063E01004D9F33 /* ActivityFactory.swift */; };
 		112B604F1A063E01004D9F33 /* MessageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B604D1A063E01004D9F33 /* MessageFactory.swift */; };
 		1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */; };
@@ -84,6 +86,8 @@
 /* Begin PBXFileReference section */
 		02FCC3E059841AC18C0A8134 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		110E1C1D19F734AB007BC736 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		1111AC9A1A0F643D006B3993 /* CategoryFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryFactory.swift; sourceTree = "<group>"; };
+		1111AC9D1A0F6C82006B3993 /* FriendFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendFactory.swift; sourceTree = "<group>"; };
 		112B604C1A063E01004D9F33 /* ActivityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFactory.swift; sourceTree = "<group>"; };
 		112B604D1A063E01004D9F33 /* MessageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFactory.swift; sourceTree = "<group>"; };
 		1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbAPI.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 		112B604B1A063E01004D9F33 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				1111AC9D1A0F6C82006B3993 /* FriendFactory.swift */,
+				1111AC9A1A0F643D006B3993 /* CategoryFactory.swift */,
 				112B604C1A063E01004D9F33 /* ActivityFactory.swift */,
 				112B604D1A063E01004D9F33 /* MessageFactory.swift */,
 			);
@@ -436,6 +442,7 @@
 				112B604E1A063E01004D9F33 /* ActivityFactory.swift in Sources */,
 				112B604F1A063E01004D9F33 /* MessageFactory.swift in Sources */,
 				116D269319FE30000039A948 /* SelectableModel.swift in Sources */,
+				1111AC9B1A0F643D006B3993 /* CategoryFactory.swift in Sources */,
 				11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */,
 				11406D901A04D90900676EC6 /* Model.swift in Sources */,
 				116D268B19FB990D0039A948 /* VerbViewController.swift in Sources */,
@@ -443,6 +450,7 @@
 				119567A019E1530E00D015CA /* MessageModel.swift in Sources */,
 				11406D8819FFA97500676EC6 /* SwiftyJSON.swift in Sources */,
 				11944FAB19AF0CA300D5BF6D /* UserModel.swift in Sources */,
+				1111AC9E1A0F6C82006B3993 /* FriendFactory.swift in Sources */,
 				11CC2B6219B077AC00E99EC9 /* LogoutViewController.swift in Sources */,
 				116D269119FE12890039A948 /* FriendViewController.swift in Sources */,
 				116D268D19FB9B3C0039A948 /* VerbModel.swift in Sources */,

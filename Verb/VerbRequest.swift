@@ -27,13 +27,16 @@ class VerbRequest {
     Alamofire.request(.GET, url, parameters: parameters)
       .responseJSON { (req, res, json, error) in
         if(error != nil) {
+          //TODO: Implement API Error Handling Delegate
           NSLog("GET Error: \(error)")
           println(req)
           println(res)
         }
         else {
+          NSLog("GET Success: \(url)")
           var json = JSON(json!)
-          NSLog("GET Result: \(json)")
+          //TODO: Implement Toggleable Logging
+          //NSLog("GET Result: \(json)")
 
           if (delegate != nil) {
             delegate!.didReceiveResult(json)
@@ -48,12 +51,21 @@ class VerbRequest {
 
     Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
       .responseJSON { (req, res, json, error) in
-        var json = JSON(json!)
-        NSLog("POST Result: \(json)")
-        NSLog("POST Error: \(error)")
+        if(error != nil) {
+          //TODO: Implement API Error Handling Delegate
+          NSLog("POST Error: \(error)")
+          println(req)
+          println(res)
+        }
+        else {
+          NSLog("POST Success: \(url)")
+          var json = JSON(json!)
+          //TODO: Implement Toggleable Logging
+          //NSLog("POST Result: \(json)")
 
-        if (delegate != nil) {
-          delegate!.didReceiveResult(json)
+          if (delegate != nil) {
+            delegate!.didReceiveResult(json)
+          }
         }
       }
   }

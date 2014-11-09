@@ -17,8 +17,9 @@ class MessageModel {
   var createdAtInWords: String
   var sender: UserModel
   var recipient: UserModel
+  var activity: ActivityModel?
 
-  init(message: JSON){
+  init(message: JSON, activity: ActivityModel? = nil) {
     self.id = message["id"].intValue
     self.verb = message["verb"].stringValue
     self.acknowledgedAt = message["acknowledged_at"].intValue
@@ -27,6 +28,10 @@ class MessageModel {
     self.createdAtInWords = message["created_at_in_words"].stringValue
     self.sender = UserModel(user: message["sender"])
     self.recipient = UserModel(user: message["recipient"])
+
+    if activity != nil {
+      self.activity = activity
+    }
   }
 
   func acknowledge() {
@@ -36,5 +41,4 @@ class MessageModel {
   func reciprocate() {
     MessageFactory.Reciprocate(self)
   }
-
 }

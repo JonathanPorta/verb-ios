@@ -16,10 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool{
 
+    var storyBoard: UIStoryboard!
+
     // Push Notifications
-
-
-
     var types: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
     var settings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
 
@@ -29,24 +28,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // FB SDK
     FBLoginView.self
     FBProfilePictureView.self
-    var storyBoard : UIStoryboard!
+
     FBSession.openActiveSessionWithAllowLoginUI(false)
 
-
-    println("AppDelegate")
     if hasValidFacebookSession() {
-      //Logged in.
-      self.getVerbAPI().doLogin()
-      println("LOGGED IN!")
+      didLogin()
       changeStoryBoard("Main")
     }
     else {
-      //Not Logged in.
-      println("NOT LOGGED IN!")
       changeStoryBoard("Login")
     }
 
     return true
+  }
+
+  func didLogin() {
+    // Log into the API, backend will update the user's token if needed.
+    getVerbAPI().doLogin()
+    // Preload Some Data
+    CategoryFactory.All()
+    FriendFactory.All()
   }
 
   func hasValidFacebookSession() -> Bool {
