@@ -8,35 +8,28 @@
 
 import Foundation
 
-class FriendViewController : UITableViewController, VerbAPIProtocol {
-  let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+class FriendViewController : UITableViewController {
 
   @IBOutlet var sendBtn: UIBarButtonItem!
 
   var verbModel: VerbModel?
-  var verbAPI: VerbAPI
-  var userModelList: NSMutableArray = []
+  var friendModelList: NSMutableArray = []
   var selection: NSMutableArray = []
 
-  required init(coder aDecoder: NSCoder) {
-    self.verbAPI = appDelegate.getVerbAPI()
-    super.init(coder: aDecoder)
-  }
-
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-    for var i = 0; i < userModelList.count; ++i {
-      var userModel: UserModel = self.userModelList.objectAtIndex(i) as UserModel
-      if userModel.selected {
-        selection.addObject(userModel)
+    for var i = 0; i < friendModelList.count; ++i {
+      var friendModel: UserModel = friendModelList.objectAtIndex(i) as UserModel
+      if friendModel.selected {
+        selection.addObject(friendModel)
       }
     }
   }
 
   func selectionExists() -> Bool {
     var somethingIsSelected = false
-    for var i = 0; i < userModelList.count; ++i {
-      var userModel: UserModel = self.userModelList.objectAtIndex(i) as UserModel
-      if userModel.selected {
+    for var i = 0; i < friendModelList.count; ++i {
+      var friendModel: UserModel = friendModelList.objectAtIndex(i) as UserModel
+      if friendModel.selected {
         somethingIsSelected = true
       }
     }
@@ -44,8 +37,21 @@ class FriendViewController : UITableViewController, VerbAPIProtocol {
   }
 
   override func viewDidLoad() {
-    super.viewDidLoad()
-    loadData()
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData", name: "friend.all", object: nil)
+
+    var refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action:"loadData", forControlEvents:.ValueChanged)
+    self.refreshControl = refreshControl
+
+    // See if we already preloaded the data before firing a request.
+    if FriendFactory.instance.friends.count > 0 {
+      friendModelList = FriendFactory.instance.friends
+      refresh()
+    }
+    else {
+      self.refreshControl!.beginRefreshing()
+      loadData()
+    }
   }
 
   override func didReceiveMemoryWarning() {
@@ -59,15 +65,15 @@ class FriendViewController : UITableViewController, VerbAPIProtocol {
 
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) ->
     Int {
-      return self.userModelList.count
+      return friendModelList.count
     }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
-    var userModel: UserModel = self.userModelList.objectAtIndex(indexPath.row) as UserModel
-    cell.textLabel.text = userModel.firstName
+    var friendModel: UserModel = friendModelList.objectAtIndex(indexPath.row) as UserModel
+    cell.textLabel.text = friendModel.firstName
 
-    if userModel.selected {
+    if friendModel.selected {
       cell.accessoryType = .Checkmark
     }
     else {
@@ -78,10 +84,9 @@ class FriendViewController : UITableViewController, VerbAPIProtocol {
   }
 
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    println("You selected cell #\(indexPath.row)")
-    var userModel: UserModel = self.userModelList.objectAtIndex(indexPath.row) as UserModel
-    userModel.select()
-    self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+    var friendModel: UserModel = friendModelList.objectAtIndex(indexPath.row) as UserModel
+    friendModel.select()
+    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
     if selectionExists() {
       sendBtn.enabled = true
     }
@@ -90,21 +95,24 @@ class FriendViewController : UITableViewController, VerbAPIProtocol {
     }
   }
 
-  func didReceiveResult(results: JSON){
-    var friends: NSMutableArray = []
-    for (index: String, friend: JSON) in results {
-      var friend = UserModel(user: friend)
-      friends.addObject(friend)
-    }
-
-    self.userModelList = friends
-
+  func refresh() {
     Async.main {
       self.tableView.reloadData()
     }
   }
 
+  func updateData() {
+    friendModelList = FriendFactory.instance.friends
+
+    Async.main {
+      self.refreshControl!.endRefreshing()
+      self.refresh()
+    }
+  }
+
   func loadData() {
-    verbAPI.getFriends(self)
+    Async.background {
+      FriendFactory.All()
+    }
   }
 }

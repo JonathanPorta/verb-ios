@@ -8,14 +8,14 @@
 
 import Foundation
 
-class Model{
+class Model {
 
   var endpoint: String
 
-  init(endpoint: String){
+  init(endpoint: String) {
     self.endpoint = endpoint
   }
 
-  func didReceiveResult(result: JSON){ }
+  func didReceiveResult(result: JSON) { }
 
 }

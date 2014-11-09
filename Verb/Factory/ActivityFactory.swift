@@ -25,6 +25,8 @@ class ActivityFactory: VerbAPIProtocol {
 
     for (index: String, activity: JSON) in result {
       var activityModel = ActivityModel(activity: activity)
+      // Maybe I should rethink how relationships are handled since I can't pass self to the message constructor in the activity ctor.'
+      activityModel.message!.activity = activityModel
       activities.addObject(activityModel)
     }
 

@@ -23,10 +23,16 @@ class ActivityViewController: UITableViewController {
     super.viewDidLoad()
 
     // Get notified when we need to refresh
-    NSNotificationCenter.defaultCenter().addObserver( self, selector: "loadData", name: "reloadActivities", object: nil )
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: "reloadActivities", object: nil)
+
+    // Insert a new activity
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "insertActivity:", name: "activity.new", object: nil)
+
+    // An activity was updated
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh", name: "activity.update", object: nil)
 
     // Get notified when new data arrives
-    NSNotificationCenter.defaultCenter().addObserver( self, selector: "updateData:", name: "onActivityAll", object: nil )
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData:", name: "onActivityAll", object: nil)
 
     var refresh = UIRefreshControl()
     refresh.addTarget(self, action:"loadData", forControlEvents:.ValueChanged)
@@ -83,13 +89,13 @@ class ActivityViewController: UITableViewController {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
     var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
     Async.background {
-      activity.message.acknowledge()
+      activity.acknowledge()
     }
   }
 
   override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath?{
     var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
-    if activity.type == "received" && activity.message.acknowledgedAt == 0 {
+    if activity.type == "received" && activity.message!.acknowledgedAt == 0 {
       // Only allow user to acknowledge a message that was sent to them.
       return indexPath
     } else {
@@ -115,10 +121,10 @@ class ActivityViewController: UITableViewController {
 
     var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
 
-    var reciprocate = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "\(activity.message.verb) back!", handler:{action, indexpath in
+    var reciprocate = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "\(activity.message!.verb) back!", handler:{action, indexpath in
       self.tableView.setEditing(false, animated: true)
       Async.background {
-        activity.message.reciprocate()
+        activity.reciprocate()
       }
     })
     reciprocate.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
@@ -131,13 +137,26 @@ class ActivityViewController: UITableViewController {
     }
   }
 
-  func updateData(notification: NSNotification){
+  func insertActivity(notification: NSNotification) {
     var userInfo: NSDictionary = notification.userInfo!
-    self.activityModelList = userInfo.objectForKey("activities") as NSMutableArray
+    var activity = userInfo.objectForKey("activity") as ActivityModel
+    activityModelList.insertObject(activity, atIndex: 0)
+    refresh()
+  }
+
+  func refresh() {
+    Async.main {
+      self.tableView.reloadData()
+    }
+  }
+
+  func updateData(notification: NSNotification) {
+    var userInfo: NSDictionary = notification.userInfo!
+    activityModelList = userInfo.objectForKey("activities") as NSMutableArray
 
     Async.main {
       self.refreshControl!.endRefreshing()
-      self.tableView.reloadData()
+      self.refresh()
     }
   }
 

@@ -14,6 +14,13 @@ class MessageFactory: VerbAPIProtocol {
     var verbAPI = appDelegate.getVerbAPI()
 
     verbAPI.sendMessage(recipient, verb: verb, delegate: self.instance)
+
+    // Provide a temporary Activity - gets overriden when actual server response is received.
+    var activityMessage = "You tried to \(verb.name) \(recipient.firstName)."
+    var activity = ActivityModel(type: "sent", activityMessage: activityMessage)
+
+    var userInfo: NSDictionary = ["activity": activity]
+    NSNotificationCenter.defaultCenter().postNotificationName("activity.new", object: nil, userInfo: userInfo)
   }
 
   class func New(recipients: NSMutableArray, verb: VerbModel) {

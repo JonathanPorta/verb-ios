@@ -28,8 +28,8 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     }
 
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
-        println("User Logged In")
-        appDelegate.getVerbAPI().doLogin()
+        println("LoginController:User Logged In")
+        self.appDelegate.didLogin()
         appDelegate.changeStoryBoard("Main")
     }
 
