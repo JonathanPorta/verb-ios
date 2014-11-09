@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,9 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool{
 
     // Push Notifications
-
-
-
     var types: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
     var settings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
 
@@ -32,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var storyBoard : UIStoryboard!
     FBSession.openActiveSessionWithAllowLoginUI(false)
 
-
-    println("AppDelegate")
     if hasValidFacebookSession() {
       //Logged in.
       self.getVerbAPI().doLogin()
@@ -85,8 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if hasValidFacebookSession() {
        getVerbAPI().registerDevice(deviceTokenString)
     }
-
-    println(deviceTokenString)
   }
 
   func application(application: UIApplication!, didFailToRegisterForRemoteNotificationsWithError error: NSError!){
@@ -116,9 +110,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 
-  func changeStoryBoard(name :String) {
-    var storyBoard = UIStoryboard(name:name, bundle: nil)
-    var viewController: AnyObject! = storyBoard.instantiateInitialViewController() ;
-    self.window!.rootViewController = viewController as? UIViewController
+  func changeStoryBoard(name: String, managedContext: NSManagedObjectContext? = nil) {
+    var storyBoard = UIStoryboard(name: name, bundle: nil)
+    var viewController: UIViewController = storyBoard.instantiateInitialViewController() as UIViewController
+    self.window!.rootViewController = viewController
   }
+
+  // MARK: - Core Data stack
+  lazy var coreDataStack = CoreDataStack()
+
 }

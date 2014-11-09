@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import CoreData
 
 class ActivityViewController: UITableViewController {
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-  var activityModelList: NSMutableArray = []
+  var managedContext: NSManagedObjectContext?
+  var activities = [Activity]()
 
   @IBAction func sendMessages(segue: UIStoryboardSegue) {
     let source = segue.sourceViewController as FriendViewController
@@ -21,19 +23,30 @@ class ActivityViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    managedContext = appDelegate.coreDataStack.context
 
     // Get notified when we need to refresh
-    NSNotificationCenter.defaultCenter().addObserver( self, selector: "loadData", name: "reloadActivities", object: nil )
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: "reloadActivities", object: nil)
 
     // Get notified when new data arrives
-    NSNotificationCenter.defaultCenter().addObserver( self, selector: "updateData:", name: "onActivityAll", object: nil )
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData:", name: "onActivityAll", object: nil)
 
     var refresh = UIRefreshControl()
     refresh.addTarget(self, action:"loadData", forControlEvents:.ValueChanged)
     self.refreshControl = refresh
-    self.refreshControl!.beginRefreshing()
+    //self.refreshControl!.beginRefreshing()
 
-    loadData()
+    //loadData()
+    let fetchRequest = NSFetchRequest(entityName: "Activity")
+    var error: NSError?
+
+    let fetchedResults = managedContext!.executeFetchRequest(fetchRequest, error: &error) as [Activity]?
+    if let results = fetchedResults {
+      activities = results
+    }
+    else {
+      println("Could not fetch activities \(error), \(error!.userInfo)")
+    }
   }
 
   override func didReceiveMemoryWarning() {
@@ -42,7 +55,7 @@ class ActivityViewController: UITableViewController {
   }
 
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    if self.activityModelList.count > 0 {
+    if activities.count > 0 {
       self.tableView.backgroundView = nil
       self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
       return 1
@@ -68,72 +81,84 @@ class ActivityViewController: UITableViewController {
 
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) ->
     Int {
-      return self.activityModelList.count
+      return activities.count
     }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
-    var activityModel: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
-    cell.textLabel.text = activityModel.activityMessage
+    var activity = activities[indexPath.row]
+    cell.textLabel.text = activity.activityMessage
     return cell
   }
 
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     // Deselect the row so it doesn't stay highlighted
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
-    Async.background {
-      activity.message.acknowledge()
-    }
+    //var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
+    //Async.background {
+    //  activity.message.acknowledge()
+    //}
   }
 
-  override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath?{
-    var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
-    if activity.type == "received" && activity.message.acknowledgedAt == 0 {
+  //override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath?{
+    //var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
+    //if activity.type == "received" && activity.message.acknowledgedAt == 0 {
       // Only allow user to acknowledge a message that was sent to them.
-      return indexPath
-    } else {
-      return nil
-    }
-  }
+      //return indexPath
+    //} else {
+      //return nil
+    //}
+  //}
 
   override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     // Return false if you do not want the specified item to be editable.
     return true
   }
 
-  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-      activityModelList.removeObjectAtIndex(indexPath.row)
-      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
-  }
+  // override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+  //
+  //   var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
+  //
+  //   var reciprocate = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "\(activity.message.verb) back!", handler:{action, indexpath in
+  //     self.tableView.setEditing(false, animated: true)
+  //     Async.background {
+  //       activity.message.reciprocate()
+  //     }
+  //   })
+  //   reciprocate.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
+  //
+  //   if activity.type == "received" {
+  //     return [reciprocate]
+  //   }
+  //   else {
+  //     return []
+  //   }
+  // }
 
-  override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+  func saveActivities(activityModelList: NSMutableArray) {
+    let entity = NSEntityDescription.entityForName("Activity", inManagedObjectContext: managedContext!)
 
-    var activity: ActivityModel = self.activityModelList.objectAtIndex(indexPath.row) as ActivityModel
+    for var i = 0; i < activityModelList.count; ++i {
+      var activityModel: ActivityModel = activityModelList.objectAtIndex(i) as ActivityModel
 
-    var reciprocate = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "\(activity.message.verb) back!", handler:{action, indexpath in
-      self.tableView.setEditing(false, animated: true)
-      Async.background {
-        activity.message.reciprocate()
+      var activity = Activity(entity: entity!, insertIntoManagedObjectContext: managedContext!)
+      activity.id = activityModel.id
+      activity.activityMessage = activityModel.activityMessage
+
+      var error: NSError?
+      if !managedContext!.save(&error) {
+        println("Could not save activity: \(error), \(error?.userInfo)")
       }
-    })
-    reciprocate.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
 
-    if activity.type == "received" {
-      return [reciprocate]
-    }
-    else {
-      return []
+      activities.append(activity)
     }
   }
 
   func updateData(notification: NSNotification){
     var userInfo: NSDictionary = notification.userInfo!
-    self.activityModelList = userInfo.objectForKey("activities") as NSMutableArray
+    var activityModelList = userInfo.objectForKey("activities") as NSMutableArray
+
+    saveActivities(activityModelList)
 
     Async.main {
       self.refreshControl!.endRefreshing()

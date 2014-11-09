@@ -16,6 +16,11 @@
 		11406D8C19FFAC9D00676EC6 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 11C81F3419FF8534004EB2C6 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11406D8E1A04C55300676EC6 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11406D8D1A04C55300676EC6 /* Async.swift */; };
 		11406D901A04D90900676EC6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11406D8F1A04D90900676EC6 /* Model.swift */; };
+		115B2BA41A08D6140014E8AA /* Verb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 115B2BA21A08D6140014E8AA /* Verb.xcdatamodeld */; };
+		115B2BD81A08E33F0014E8AA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B2BD71A08E33F0014E8AA /* Message.swift */; };
+		115B2BDA1A08E33F0014E8AA /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B2BD91A08E33F0014E8AA /* Activity.swift */; };
+		115B2BDC1A08E33F0014E8AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B2BDB1A08E33F0014E8AA /* User.swift */; };
+		115B2BDE1A08F0470014E8AA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B2BDD1A08F0470014E8AA /* CoreDataStack.swift */; };
 		116D268919FB8EA00039A948 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268819FB8EA00039A948 /* CategoryModel.swift */; };
 		116D268B19FB990D0039A948 /* VerbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268A19FB990D0039A948 /* VerbViewController.swift */; };
 		116D268D19FB9B3C0039A948 /* VerbModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268C19FB9B3C0039A948 /* VerbModel.swift */; };
@@ -90,6 +95,11 @@
 		11406D8719FFA97500676EC6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Lib/SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		11406D8D1A04C55300676EC6 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Lib/Async/Async.swift; sourceTree = "<group>"; };
 		11406D8F1A04D90900676EC6 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = Model/Model.swift; sourceTree = "<group>"; };
+		115B2BA31A08D6140014E8AA /* Verb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Verb.xcdatamodel; sourceTree = "<group>"; };
+		115B2BD71A08E33F0014E8AA /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Model/Message.swift; sourceTree = "<group>"; };
+		115B2BD91A08E33F0014E8AA /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Activity.swift; path = Model/Activity.swift; sourceTree = "<group>"; };
+		115B2BDB1A08E33F0014E8AA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
+		115B2BDD1A08F0470014E8AA /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		116D268819FB8EA00039A948 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryModel.swift; path = Model/CategoryModel.swift; sourceTree = "<group>"; };
 		116D268A19FB990D0039A948 /* VerbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbViewController.swift; sourceTree = "<group>"; };
 		116D268C19FB9B3C0039A948 /* VerbModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerbModel.swift; path = Model/VerbModel.swift; sourceTree = "<group>"; };
@@ -183,6 +193,8 @@
 				112B604B1A063E01004D9F33 /* Factory */,
 				1195679A19E150C500D015CA /* Model */,
 				11944F8519AEDF5100D5BF6D /* AppDelegate.swift */,
+				115B2BDD1A08F0470014E8AA /* CoreDataStack.swift */,
+				115B2BA21A08D6140014E8AA /* Verb.xcdatamodeld */,
 				11C81F5419FF93B8004EB2C6 /* VerbRequest.swift */,
 				1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */,
 				11944F8719AEDF5100D5BF6D /* LoginViewController.swift */,
@@ -227,6 +239,9 @@
 		1195679A19E150C500D015CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				115B2BDB1A08E33F0014E8AA /* User.swift */,
+				115B2BD91A08E33F0014E8AA /* Activity.swift */,
+				115B2BD71A08E33F0014E8AA /* Message.swift */,
 				116D268819FB8EA00039A948 /* CategoryModel.swift */,
 				116D268C19FB9B3C0039A948 /* VerbModel.swift */,
 				1195679D19E1530E00D015CA /* MessageModel.swift */,
@@ -441,11 +456,16 @@
 				116D268B19FB990D0039A948 /* VerbViewController.swift in Sources */,
 				116D268919FB8EA00039A948 /* CategoryModel.swift in Sources */,
 				119567A019E1530E00D015CA /* MessageModel.swift in Sources */,
+				115B2BA41A08D6140014E8AA /* Verb.xcdatamodeld in Sources */,
 				11406D8819FFA97500676EC6 /* SwiftyJSON.swift in Sources */,
+				115B2BD81A08E33F0014E8AA /* Message.swift in Sources */,
 				11944FAB19AF0CA300D5BF6D /* UserModel.swift in Sources */,
 				11CC2B6219B077AC00E99EC9 /* LogoutViewController.swift in Sources */,
+				115B2BDE1A08F0470014E8AA /* CoreDataStack.swift in Sources */,
+				115B2BDC1A08E33F0014E8AA /* User.swift in Sources */,
 				116D269119FE12890039A948 /* FriendViewController.swift in Sources */,
 				116D268D19FB9B3C0039A948 /* VerbModel.swift in Sources */,
+				115B2BDA1A08E33F0014E8AA /* Activity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +701,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		115B2BA21A08D6140014E8AA /* Verb.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				115B2BA31A08D6140014E8AA /* Verb.xcdatamodel */,
+			);
+			currentVersion = 115B2BA31A08D6140014E8AA /* Verb.xcdatamodel */;
+			path = Verb.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 11944F7819AEDF5000D5BF6D /* Project object */;
 }
