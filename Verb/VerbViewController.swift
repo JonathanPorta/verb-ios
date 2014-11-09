@@ -13,9 +13,9 @@ class VerbViewController : UITableViewController {
   var verbModelList: NSMutableArray = []
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    var friendViewController: FriendViewController = segue.destinationViewController as FriendViewController
-    var verbIndex = self.tableView!.indexPathForSelectedRow()!.row
-    var verb = self.verbModelList[verbIndex] as VerbModel
+    var friendViewController = segue.destinationViewController as FriendViewController
+    var verbIndex = tableView!.indexPathForSelectedRow()!.row
+    var verb = verbModelList[verbIndex] as VerbModel
     friendViewController.verbModel = verb
   }
 
@@ -35,21 +35,17 @@ class VerbViewController : UITableViewController {
 
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) ->
     Int {
-      return self.verbModelList.count
+      return verbModelList.count
     }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
-    var verbModel: VerbModel = self.verbModelList.objectAtIndex(indexPath.row) as VerbModel
+    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+    var verbModel = verbModelList.objectAtIndex(indexPath.row) as VerbModel
     cell.textLabel.text = verbModel.name
     return cell
   }
 
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    println("You selected cell #\(indexPath.row)")
-  }
-
   func loadData() {
-    self.verbModelList = self.categoryModel!.verbs
+    verbModelList = categoryModel!.verbs
   }
 }

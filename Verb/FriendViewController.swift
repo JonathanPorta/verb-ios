@@ -18,7 +18,7 @@ class FriendViewController : UITableViewController {
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     for var i = 0; i < friendModelList.count; ++i {
-      var friendModel: UserModel = friendModelList.objectAtIndex(i) as UserModel
+      var friendModel = friendModelList.objectAtIndex(i) as UserModel
       if friendModel.selected {
         selection.addObject(friendModel)
       }
@@ -28,7 +28,7 @@ class FriendViewController : UITableViewController {
   func selectionExists() -> Bool {
     var somethingIsSelected = false
     for var i = 0; i < friendModelList.count; ++i {
-      var friendModel: UserModel = friendModelList.objectAtIndex(i) as UserModel
+      var friendModel = friendModelList.objectAtIndex(i) as UserModel
       if friendModel.selected {
         somethingIsSelected = true
       }
@@ -46,11 +46,19 @@ class FriendViewController : UITableViewController {
     // See if we already preloaded the data before firing a request.
     if FriendFactory.instance.friends.count > 0 {
       friendModelList = FriendFactory.instance.friends
+      clearSelection() // Make sure old selections don't hang around.
       refresh()
     }
     else {
       self.refreshControl!.beginRefreshing()
       loadData()
+    }
+  }
+
+  func clearSelection() {
+    for var i = 0; i < friendModelList.count; ++i {
+      var friendModel = friendModelList.objectAtIndex(i) as UserModel
+      friendModel.selected = false
     }
   }
 
@@ -69,8 +77,8 @@ class FriendViewController : UITableViewController {
     }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
-    var friendModel: UserModel = friendModelList.objectAtIndex(indexPath.row) as UserModel
+    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+    var friendModel = friendModelList.objectAtIndex(indexPath.row) as UserModel
     cell.textLabel.text = friendModel.firstName
 
     if friendModel.selected {
@@ -84,7 +92,7 @@ class FriendViewController : UITableViewController {
   }
 
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    var friendModel: UserModel = friendModelList.objectAtIndex(indexPath.row) as UserModel
+    var friendModel = friendModelList.objectAtIndex(indexPath.row) as UserModel
     friendModel.select()
     tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
     if selectionExists() {

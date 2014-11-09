@@ -12,7 +12,7 @@ class CategoryViewController : UITableViewController {
   var categoryModelList: NSMutableArray = []
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    var verbViewController: VerbViewController = segue.destinationViewController as VerbViewController
+    var verbViewController = segue.destinationViewController as VerbViewController
     var categoryIndex = tableView!.indexPathForSelectedRow()!.row
     var category = categoryModelList[categoryIndex] as CategoryModel
     verbViewController.categoryModel = category
@@ -51,8 +51,8 @@ class CategoryViewController : UITableViewController {
     }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
-    var categoryModel: CategoryModel = categoryModelList.objectAtIndex(indexPath.row) as CategoryModel
+    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+    var categoryModel = categoryModelList.objectAtIndex(indexPath.row) as CategoryModel
     cell.textLabel.text = categoryModel.name
     return cell
   }
