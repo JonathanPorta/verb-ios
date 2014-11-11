@@ -21,6 +21,7 @@ class ActivityViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    tableView.rowHeight = 44
 
     // Get notified when we need to refresh
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: "reloadActivities", object: nil)
@@ -78,9 +79,10 @@ class ActivityViewController: UITableViewController {
     }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as SwipeableCell
     var activityModel = activityModelList.objectAtIndex(indexPath.row) as ActivityModel
-    cell.textLabel.text = activityModel.activityMessage
+    cell.foregroundLabel.text = activityModel.activityMessage
+    cell.backgroundLabel.text = "BACKGROUND!"
     return cell
   }
 
@@ -100,40 +102,6 @@ class ActivityViewController: UITableViewController {
       return indexPath
     } else {
       return nil
-    }
-  }
-
-  override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the specified item to be editable.
-    return true
-  }
-
-  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-      activityModelList.removeObjectAtIndex(indexPath.row)
-      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
-  }
-
-  override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-
-    var activity = activityModelList.objectAtIndex(indexPath.row) as ActivityModel
-
-    var reciprocate = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "\(activity.message!.verb) back!", handler:{action, indexpath in
-      tableView.setEditing(false, animated: true)
-      Async.background {
-        activity.reciprocate()
-      }
-    })
-    reciprocate.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
-
-    if activity.type == "received" {
-      return [reciprocate]
-    }
-    else {
-      return []
     }
   }
 
