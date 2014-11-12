@@ -81,8 +81,11 @@ class ActivityViewController: UITableViewController {
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as SwipeableCell
     var activityModel = activityModelList.objectAtIndex(indexPath.row) as ActivityModel
+    cell.swipeableModel = activityModel
+    cell.onCompletedSwipe = {
+      activityModel.reciprocate()
+    }
     cell.foregroundLabel.text = activityModel.activityMessage
-    cell.backgroundLabel.text = "BACKGROUND!"
     return cell
   }
 

@@ -13,6 +13,11 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
 
   let bounceValue: CGFloat = 20.0
 
+  var swipeableModel: SwipeableModel!
+  var onCompletedSwipe: ((Void) -> ())?
+  var backgroundColorPrompt = UIColor.whiteColor()
+  var backgroundColorWorking = UIColor.greenColor()
+
   @IBOutlet var	contentUIView: UIView!
 
   @IBOutlet var	foregroundUIView: UIView!
@@ -37,11 +42,15 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
   }
 
   func panThisCell(recognizer: UIPanGestureRecognizer) {
+    // Bail if model isn't swipeable.
+    if !swipeableModel.isSwipeable() { return }
+
     switch (recognizer.state) {
       case UIGestureRecognizerState.Began:
         panStartPoint = recognizer.translationInView(foregroundUIView)
         startingRightLayoutConstant = foregroundViewRightConstraint.constant
         NSLog("Pan Began at \(NSStringFromCGPoint(panStartPoint))")
+        updateBackgroundLabelIfNeeded(foregroundViewRightConstraint.constant)
         break
 
       case UIGestureRecognizerState.Changed:
@@ -69,7 +78,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
           else {
             var constant = min(-deltaX, getSnapPoint())
             if (constant == getSnapPoint()) {
-              setConstraintsToShowAll(true, notifyDelegateDidOpen: false)
+              setConstraintsToShowAll(true, notifyDelegateDidOpen: true)
               NSLog("WINNER!!!!!!!!!!")
             }
             else {
@@ -101,6 +110,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
         }
         
         foregroundViewLeftConstraint.constant = -foregroundViewRightConstraint.constant
+        updateBackgroundLabelIfNeeded(foregroundViewRightConstraint.constant)
         break
 
       case UIGestureRecognizerState.Ended:
@@ -127,6 +137,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
             resetConstraints(true, notifyDelegateDidClose: true)
           }
         }
+        updateBackgroundLabelIfNeeded(foregroundViewRightConstraint.constant)
         break
 
       case UIGestureRecognizerState.Cancelled:
@@ -139,6 +150,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
           //Cell was open - reset to the open state
           setConstraintsToShowAll(true, notifyDelegateDidOpen: true)
         }
+        updateBackgroundLabelIfNeeded(foregroundViewRightConstraint.constant)
         break
 
       default:
@@ -147,7 +159,25 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
   }
 
   func getSnapPoint() -> CGFloat {
-    return 0.7 * CGRectGetWidth(frame)
+    return 0.8 * CGRectGetWidth(frame)
+  }
+
+  func getWarnPoint() -> CGFloat {
+    return 0.5 * CGRectGetWidth(frame)
+  }
+
+  func updateBackgroundLabelIfNeeded(position: CGFloat) {
+    if position < getWarnPoint() {
+      backgroundLabel.text = swipeableModel.promptMessage()
+      backgroundUIView.backgroundColor = backgroundColorPrompt
+    }
+    //else if position >= getWarnPoint() && position < getSnapPoint() {
+    //  backgroundLabel.text = swipeableModel.confirmMessage()
+    //}
+    else if position >= getSnapPoint() {
+      backgroundLabel.text = swipeableModel.workingMessage()
+      backgroundUIView.backgroundColor = backgroundColorWorking
+    }
   }
 
   func updateConstraintsIfNeeded(animated: Bool, completion: ((Bool) -> Void)?) {
@@ -179,6 +209,15 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
         self.startingRightLayoutConstant = self.foregroundViewRightConstraint.constant
       })
     })
+
+    if notifyDelegateDidOpen {
+      NSLog("notifyDelegateDidOpen")
+      resetConstraints(true, notifyDelegateDidClose: false)
+      if onCompletedSwipe != nil {
+        NSLog("onCompletedSwipe")
+        onCompletedSwipe!()
+      }
+    }
   }
 
   func resetConstraints(animated: Bool, notifyDelegateDidClose: Bool) {
