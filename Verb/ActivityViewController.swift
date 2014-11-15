@@ -8,9 +8,10 @@
 
 import Foundation
 
-class ActivityViewController: UITableViewController {
+class ActivityViewController: UITableViewController, SwipeableCellDelegate {
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
   var activityModelList: NSMutableArray = []
+  var cellsCurrentlyEditing: NSMutableSet?
 
   @IBAction func sendMessages(segue: UIStoryboardSegue) {
     let source = segue.sourceViewController as FriendViewController
@@ -21,6 +22,7 @@ class ActivityViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    cellsCurrentlyEditing = NSMutableSet()
     tableView.rowHeight = 44
 
     // Get notified when we need to refresh
@@ -82,12 +84,24 @@ class ActivityViewController: UITableViewController {
     var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as SwipeableCell
     var activityModel = activityModelList.objectAtIndex(indexPath.row) as ActivityModel
     cell.swipeableModel = activityModel
-    cell.onCompletedSwipe = {
-      activityModel.reciprocate()
-    }
+    cell.delegate = self
     cell.foregroundLabel.text = activityModel.activityMessage
+    if(cellsCurrentlyEditing!.containsObject(indexPath)) {
+      cell.openCell()
+    }
     return cell
   }
+
+  func cellDidOpen(cell: UITableViewCell) {
+    var index = tableView.indexPathForCell(cell)
+    cellsCurrentlyEditing!.addObject(index!)
+  }
+
+  func cellDidClose(cell: UITableViewCell) {
+    var index = tableView.indexPathForCell(cell)
+    cellsCurrentlyEditing!.removeObject(index!)
+  }
+
 
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     // Deselect the row so it doesn't stay highlighted

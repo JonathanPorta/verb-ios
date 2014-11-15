@@ -19,7 +19,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
   let bounceValue: CGFloat = 20.0
 
   var swipeableModel: SwipeableModel!
-  var onCompletedSwipe: ((Void) -> ())?
+  var delegate: SwipeableCellDelegate?
   var backgroundColorPrompt = UIColor.whiteColor()
   var backgroundColorWorking = UIColor.greenColor()
 
@@ -49,7 +49,9 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
   // Fixes bug that shows opened cells
   override func prepareForReuse() {
     super.prepareForReuse()
-    resetConstraints(false, notifyDelegateDidClose: false)
+    if(startingRightLayoutConstant != nil) {
+      resetConstraints(false, notifyDelegateDidClose: false)
+    }
   }
 
   // Allow the tableview to scroll and the cells to be swiped.
@@ -57,7 +59,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
     return true
   }
 
-  func openCell {
+  func openCell() {
     setConstraintsToShowAll(false, notifyDelegateDidOpen: false, isCompleted: false)
   }
 
@@ -211,7 +213,11 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
   }
 
   func setConstraintsToShowAll(animated: Bool, notifyDelegateDidOpen: Bool, isCompleted: Bool) {
-    //TODO: Notify delegate.
+    // Notify Delegate
+    if(notifyDelegateDidOpen) {
+      delegate!.cellDidOpen(self)
+    }
+
     if(isCompleted) {
       NSLog("COMPLETE!")
     }
@@ -243,7 +249,10 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
   }
 
   func resetConstraints(animated: Bool, notifyDelegateDidClose: Bool) {
-    //TODO: Notify delegate.
+    // Notify Delegate
+    if(notifyDelegateDidClose) {
+      delegate!.cellDidClose(self)
+    }
 
     if (startingRightLayoutConstant == 0 && foregroundViewRightConstraint.constant == 0) {
       //Already all the way closed, no bounce necessary
