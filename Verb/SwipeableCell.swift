@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+protocol SwipeableCellDelegate {
+  func cellDidOpen(cell: UITableViewCell)
+  func cellDidClose(cell: UITableViewCell)
+}
+
 class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
 
   let bounceValue: CGFloat = 20.0
@@ -41,9 +46,24 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
     foregroundUIView.addGestureRecognizer(panRecognizer)
   }
 
+  // Fixes bug that shows opened cells
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    resetConstraints(false, notifyDelegateDidClose: false)
+  }
+
+  // Allow the tableview to scroll and the cells to be swiped.
+  override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
+  }
+
+  func openCell {
+    setConstraintsToShowAll(false, notifyDelegateDidOpen: false, isCompleted: false)
+  }
+
   func panThisCell(recognizer: UIPanGestureRecognizer) {
     // Bail if model isn't swipeable.
-    if !swipeableModel.isSwipeable() { return }
+    //if !swipeableModel.isSwipeable() { return }
 
     switch (recognizer.state) {
       case UIGestureRecognizerState.Began:
@@ -78,8 +98,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
           else {
             var constant = min(-deltaX, getSnapPoint())
             if (constant == getSnapPoint()) {
-              setConstraintsToShowAll(true, notifyDelegateDidOpen: true)
-              NSLog("WINNER!!!!!!!!!!")
+              setConstraintsToShowAll(true, notifyDelegateDidOpen: true, isCompleted: false)
             }
             else {
               foregroundViewRightConstraint.constant = constant
@@ -101,7 +120,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
           else {
             var constant = min(adjustment, getSnapPoint())
             if (constant == getSnapPoint()) {
-              setConstraintsToShowAll(true, notifyDelegateDidOpen: false)
+              setConstraintsToShowAll(true, notifyDelegateDidOpen: false, isCompleted: false)
             }
             else {
               foregroundViewRightConstraint.constant = constant
@@ -119,7 +138,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
           //Cell was opening
           if (foregroundViewRightConstraint.constant >= getSnapPoint()) {
             //Open all the way
-            setConstraintsToShowAll(true, notifyDelegateDidOpen: true)
+            setConstraintsToShowAll(true, notifyDelegateDidOpen: true, isCompleted: true)
           }
           else {
             //Re-close
@@ -130,7 +149,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
           //Cell was closing
           if (foregroundViewRightConstraint.constant >= getSnapPoint()) {
             //Re-open all the way
-            setConstraintsToShowAll(true, notifyDelegateDidOpen: true)
+            setConstraintsToShowAll(true, notifyDelegateDidOpen: true, isCompleted: true)
           }
           else {
             //Close
@@ -148,7 +167,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
         }
         else {
           //Cell was open - reset to the open state
-          setConstraintsToShowAll(true, notifyDelegateDidOpen: true)
+          setConstraintsToShowAll(true, notifyDelegateDidOpen: true, isCompleted: true)
         }
         updateBackgroundLabelIfNeeded(foregroundViewRightConstraint.constant)
         break
@@ -191,8 +210,11 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
     }, completion: completion)
   }
 
-  func setConstraintsToShowAll(animated: Bool, notifyDelegateDidOpen: Bool) {
+  func setConstraintsToShowAll(animated: Bool, notifyDelegateDidOpen: Bool, isCompleted: Bool) {
     //TODO: Notify delegate.
+    if(isCompleted) {
+      NSLog("COMPLETE!")
+    }
 
     if (startingRightLayoutConstant == getSnapPoint() && foregroundViewRightConstraint.constant == getSnapPoint()) {
       return
@@ -212,11 +234,11 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
 
     if notifyDelegateDidOpen {
       NSLog("notifyDelegateDidOpen")
-      resetConstraints(true, notifyDelegateDidClose: false)
-      if onCompletedSwipe != nil {
-        NSLog("onCompletedSwipe")
-        onCompletedSwipe!()
-      }
+      //resetConstraints(true, notifyDelegateDidClose: false)
+      //if onCompletedSwipe != nil {
+      //  NSLog("onCompletedSwipe")
+      //  onCompletedSwipe!()
+      //}
     }
   }
 
