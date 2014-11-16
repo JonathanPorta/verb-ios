@@ -86,20 +86,22 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
     cell.swipeableModel = activityModel
     cell.delegate = self
     cell.foregroundLabel.text = activityModel.activityMessage
-    if(cellsCurrentlyEditing!.containsObject(indexPath)) {
+    cell.didSwipe = {
+      activityModel.reciprocate()
+    }
+
+    if(cellsCurrentlyEditing!.containsObject(activityModel)) {
       cell.openCell()
     }
     return cell
   }
 
-  func cellDidOpen(cell: UITableViewCell) {
-    var index = tableView.indexPathForCell(cell)
-    cellsCurrentlyEditing!.addObject(index!)
+  func cellDidOpen(cell: SwipeableCell) {
+    cellsCurrentlyEditing!.addObject(cell.swipeableModel as ActivityModel)
   }
 
-  func cellDidClose(cell: UITableViewCell) {
-    var index = tableView.indexPathForCell(cell)
-    cellsCurrentlyEditing!.removeObject(index!)
+  func cellDidClose(cell: SwipeableCell) {
+    cellsCurrentlyEditing!.removeObject(cell.swipeableModel as ActivityModel)
   }
 
 
@@ -126,7 +128,9 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
     var userInfo = notification.userInfo! as NSDictionary
     var activity = userInfo.objectForKey("activity") as ActivityModel
     activityModelList.insertObject(activity, atIndex: 0)
-    refresh()
+    var firstRow = NSIndexPath(forRow: 0, inSection: 0)
+    tableView.insertRowsAtIndexPaths([firstRow], withRowAnimation: UITableViewRowAnimation.Bottom)
+    //refresh()
   }
 
   func refresh() {

@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 protocol SwipeableCellDelegate {
-  func cellDidOpen(cell: UITableViewCell)
-  func cellDidClose(cell: UITableViewCell)
+  func cellDidOpen(cell: SwipeableCell)
+  func cellDidClose(cell: SwipeableCell)
 }
 
 class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
@@ -19,6 +19,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
   let bounceValue: CGFloat = 20.0
 
   var swipeableModel: SwipeableModel!
+  var didSwipe: ((Void)->())?
   var delegate: SwipeableCellDelegate?
   var backgroundColorPrompt = UIColor.whiteColor()
   var backgroundColorWorking = UIColor.greenColor()
@@ -65,7 +66,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
 
   func panThisCell(recognizer: UIPanGestureRecognizer) {
     // Bail if model isn't swipeable.
-    //if !swipeableModel.isSwipeable() { return }
+    if !swipeableModel.isSwipeable() { return }
 
     switch (recognizer.state) {
       case UIGestureRecognizerState.Began:
@@ -158,7 +159,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
             resetConstraints(true, notifyDelegateDidClose: true)
           }
         }
-        updateBackgroundLabelIfNeeded(foregroundViewRightConstraint.constant)
+        //updateBackgroundLabelIfNeeded(foregroundViewRightConstraint.constant)
         break
 
       case UIGestureRecognizerState.Cancelled:
@@ -179,6 +180,20 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
     }
   }
 
+  func getBackgroundColor(position: CGFloat) -> UIColor {
+    var alpha = position / getSnapPoint()
+
+    if alpha < 0 {
+      alpha = -alpha
+    }
+
+    if alpha > 1.0 {
+      alpha = 1.0
+    }
+
+    return UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: alpha)
+  }
+
   func getSnapPoint() -> CGFloat {
     return 0.8 * CGRectGetWidth(frame)
   }
@@ -190,15 +205,11 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
   func updateBackgroundLabelIfNeeded(position: CGFloat) {
     if position < getWarnPoint() {
       backgroundLabel.text = swipeableModel.promptMessage()
-      backgroundUIView.backgroundColor = backgroundColorPrompt
     }
-    //else if position >= getWarnPoint() && position < getSnapPoint() {
-    //  backgroundLabel.text = swipeableModel.confirmMessage()
-    //}
     else if position >= getSnapPoint() {
       backgroundLabel.text = swipeableModel.workingMessage()
-      backgroundUIView.backgroundColor = backgroundColorWorking
     }
+    backgroundUIView.backgroundColor = getBackgroundColor(position)
   }
 
   func updateConstraintsIfNeeded(animated: Bool, completion: ((Bool) -> Void)?) {
@@ -213,13 +224,16 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
   }
 
   func setConstraintsToShowAll(animated: Bool, notifyDelegateDidOpen: Bool, isCompleted: Bool) {
+    if startingRightLayoutConstant == nil {
+      return
+    }
     // Notify Delegate
     if(notifyDelegateDidOpen) {
       delegate!.cellDidOpen(self)
     }
 
     if(isCompleted) {
-      NSLog("COMPLETE!")
+      onSwipeCompleted()
     }
 
     if (startingRightLayoutConstant == getSnapPoint() && foregroundViewRightConstraint.constant == getSnapPoint()) {
@@ -237,15 +251,6 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
         self.startingRightLayoutConstant = self.foregroundViewRightConstraint.constant
       })
     })
-
-    if notifyDelegateDidOpen {
-      NSLog("notifyDelegateDidOpen")
-      //resetConstraints(true, notifyDelegateDidClose: false)
-      //if onCompletedSwipe != nil {
-      //  NSLog("onCompletedSwipe")
-      //  onCompletedSwipe!()
-      //}
-    }
   }
 
   func resetConstraints(animated: Bool, notifyDelegateDidClose: Bool) {
@@ -270,5 +275,33 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
         self.startingRightLayoutConstant = self.foregroundViewRightConstraint.constant
       })
     })
+  }
+
+  func onSwipeCompleted() {
+    if(didSwipe != nil) {
+      didSwipe!()
+    }
+
+    // Set bg cell message to sent.
+    backgroundLabel.text = "Sent"
+
+    // Foreground hides
+    UIView.beginAnimations("fade", context: nil)
+    foregroundUIView.alpha = 0.0
+    UIView.commitAnimations()
+
+    // Fades back to foreground
+    UIView.animateWithDuration(1,
+      delay: NSTimeInterval(3),
+      options: UIViewAnimationOptions.TransitionCrossDissolve,
+      animations:{
+        // Reset foreground position
+        self.resetConstraints(false, notifyDelegateDidClose: false)
+        self.foregroundUIView.alpha = 1.0
+      },
+      completion: {finished in
+        NSLog("FINISHED ANIMATING!")
+      }
+    )
   }
 }

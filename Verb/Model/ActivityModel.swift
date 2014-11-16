@@ -84,6 +84,6 @@ class ActivityModel: SwipeableModel {
   }
 
   func workingMessage() -> String {
-    return "Trying to \(message!.verb) \(message!.sender.firstName)!"
+    return "about to \(message!.verb) \(message!.sender.firstName)!"
   }
 }
