@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ActivityModel {
+class ActivityModel: SwipeableModel {
   var id: Int?
   var type: String
   var activityMessage: String
@@ -70,4 +70,20 @@ class ActivityModel {
     NSNotificationCenter.defaultCenter().postNotificationName("activity.new", object: nil, userInfo: userInfo)
   }
 
+  // Implement the SwipeableModel Protocol
+  func isSwipeable() -> Bool {
+    return type == "received" && !isPlaceholder()
+  }
+
+  func promptMessage() -> String {
+    return "\(message!.verb) back!"
+  }
+
+  func confirmMessage() -> String {
+    return "Keep swiping to \(promptMessage())"
+  }
+
+  func workingMessage() -> String {
+    return "about to \(message!.verb) \(message!.sender.firstName)!"
+  }
 }

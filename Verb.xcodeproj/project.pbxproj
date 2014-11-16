@@ -23,6 +23,8 @@
 		116D268D19FB9B3C0039A948 /* VerbModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268C19FB9B3C0039A948 /* VerbModel.swift */; };
 		116D269119FE12890039A948 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D269019FE12890039A948 /* FriendViewController.swift */; };
 		116D269319FE30000039A948 /* SelectableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D269219FE30000039A948 /* SelectableModel.swift */; };
+		119217FA1A10BEA700EFA72F /* SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119217F91A10BEA700EFA72F /* SwipeableCell.swift */; };
+		119217FD1A121FBA00EFA72F /* SwipeableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119217FC1A121FBA00EFA72F /* SwipeableModel.swift */; };
 		11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8519AEDF5100D5BF6D /* AppDelegate.swift */; };
 		11944F8819AEDF5100D5BF6D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8719AEDF5100D5BF6D /* LoginViewController.swift */; };
 		11944F8B19AEDF5100D5BF6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8919AEDF5100D5BF6D /* Main.storyboard */; };
@@ -99,6 +101,8 @@
 		116D268C19FB9B3C0039A948 /* VerbModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerbModel.swift; path = Model/VerbModel.swift; sourceTree = "<group>"; };
 		116D269019FE12890039A948 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		116D269219FE30000039A948 /* SelectableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectableModel.swift; path = Model/SelectableModel.swift; sourceTree = "<group>"; };
+		119217F91A10BEA700EFA72F /* SwipeableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableCell.swift; sourceTree = "<group>"; };
+		119217FC1A121FBA00EFA72F /* SwipeableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeableModel.swift; path = Model/SwipeableModel.swift; sourceTree = "<group>"; };
 		11944F8019AEDF5100D5BF6D /* Verb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11944F8419AEDF5100D5BF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11944F8519AEDF5100D5BF6D /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; wrapsLines = 0; };
@@ -193,6 +197,7 @@
 				1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */,
 				11944F8719AEDF5100D5BF6D /* LoginViewController.swift */,
 				11944FAE19AF100000D5BF6D /* ActivityViewController.swift */,
+				119217F91A10BEA700EFA72F /* SwipeableCell.swift */,
 				110E1C1D19F734AB007BC736 /* CategoryViewController.swift */,
 				116D268A19FB990D0039A948 /* VerbViewController.swift */,
 				116D269019FE12890039A948 /* FriendViewController.swift */,
@@ -240,6 +245,7 @@
 				11406D8F1A04D90900676EC6 /* Model.swift */,
 				11944FA219AEE1A200D5BF6D /* ActivityModel.swift */,
 				116D269219FE30000039A948 /* SelectableModel.swift */,
+				119217FC1A121FBA00EFA72F /* SwipeableModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -435,6 +441,8 @@
 				11944F8819AEDF5100D5BF6D /* LoginViewController.swift in Sources */,
 				11C81F5519FF93B8004EB2C6 /* VerbRequest.swift in Sources */,
 				11944FAF19AF100000D5BF6D /* ActivityViewController.swift in Sources */,
+				119217FA1A10BEA700EFA72F /* SwipeableCell.swift in Sources */,
+				119217FD1A121FBA00EFA72F /* SwipeableModel.swift in Sources */,
 				11406D8E1A04C55300676EC6 /* Async.swift in Sources */,
 				1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */,
 				11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */,

@@ -8,9 +8,10 @@
 
 import Foundation
 
-class ActivityViewController: UITableViewController {
+class ActivityViewController: UITableViewController, SwipeableCellDelegate {
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
   var activityModelList: NSMutableArray = []
+  var cellsCurrentlyEditing: NSMutableSet?
 
   @IBAction func sendMessages(segue: UIStoryboardSegue) {
     let source = segue.sourceViewController as FriendViewController
@@ -21,6 +22,8 @@ class ActivityViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    cellsCurrentlyEditing = NSMutableSet()
+    tableView.rowHeight = 44
 
     // Get notified when we need to refresh
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: "reloadActivities", object: nil)
@@ -78,11 +81,29 @@ class ActivityViewController: UITableViewController {
     }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as SwipeableCell
     var activityModel = activityModelList.objectAtIndex(indexPath.row) as ActivityModel
-    cell.textLabel.text = activityModel.activityMessage
+    cell.swipeableModel = activityModel
+    cell.delegate = self
+    cell.foregroundLabel.text = activityModel.activityMessage
+    cell.didSwipe = {
+      activityModel.reciprocate()
+    }
+
+    if(cellsCurrentlyEditing!.containsObject(activityModel)) {
+      cell.openCell()
+    }
     return cell
   }
+
+  func cellDidOpen(cell: SwipeableCell) {
+    cellsCurrentlyEditing!.addObject(cell.swipeableModel as ActivityModel)
+  }
+
+  func cellDidClose(cell: SwipeableCell) {
+    cellsCurrentlyEditing!.removeObject(cell.swipeableModel as ActivityModel)
+  }
+
 
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     // Deselect the row so it doesn't stay highlighted
@@ -103,45 +124,13 @@ class ActivityViewController: UITableViewController {
     }
   }
 
-  override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the specified item to be editable.
-    return true
-  }
-
-  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-      activityModelList.removeObjectAtIndex(indexPath.row)
-      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
-  }
-
-  override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-
-    var activity = activityModelList.objectAtIndex(indexPath.row) as ActivityModel
-
-    var reciprocate = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "\(activity.message!.verb) back!", handler:{action, indexpath in
-      tableView.setEditing(false, animated: true)
-      Async.background {
-        activity.reciprocate()
-      }
-    })
-    reciprocate.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
-
-    if activity.type == "received" {
-      return [reciprocate]
-    }
-    else {
-      return []
-    }
-  }
-
   func insertActivity(notification: NSNotification) {
     var userInfo = notification.userInfo! as NSDictionary
     var activity = userInfo.objectForKey("activity") as ActivityModel
     activityModelList.insertObject(activity, atIndex: 0)
-    refresh()
+    var firstRow = NSIndexPath(forRow: 0, inSection: 0)
+    tableView.insertRowsAtIndexPaths([firstRow], withRowAnimation: UITableViewRowAnimation.Bottom)
+    //refresh()
   }
 
   func refresh() {
