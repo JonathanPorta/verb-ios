@@ -44,6 +44,15 @@ class ActivityModel: SwipeableModel {
     return id == -1
   }
 
+  func isAcknowledged() -> Bool {
+    if !isPlaceholder(){
+      if message?.acknowledgedAt > 0 {
+        return true
+      }
+    }
+    return false
+  }
+
   func acknowledge() {
     if isPlaceholder() { // We can't ack a placeholder, duh!
       return
@@ -68,6 +77,23 @@ class ActivityModel: SwipeableModel {
 
     var userInfo: NSDictionary = ["activity": activity]
     NSNotificationCenter.defaultCenter().postNotificationName("activity.new", object: nil, userInfo: userInfo)
+  }
+
+  func lastActionTimeAgoInWords() -> String {
+    // TODO: Decide how the sublable text should change in each state
+    if !isPlaceholder() {
+      if type == "sent" {
+        if isAcknowledged() { return "seen \(message!.createdAtInWords) ago" }
+        return "sent \(message!.createdAtInWords) ago"
+      }
+      else {
+        if isAcknowledged() { return "received \(message!.createdAtInWords) ago" }
+        return "received \(message!.createdAtInWords) ago"
+      }
+    }
+    else {
+      return "sending..."
+    }
   }
 
   // Implement the SwipeableModel Protocol

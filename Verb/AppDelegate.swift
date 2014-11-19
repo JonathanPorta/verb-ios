@@ -18,6 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var storyBoard: UIStoryboard!
 
+    // Set the logo and custom font
+    if let font = UIFont(name: "verb", size: 32.0) {
+      NSLog("Custom Font Loaded")
+      UINavigationBar.appearance().titleTextAttributes = [
+        NSFontAttributeName: font,
+        NSForegroundColorAttributeName: UIColor.whiteColor()
+      ]
+    }
+    else {
+      NSLog("CUSTOM FONT FAILED TO LOAD")
+    }
+
     // Push Notifications
     var types: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
     var settings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)

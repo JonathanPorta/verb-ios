@@ -31,25 +31,10 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     cellsCurrentlyEditing = NSMutableSet()
-    tableView.rowHeight = 44
-
-    // Set the logo and custom font
-    if let font = UIFont(name: "verb", size: 32.0) {
-      NSLog("Custom Font Loaded")
-        self.navigationController?.navigationBar.titleTextAttributes = [
-        NSFontAttributeName: font,
-        NSForegroundColorAttributeName: UIColor.whiteColor()
-      ]
-    }
-    else {
-      NSLog("CUSTOM FONT FAILED TO LOAD")
-    }
-
+    tableView.rowHeight = 60
 
     self.navigationController?.navigationBar.backgroundColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
-
     self.navigationController?.navigationBar.barTintColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
-    //self.navigationController?.navigationBar.translucent = false
 
     // Get notified when we need to refresh
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: "reloadActivities", object: nil)
@@ -69,6 +54,22 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
     self.refreshControl!.beginRefreshing()
 
     loadData()
+
+    if tableView.respondsToSelector("setSeparatorInset:") {
+      tableView.separatorInset = UIEdgeInsetsZero
+    }
+  }
+
+  override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    if cell.respondsToSelector("setSeparatorInset:") {
+      cell.separatorInset.left = CGFloat(0.0)
+    }
+    if tableView.respondsToSelector("setLayoutMargins:") {
+      tableView.layoutMargins = UIEdgeInsetsZero
+    }
+    if cell.respondsToSelector("setLayoutMargins:") {
+      cell.layoutMargins.left = CGFloat(0.0)
+    }
   }
 
   override func didReceiveMemoryWarning() {
@@ -112,6 +113,9 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
     cell.swipeableModel = activityModel
     cell.delegate = self
     cell.foregroundLabel.text = activityModel.activityMessage
+    cell.foregroundSubLabel.text = activityModel.lastActionTimeAgoInWords()
+    var statusLabel = cell.foregroundStatusLabel as StatusLabel
+    statusLabel.setActivityModel(activityModel)
     cell.didSwipe = {
       activityModel.reciprocate()
     }
@@ -119,6 +123,17 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
     if(cellsCurrentlyEditing!.containsObject(activityModel)) {
       cell.openCell()
     }
+
+    if cell.respondsToSelector("setSeparatorInset:") {
+      cell.separatorInset.left = CGFloat(0.0)
+    }
+    if tableView.respondsToSelector("setLayoutMargins:") {
+      tableView.layoutMargins = UIEdgeInsetsZero
+    }
+    if cell.respondsToSelector("setLayoutMargins:") {
+      cell.layoutMargins.left = CGFloat(0.0)
+    }
+
     return cell
   }
 
