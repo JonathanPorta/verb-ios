@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1108B3D519EA1842008379E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11944F8C19AEDF5100D5BF6D /* Images.xcassets */; };
+		110DD59D1A1C1BE5004809D7 /* verb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 110DD59C1A1C1BE5004809D7 /* verb.ttf */; };
 		110E1C1E19F734AB007BC736 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E1C1D19F734AB007BC736 /* CategoryViewController.swift */; };
 		1111AC9B1A0F643D006B3993 /* CategoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1111AC9A1A0F643D006B3993 /* CategoryFactory.swift */; };
 		1111AC9E1A0F6C82006B3993 /* FriendFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1111AC9D1A0F6C82006B3993 /* FriendFactory.swift */; };
@@ -87,6 +88,7 @@
 
 /* Begin PBXFileReference section */
 		02FCC3E059841AC18C0A8134 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		110DD59C1A1C1BE5004809D7 /* verb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = verb.ttf; sourceTree = "<group>"; };
 		110E1C1D19F734AB007BC736 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		1111AC9A1A0F643D006B3993 /* CategoryFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryFactory.swift; sourceTree = "<group>"; };
 		1111AC9D1A0F6C82006B3993 /* FriendFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendFactory.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		11944F8319AEDF5100D5BF6D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				110DD59C1A1C1BE5004809D7 /* verb.ttf */,
 				11944F8419AEDF5100D5BF6D /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -387,6 +390,7 @@
 				11944F8B19AEDF5100D5BF6D /* Main.storyboard in Resources */,
 				11944F8D19AEDF5100D5BF6D /* Images.xcassets in Resources */,
 				11CC2B5A19B0607500E99EC9 /* Login.storyboard in Resources */,
+				110DD59D1A1C1BE5004809D7 /* verb.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

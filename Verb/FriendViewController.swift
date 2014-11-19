@@ -23,6 +23,12 @@ class FriendViewController : UITableViewController {
         selection.addObject(friendModel)
       }
     }
+    self.title = ""
+  }
+
+  override func viewWillAppear(animated: Bool) {
+    self.title = "Friends"
+    sendBtn.tintColor = UIColor.whiteColor()
   }
 
   func selectionExists() -> Bool {
@@ -80,6 +86,7 @@ class FriendViewController : UITableViewController {
     var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
     var friendModel = friendModelList.objectAtIndex(indexPath.row) as UserModel
     cell.textLabel.text = friendModel.firstName
+    cell.tintColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
 
     if friendModel.selected {
       cell.accessoryType = .Checkmark

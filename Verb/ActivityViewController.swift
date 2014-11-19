@@ -20,10 +20,36 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
     MessageFactory.New(recipients, verb: verb)
   }
 
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    self.title = ""
+  }
+
+  override func viewWillAppear(animated: Bool) {
+    self.title = "\u{e600}"
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     cellsCurrentlyEditing = NSMutableSet()
     tableView.rowHeight = 44
+
+    // Set the logo and custom font
+    if let font = UIFont(name: "verb", size: 32.0) {
+      NSLog("Custom Font Loaded")
+        self.navigationController?.navigationBar.titleTextAttributes = [
+        NSFontAttributeName: font,
+        NSForegroundColorAttributeName: UIColor.whiteColor()
+      ]
+    }
+    else {
+      NSLog("CUSTOM FONT FAILED TO LOAD")
+    }
+
+
+    self.navigationController?.navigationBar.backgroundColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
+
+    self.navigationController?.navigationBar.barTintColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
+    //self.navigationController?.navigationBar.translucent = false
 
     // Get notified when we need to refresh
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: "reloadActivities", object: nil)
