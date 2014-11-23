@@ -20,4 +20,5 @@ security import ./scripts/certs/dist.p12 -k ~/Library/Keychains/ios-build.keycha
 
 # Put the provisioning profile in place
 export UUID=`grep UUID -A1 -a ./scripts/profile/$PROFILE_NAME.mobileprovision | grep -io "[-A-Z0-9]\{36\}"`
-cp "./scripts/profile/$PROFILE_NAME.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/$UUID.mobileprovision
+cp "./scripts/profile/$PROFILE_NAME.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/$PROFILE_NAME.mobileprovision
+mv ~/Library/MobileDevice/Provisioning\ Profiles/$PROFILE_NAME.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$UUID.mobileprovision
