@@ -1,24 +1,21 @@
 #!/bin/sh
 
+export APP_KEYCHAIN="ios-$APP_NAME-build.keychain"
+
 # Create a custom keychain
-security create-keychain -p travis ios-build.keychain
+security create-keychain -p $KEY_PASSWORD $APP_KEYCHAIN
 
 # Make the custom keychain default, so xcodebuild will use it for signing
-security default-keychain -s ios-build.keychain
+security default-keychain -s $APP_KEYCHAIN
 
 # Unlock the keychain
-security unlock-keychain -p travis ios-build.keychain
+security unlock-keychain -p $KEY_PASSWORD $APP_KEYCHAIN
 
 # Set keychain timeout to 1 hour for long builds
 # see http://www.egeek.me/2013/02/23/jenkins-and-xcode-user-interaction-is-not-allowed/
-security set-keychain-settings -t 3600 -l ~/Library/Keychains/ios-build.keychain
+security set-keychain-settings -t 3600 -l ~/Library/Keychains/$APP_KEYCHAIN
 
 # Add certificates to keychain and allow codesign to access them
-security import ./scripts/certs/apple.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
-security import ./scripts/certs/dist.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
-security import ./scripts/certs/dist.p12 -k ~/Library/Keychains/ios-build.keychain -P $KEY_PASSWORD -T /usr/bin/codesign
-
-# Put the provisioning profile in place
-export UUID=`grep UUID -A1 -a ./scripts/profile/$PROFILE_NAME.mobileprovision | grep -io "[-A-Z0-9]\{36\}"`
-cp "./scripts/profile/$PROFILE_NAME.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/$PROFILE_NAME.mobileprovision
-mv ~/Library/MobileDevice/Provisioning\ Profiles/$PROFILE_NAME.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$UUID.mobileprovision
+security import ./scripts/certs/apple.cer -k ~/Library/Keychains/$APP_KEYCHAIN -T /usr/bin/codesign
+security import ./scripts/certs/dist.cer -k ~/Library/Keychains/$APP_KEYCHAIN -T /usr/bin/codesign
+security import ./scripts/certs/dist.p12 -k ~/Library/Keychains/$APP_KEYCHAIN -P $KEY_PASSWORD -T /usr/bin/codesign

@@ -30,11 +30,11 @@ echo "*****************************"
 echo "*  Uploading to TestFlight  *"
 echo "*****************************"
 
-curl http://testflightapp.com/api/builds.json \
-  -F file="@$OUTPUTDIR/$APP_NAME.ipa" \
-  -F dsym="@$OUTPUTDIR/$APP_NAME.app.dSYM.zip" \
-  -F api_token="$TESTFLIGHT_API_TOKEN" \
-  -F team_token="$TESTFLIGHT_TEAM_TOKEN" \
-  -F distribution_lists='verb-dev' \
-  -F notify=true \
-  -F notes="$RELEASE_NOTES"
+# curl http://testflightapp.com/api/builds.json \
+#   -F file="@$OUTPUTDIR/$APP_NAME.ipa" \
+#   -F dsym="@$OUTPUTDIR/$APP_NAME.app.dSYM.zip" \
+#   -F api_token="$TESTFLIGHT_API_TOKEN" \
+#   -F team_token="$TESTFLIGHT_TEAM_TOKEN" \
+#   -F distribution_lists='verb-dev' \
+#   -F notify=true \
+#   -F notes="$RELEASE_NOTES"

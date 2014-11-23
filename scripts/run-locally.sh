@@ -2,16 +2,20 @@
 
 set -e
 
-# Put the provisioning profile in place
-mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-UUID=`grep UUID -A1 -a ./scripts/profile/$PROFILE_NAME.mobileprovision | grep -io "[-A-Z0-9]\{36\}"`
-cp "./scripts/profile/$PROFILE_NAME.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/$UUID.mobileprovision
+echo "Creating Temporary Keychains"
+./scripts/add-key.sh
 
-echo "Settings Bundle Data"
+echo "Install Provisioning Profile"
+./scripts/install-provisioning-profile.sh
+
+echo "Set Bundle Data"
 ./scripts/set-bundle.sh
 
-echo "Build"
-xctool -workspace Verb.xcworkspace -scheme Verb-travis -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="$DEVELOPER_NAME" PROVISIONING_PROFILE=
+echo "Run Build"
+./scripts/build.sh
 
 echo "Sign and Upload Build"
 ./scripts/sign-build.sh
+
+echo "Cleanup"
+./scripts/cleanup.sh
