@@ -5,7 +5,7 @@ rvm:
 before_install:
   - travis_retry brew update && travis_retry brew uninstall xctool && travis_retry brew install xctool --build-from-source
   - travis_retry gem update --system && travis_retry gem update && travis_retry gem uninstall -ax cocoapods && travis_retry gem install cocoapods
-  - gem cocoapod --version
+  - pod --version
   - brew --version
   - xctool -version
   - xcodebuild -version -sdk
