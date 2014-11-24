@@ -17,8 +17,9 @@ before_script:
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
 - "./scripts/add-key.sh"
 - "./scripts/set-bundle.sh"
+- "./scripts/install-provisioning-profile.sh"
 script:
-- xctool -workspace Verb.xcworkspace -scheme Verb-travis -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="$DEVELOPER_NAME" PROVISIONING_PROFILE="~/Library/MobileDevice/Provisioning\ Profiles/$UUID.mobileprovision"
+- "./scripts/build.sh"
 after_script:
 - "./scripts/cleanup.sh"
 after_success:
