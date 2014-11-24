@@ -39,6 +39,7 @@
 		11C81F5519FF93B8004EB2C6 /* VerbRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C81F5419FF93B8004EB2C6 /* VerbRequest.swift */; };
 		11CC2B5A19B0607500E99EC9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CC2B5919B0607500E99EC9 /* Login.storyboard */; };
 		11CC2B6219B077AC00E99EC9 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */; };
+		11FED9021A22E3C8009AE028 /* icomoon-standard.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11FED9011A22E3C8009AE028 /* icomoon-standard.ttf */; };
 		72CBEDC9E064017C2BCA501E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBD8A6F96D04114838ED370 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		11C81F5419FF93B8004EB2C6 /* VerbRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbRequest.swift; sourceTree = "<group>"; };
 		11CC2B5919B0607500E99EC9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
+		11FED9011A22E3C8009AE028 /* icomoon-standard.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "icomoon-standard.ttf"; sourceTree = "<group>"; };
 		1BBD8A6F96D04114838ED370 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F054F42551669CD6E82F7CF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -218,6 +220,7 @@
 		11944F8319AEDF5100D5BF6D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				11FED9011A22E3C8009AE028 /* icomoon-standard.ttf */,
 				11944F8419AEDF5100D5BF6D /* Info.plist */,
 				110DD59E1A1C422C004809D7 /* verb.ttf */,
 			);
@@ -390,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11FED9021A22E3C8009AE028 /* icomoon-standard.ttf in Resources */,
 				11944F8B19AEDF5100D5BF6D /* Main.storyboard in Resources */,
 				11944F8D19AEDF5100D5BF6D /* Images.xcassets in Resources */,
 				11CC2B5A19B0607500E99EC9 /* Login.storyboard in Resources */,
