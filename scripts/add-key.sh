@@ -1,25 +1,24 @@
 #!/bin/sh
 
-echo "Default keychain is $(security default)"
-
-export APP_KEYCHAIN="ios-$APP_NAME-build.keychain"
+# An absolute path really cut down on confusion and made a couple mistakes obvious.
+mkdir -p /tmp/
+export APP_KEYCHAIN="/tmp/ios-$APP_NAME-build.keychain"
 
 # Create a custom keychain
 security create-keychain -p $KEY_PASSWORD $APP_KEYCHAIN
 
-# Make the custom keychain default, so xcodebuild will use it for signing
-security default -s $APP_KEYCHAIN
-
-echo "Default keychain is $(security default)"
+# Put the custom keychain in our search list so xctool can find it.
+security list-keychains -s $APP_KEYCHAIN
 
 # Unlock the keychain
 security unlock-keychain -p $KEY_PASSWORD $APP_KEYCHAIN
 
 # Set keychain timeout to 1 hour for long builds
 # see http://www.egeek.me/2013/02/23/jenkins-and-xcode-user-interaction-is-not-allowed/
-security -v set-keychain-settings -t 3600 -l ~/Library/Keychains/$APP_KEYCHAIN
+security set-keychain-settings -t 3600 -l $APP_KEYCHAIN
 
-# Add certificates to keychain and allow codesign to access them
-security -v import ./scripts/certs/apple.cer -k ~/Library/Keychains/$APP_KEYCHAIN -T /usr/bin/codesign
-security -v import ./scripts/certs/dist.cer -k ~/Library/Keychains/$APP_KEYCHAIN -T /usr/bin/codesign
-security -v import ./scripts/certs/dist.p12 -k ~/Library/Keychains/$APP_KEYCHAIN -P $KEY_PASSWORD -T /usr/bin/codesign
+# Add certificates to keychain and allow codesign + xctool to access them.
+# xctool requires access because it has to sign the framework dependencies before the rest of the app compiles.
+security import ./scripts/certs/apple.cer -k $APP_KEYCHAIN -T /usr/bin/codesign -T /usr/local/bin/xctool
+security import ./scripts/certs/dist.cer -k $APP_KEYCHAIN -T /usr/bin/codesign -T /usr/local/bin/xctool
+security import ./scripts/certs/dist.p12 -k $APP_KEYCHAIN -P $KEY_PASSWORD -T /usr/bin/codesign -T /usr/local/bin/xctool
