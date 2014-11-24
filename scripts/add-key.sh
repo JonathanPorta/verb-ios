@@ -9,6 +9,7 @@ security create-keychain -p $KEY_PASSWORD $APP_KEYCHAIN
 
 # Put the custom keychain in our search list so xctool can find it.
 security list-keychains -s $APP_KEYCHAIN
+security default-keychain -s $APP_KEYCHAIN
 
 # Unlock the keychain
 security unlock-keychain -p $KEY_PASSWORD $APP_KEYCHAIN

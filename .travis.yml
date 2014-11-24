@@ -32,6 +32,7 @@ env:
   - APP_NAME="Verb"
   - BUNDLE_DISPLAY_NAME="Verb Travis"
   - INFO_PLIST="Verb/Info.plist"
+  - APP_KEYCHAIN="/tmp/ios-Verb-build.keychain"
   - 'DEVELOPER_NAME="iPhone Distribution: William Porta (52KRCFBNVN)"'
   - PROFILE_NAME="verbtravis"
   - secure: BW7OnSwBmbhj31/eqBDquxEzcnD0ChtlHzLBFJ9lfVnfmCN331LRpvIuKjSu0ppc5ZUJtdxo8f5lXkVm3Uks20HeuDENwOWwU+squbKTJAZuKSJviyx2TZMSGFIGc+M+hRMN4ZCs/gIuyNDWMVbNpJe+oVl925nSVE/XVAVb2yQ=
