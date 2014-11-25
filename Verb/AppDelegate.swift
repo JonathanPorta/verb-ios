@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var storyBoard: UIStoryboard!
 
     // Set the logo and custom font
-    if let font = UIFont(name: "verb", size: 32.0) {
+    if let font = UIFont(name: "verb-logo", size: 32.0) {
       UINavigationBar.appearance().titleTextAttributes = [
         NSFontAttributeName: font,
         NSForegroundColorAttributeName: UIColor.whiteColor()

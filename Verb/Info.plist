@@ -37,7 +37,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>verb.ttf</string>
+		<string>verb-logo.ttf</string>
 		<string>icomoon-standard.ttf</string>
 	</array>
 	<key>UIMainStoryboardFile</key>

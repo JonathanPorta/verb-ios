@@ -16,29 +16,14 @@ class CategoryViewController : UITableViewController {
     var categoryIndex = tableView!.indexPathForSelectedRow()!.row
     var category = categoryModelList[categoryIndex] as CategoryModel
     verbViewController.categoryModel = category
-    self.title = ""
+    title = ""
   }
 
   override func viewWillAppear(animated: Bool) {
-    self.title = "Categories"
+    title = "Categories"
   }
 
   override func viewDidLoad() {
-
-    // Set the logo and custom font
-    if let font = UIFont(name: "verb", size: 1.0) {
-      NSLog("Custom Font Loaded")
-
-      self.navigationController?.navigationBar.titleTextAttributes = [
-        NSFontAttributeName: font,
-        NSForegroundColorAttributeName: UIColor.blackColor()
-      ]
-      self.navigationController?.navigationBar.topItem?.title = "sd"
-      self.navigationController?.navigationBar.backItem?.title = "sdfd"
-    }
-    else {
-      NSLog("CUSTOM FONT FAILED TO LOAD")
-    }
 
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData", name: "category.all", object: nil)
 
