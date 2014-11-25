@@ -12,17 +12,21 @@ import QuartzCore
 
 class StatusLabel: UILabel {
 
+  let icons: [String]?
+
   var purple: UIColor?
   var grey: UIColor?
 
   required init(coder aDecoder: NSCoder) {
     super.init(coder:aDecoder)
     self.setup()
+    self.icons = ["e813", "e814", "e815", "e816", "e821", "e823", "e827", "e829", "e82b", "e830", "e831", "e833", "e836", "e838", "e839", "e83a", "e83b", "e841"]
   }
 
   override init(frame: CGRect) {
     super.init(frame:frame)
     self.setup()
+    self.icons = ["e813", "e814", "e815", "e816", "e821", "e823", "e827", "e829", "e82b", "e830", "e831", "e833", "e836", "e838", "e839", "e83a", "e83b", "e841"]
   }
 
   override  func awakeFromNib() {
@@ -46,29 +50,29 @@ class StatusLabel: UILabel {
     self.layer.display()
 
     purple = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
-    grey = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0)
+    grey = UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)
   }
 
   func setActivityModel(activityModel: ActivityModel) {
-    setFont(UIFont(name: "verb", size: 36.0)!)
+    setFont(UIFont(name: "icomoon-standard", size: 22.0)!)
 
     if !activityModel.isPlaceholder() {
-      if activityModel.type == "sent" {
-        setTextColor(grey!)
+      if activityModel.type == "received" {
+        setTextColor(purple!)
         if activityModel.isAcknowledged() {
-          setText("\u{e602}")
+          setText("\u{e73c}")
         }
         else {
-          setText("\u{e606}")
+          setText("\u{e73b}")
         }
       }
       else {
-        setTextColor(purple!)
+        setTextColor(grey!)
         if activityModel.isAcknowledged() {
-          setText("\u{e607}")
+          setText("\u{e73c}")
         }
         else {
-          setText("\u{e602}")
+          setText("\u{e73b}")
         }
       }
     }

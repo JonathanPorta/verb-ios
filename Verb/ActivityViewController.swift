@@ -13,6 +13,9 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
   var activityModelList: NSMutableArray = []
   var cellsCurrentlyEditing: NSMutableSet?
 
+  @IBOutlet var logoutBtn: UIBarButtonItem!
+  @IBOutlet var composeBtn: UIBarButtonItem!
+
   @IBAction func sendMessages(segue: UIStoryboardSegue) {
     let source = segue.sourceViewController as FriendViewController
     let recipients = source.selection
@@ -26,6 +29,14 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
 
   override func viewWillAppear(animated: Bool) {
     self.title = "\u{e600}"
+
+    var font = UIFont(name: "icomoon-standard", size: 24.0)!
+
+    logoutBtn.setTitleTextAttributes([ NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.whiteColor() ], forState: UIControlState.Normal)
+    logoutBtn.title = "\u{e670}"
+
+    composeBtn.setTitleTextAttributes([ NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.whiteColor() ], forState: UIControlState.Normal)
+    composeBtn.title = "\u{e8dd}"
   }
 
   override func viewDidLoad() {
