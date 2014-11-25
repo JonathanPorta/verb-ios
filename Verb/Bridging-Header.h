@@ -7,3 +7,4 @@
 //
 
 #import <FacebookSDK/FacebookSDK.h>
+#import <HockeySDK/HockeySDK.h>

@@ -2,6 +2,9 @@
 
 set -e
 
+echo "Load local config"
+source ./scripts/config.sh
+
 echo "Creating Temporary Keychains"
 ./scripts/add-key.sh
 

@@ -3,6 +3,7 @@
 
 source 'https://github.com/CocoaPods/Specs.git'
 pod 'Facebook-iOS-SDK'
+pod 'HockeySDK'
 
 target 'Verb' do
 
@@ -11,4 +12,3 @@ end
 target 'VerbTests' do
 
 end
-
