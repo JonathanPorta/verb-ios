@@ -17,6 +17,11 @@ class VerbViewController : UITableViewController {
     var verbIndex = tableView!.indexPathForSelectedRow()!.row
     var verb = verbModelList[verbIndex] as VerbModel
     friendViewController.verbModel = verb
+    self.title = ""
+  }
+
+  override func viewWillAppear(animated: Bool) {
+    self.title = categoryModel!.name
   }
 
   override func viewDidLoad() {

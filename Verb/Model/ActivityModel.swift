@@ -41,33 +41,67 @@ class ActivityModel: SwipeableModel {
   }
 
   func isPlaceholder() -> Bool {
-    return id == -1
+    if message == nil || id == -1 {
+      return true
+    }
+    return false
+  }
+
+  func isAcknowledged() -> Bool {
+    if !isPlaceholder(){
+      if message?.acknowledgedAt > 0 { // TODO: Fix T.A.R.D.I.S. edgecase where no messages can be ack'd at the unix epoch.
+        return true
+      }
+    }
+    return false
+  }
+
+  func canAcknowledge() -> Bool {
+    if isPlaceholder() || isAcknowledged() { // We can't ack a placeholder or an already ack'd message.
+      return false
+    }
+    return type == "received"
   }
 
   func acknowledge() {
-    if isPlaceholder() { // We can't ack a placeholder, duh!
-      return
+    if canAcknowledge() {
+      message!.acknowledge()
+      activityMessage = acknowledgeMessage // Temporarily update the activity message - gets overriden when actual server response is received.
+      NSNotificationCenter.defaultCenter().postNotificationName("activity.update", object: nil)
     }
+  }
 
-    message!.acknowledge()
-
-    // Temporarily update the activity message - gets overriden when actual server response is received.
-    activityMessage = acknowledgeMessage
-
-    NSNotificationCenter.defaultCenter().postNotificationName("activity.update", object: nil)
+  func canReciprocate() -> Bool {
+    if isPlaceholder() || type == "sent" { // Doh! We can't reciprocate a placeholder or a sent message.
+      return false
+    }
+    return true
   }
 
   func reciprocate() {
-    if isPlaceholder() { // Doh! We can't reciprocate a placeholder!
-      return
+    if canReciprocate() {
+      message!.reciprocate()
+      var activity = ActivityModel(type: "sent", activityMessage: reciprocateMessage) // Provide a new, temporary Activity - gets overriden when actual server response is received.
+      var userInfo: NSDictionary = ["activity": activity]
+      NSNotificationCenter.defaultCenter().postNotificationName("activity.new", object: nil, userInfo: userInfo)
     }
-    message!.reciprocate()
+  }
 
-    // Provide a temporary Activity - gets overriden when actual server response is received.
-    var activity = ActivityModel(type: "sent", activityMessage: reciprocateMessage)
-
-    var userInfo: NSDictionary = ["activity": activity]
-    NSNotificationCenter.defaultCenter().postNotificationName("activity.new", object: nil, userInfo: userInfo)
+  func lastActionTimeAgoInWords() -> String {
+    // TODO: Decide how the sublable text should change in each state
+    if !isPlaceholder() {
+      if type == "sent" {
+        if isAcknowledged() { return "seen \(message!.createdAtInWords) ago" }
+        return "sent \(message!.createdAtInWords) ago"
+      }
+      else {
+        if isAcknowledged() { return "received \(message!.createdAtInWords) ago" }
+        return "received \(message!.createdAtInWords) ago"
+      }
+    }
+    else {
+      return "sending..."
+    }
   }
 
   // Implement the SwipeableModel Protocol

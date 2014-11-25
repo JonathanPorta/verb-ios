@@ -16,9 +16,15 @@ class CategoryViewController : UITableViewController {
     var categoryIndex = tableView!.indexPathForSelectedRow()!.row
     var category = categoryModelList[categoryIndex] as CategoryModel
     verbViewController.categoryModel = category
+    title = ""
+  }
+
+  override func viewWillAppear(animated: Bool) {
+    title = "Categories"
   }
 
   override func viewDidLoad() {
+
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData", name: "category.all", object: nil)
 
     var refreshControl = UIRefreshControl()

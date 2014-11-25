@@ -1,10 +1,11 @@
 language: objective-c
+osx_image: xcode61
 rvm:
   - 2.1.2
 before_install:
   - travis_retry brew update && travis_retry brew uninstall xctool && travis_retry brew install xctool --build-from-source
-  - travis_retry gem update --system && travis_retry gem update && travis_retry gem uninstall -a cocoapods && travis_retry gem install cocoapods
-  - gem cocoapod --version
+  - travis_retry gem update --system --no-document && travis_retry gem update --no-document && travis_retry gem uninstall -ax cocoapods && travis_retry gem install --no-document cocoapods
+  - pod --version
   - brew --version
   - xctool -version
   - xcodebuild -version -sdk
@@ -16,8 +17,9 @@ before_script:
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
 - "./scripts/add-key.sh"
 - "./scripts/set-bundle.sh"
+- "./scripts/install-provisioning-profile.sh"
 script:
-- xctool -workspace Verb.xcworkspace -scheme Verb-travis -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
+- "./scripts/build.sh"
 after_script:
 - "./scripts/cleanup.sh"
 after_success:
@@ -30,6 +32,7 @@ env:
   - APP_NAME="Verb"
   - BUNDLE_DISPLAY_NAME="Verb Travis"
   - INFO_PLIST="Verb/Info.plist"
+  - APP_KEYCHAIN="/tmp/ios-Verb-build.keychain"
   - 'DEVELOPER_NAME="iPhone Distribution: William Porta (52KRCFBNVN)"'
   - PROFILE_NAME="verbtravis"
   - secure: BW7OnSwBmbhj31/eqBDquxEzcnD0ChtlHzLBFJ9lfVnfmCN331LRpvIuKjSu0ppc5ZUJtdxo8f5lXkVm3Uks20HeuDENwOWwU+squbKTJAZuKSJviyx2TZMSGFIGc+M+hRMN4ZCs/gIuyNDWMVbNpJe+oVl925nSVE/XVAVb2yQ=

@@ -22,3 +22,5 @@ scripts/profile/verbtravis.mobileprovision
 scripts/certs/dist.cer
 scripts/certs/dist.p12
 scripts/config.sh
+
+Verb/Info.plist.bak

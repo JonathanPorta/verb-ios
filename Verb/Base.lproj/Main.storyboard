@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tKG-f9-vlh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tKG-f9-vlh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Verb Activity-->
@@ -13,16 +14,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListPrototypeCell" id="5Vd-u1-iZ3" customClass="SwipeableCell" customModule="Verb" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListPrototypeCell" rowHeight="60" id="5Vd-u1-iZ3" customClass="SwipeableCell" customModule="Verb" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Vd-u1-iZ3" id="9Ki-vb-2KI">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o1v-KG-QKr" userLabel="Background View" colorLabel="IBBuiltInLabel-Green">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Background Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIo-sV-bKk">
-                                                    <rect key="frame" x="440" y="11" width="140" height="21"/>
+                                                    <rect key="frame" x="440" y="19" width="140" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -35,19 +36,37 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LjK-9H-Zhm" userLabel="Foreground View">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="◉" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mja-jc-0q4" customClass="StatusLabel" customModule="Verb" customModuleProvider="target">
+                                                    <rect key="frame" x="11" y="8" width="18" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Foreground Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnD-hw-8km">
-                                                    <rect key="frame" x="20" y="11" width="136" height="21"/>
+                                                    <rect key="frame" x="44" y="6" width="136" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Foreground Sub Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdV-w4-mSp">
+                                                    <rect key="frame" x="44" y="30" width="134" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="JnD-hw-8km" firstAttribute="leading" secondItem="LjK-9H-Zhm" secondAttribute="leading" constant="20" id="Erc-Ji-E4R"/>
-                                                <constraint firstAttribute="centerY" secondItem="JnD-hw-8km" secondAttribute="centerY" id="wnp-g0-jKe"/>
+                                                <constraint firstItem="PdV-w4-mSp" firstAttribute="bottom" secondItem="LjK-9H-Zhm" secondAttribute="bottomMargin" constant="1" id="7FV-WA-zcd"/>
+                                                <constraint firstItem="mja-jc-0q4" firstAttribute="top" secondItem="LjK-9H-Zhm" secondAttribute="topMargin" id="Ah2-9f-Vxp"/>
+                                                <constraint firstItem="JnD-hw-8km" firstAttribute="leading" secondItem="LjK-9H-Zhm" secondAttribute="leading" constant="44" id="Erc-Ji-E4R"/>
+                                                <constraint firstItem="mja-jc-0q4" firstAttribute="leading" secondItem="LjK-9H-Zhm" secondAttribute="leading" constant="11" id="KHk-0q-hHD"/>
+                                                <constraint firstItem="mja-jc-0q4" firstAttribute="bottom" secondItem="LjK-9H-Zhm" secondAttribute="bottomMargin" id="en4-NX-IL2"/>
+                                                <constraint firstItem="PdV-w4-mSp" firstAttribute="top" secondItem="JnD-hw-8km" secondAttribute="bottom" constant="3" id="i7V-A4-bwV"/>
+                                                <constraint firstItem="PdV-w4-mSp" firstAttribute="leading" secondItem="JnD-hw-8km" secondAttribute="leading" id="juN-tS-WuJ"/>
+                                                <constraint firstAttribute="centerY" secondItem="JnD-hw-8km" secondAttribute="centerY" constant="13" id="wnp-g0-jKe"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -67,6 +86,8 @@
                                     <outlet property="backgroundUIView" destination="o1v-KG-QKr" id="alw-er-hSI"/>
                                     <outlet property="contentUIView" destination="9Ki-vb-2KI" id="sMS-jJ-rom"/>
                                     <outlet property="foregroundLabel" destination="JnD-hw-8km" id="vxT-Yr-DTx"/>
+                                    <outlet property="foregroundStatusLabel" destination="mja-jc-0q4" id="rHC-Oo-wVy"/>
+                                    <outlet property="foregroundSubLabel" destination="PdV-w4-mSp" id="CRE-gd-5rr"/>
                                     <outlet property="foregroundUIView" destination="LjK-9H-Zhm" id="yQF-tF-pg9"/>
                                     <outlet property="foregroundViewLeftConstraint" destination="Tmw-Ad-gAc" id="Q07-Q7-lZA"/>
                                     <outlet property="foregroundViewRightConstraint" destination="bVn-Ff-OjA" id="wIR-2H-kVm"/>
@@ -80,21 +101,25 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Verb Activity" id="9rg-gp-tEK">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="rfA-Sa-4t9">
+                        <barButtonItem key="leftBarButtonItem" title="\u{e6ad}" id="rfA-Sa-4t9">
                             <connections>
                                 <segue destination="57d-Ed-v1P" kind="presentation" id="Dv7-KZ-sVR"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="5Gk-Ia-cju">
+                        <barButtonItem key="rightBarButtonItem" title="\u{e69f}" id="5Gk-Ia-cju">
                             <connections>
                                 <segue destination="cD7-uA-nbV" kind="show" identifier="ActivityToActionCategory" id="adz-YB-Soj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="composeBtn" destination="5Gk-Ia-cju" id="sDm-Wo-7Ur"/>
+                        <outlet property="logoutBtn" destination="rfA-Sa-4t9" id="b3l-Oz-KLU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ok-vA-iqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="933" y="277"/>
+            <point key="canvasLocation" x="933" y="272"/>
         </scene>
         <!--Logout View Controller-->
         <scene sceneID="wcr-jM-uGr">
@@ -130,10 +155,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bk-yp-Fad">
-                                <rect key="frame" x="20" y="298" width="560" height="77"/>
+                                <rect key="frame" x="20" y="399" width="560" height="77"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Back">
+                                <state key="normal" title="Nope">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -151,7 +176,7 @@
                             <constraint firstItem="XZY-mF-8yr" firstAttribute="leading" secondItem="bw0-d7-3U4" secondAttribute="leading" constant="20" symbolic="YES" id="SvF-gp-oPF"/>
                             <constraint firstItem="RY8-UA-VT2" firstAttribute="top" secondItem="up1-3X-orU" secondAttribute="bottom" constant="91" id="bQB-Sl-Luw"/>
                             <constraint firstItem="XZY-mF-8yr" firstAttribute="leading" secondItem="5bk-yp-Fad" secondAttribute="leading" id="q8Y-LQ-dOM"/>
-                            <constraint firstItem="XZY-mF-8yr" firstAttribute="top" secondItem="5bk-yp-Fad" secondAttribute="bottom" constant="8" symbolic="YES" id="twU-L2-MnR"/>
+                            <constraint firstItem="XZY-mF-8yr" firstAttribute="top" secondItem="5bk-yp-Fad" secondAttribute="bottom" constant="27" id="twU-L2-MnR"/>
                         </constraints>
                     </view>
                     <connections>
@@ -309,5 +334,5 @@
             <point key="canvasLocation" x="1607" y="665"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

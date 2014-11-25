@@ -28,6 +28,8 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
 
   @IBOutlet var	foregroundUIView: UIView!
   @IBOutlet var foregroundLabel: UILabel!
+  @IBOutlet var foregroundSubLabel: UILabel!
+  @IBOutlet var foregroundStatusLabel: UILabel!
 
   @IBOutlet var	backgroundUIView: UIView!
   @IBOutlet var backgroundLabel: UILabel!
