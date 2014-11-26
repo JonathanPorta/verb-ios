@@ -14,9 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool{
+  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
 
-    var storyBoard: UIStoryboard!
+    // init HockeyApp SDK
+    BITHockeyManager.sharedHockeyManager().configureWithIdentifier("c6cfa89029481683c21c38653c10e61f")
+    BITHockeyManager.sharedHockeyManager().startManager()
+    BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
 
     // Set the logo and custom font
     if let font = UIFont(name: "verb-logo", size: 32.0) {

@@ -23,16 +23,11 @@ class CategoryFactory: VerbAPIProtocol {
 
   func didReceiveResult(result: JSON) {
     var categories: NSMutableArray = []
-    for (category: String, subcategories: JSON) in result {
-      var verbs: NSMutableArray = []
-      for (index: String, verb: JSON) in subcategories {
-        verbs.addObject(VerbModel(name: verb.string!))
-      }
-      categories.addObject(CategoryModel(name: category, verbs: verbs))
+    for (index: String, category: JSON) in result {
+      var categoryModel = CategoryModel(category: category)
+      categories.addObject(categoryModel)
     }
-
     self.categories = categories
-
     NSNotificationCenter.defaultCenter().postNotificationName("category.all", object: nil)
   }
 }

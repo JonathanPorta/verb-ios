@@ -60,7 +60,7 @@ class VerbAPI {
 
   func sendMessage(recipient: UserModel, verb: VerbModel, delegate: VerbAPIProtocol){
     var url = "/messages.json"
-    var params:[String:AnyObject] = ["recipient_id": recipient.id, "verb": verb.name]
+    var params:[String:AnyObject] = ["recipient_id": recipient.id, "verb": verb.verb]
 
     self.verbRequest.post(url, parameters: params, delegate: delegate)
   }

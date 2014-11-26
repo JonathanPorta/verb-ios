@@ -35,6 +35,21 @@ curl http://testflightapp.com/api/builds.json \
   -F dsym="@$OUTPUTDIR/$APP_NAME.app.dSYM.zip" \
   -F api_token="$TESTFLIGHT_API_TOKEN" \
   -F team_token="$TESTFLIGHT_TEAM_TOKEN" \
-  -F distribution_lists='verb-dev' \
+  -F distribution_lists="$TESTFLIGHT_DISTRIBUTION_LIST" \
   -F notify=true \
   -F notes="$RELEASE_NOTES"
+
+echo "*****************************"
+echo "*  Uploading to HockeyApp   *"
+echo "*****************************"
+
+curl https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions \
+  -F status="2" \
+  -F notify="1" \
+  -F notes="$RELEASE_NOTES" \
+  -F commit_sha="$TRAVIS_COMMIT" \
+  -F build_server_url="https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID" \
+  -F notes_type="0" \
+  -F ipa="@$OUTPUTDIR/$APP_NAME.ipa" \
+  -F dsym="@$OUTPUTDIR/$APP_NAME.app.dSYM.zip" \
+  -H "X-HockeyAppToken: $HOCKEY_APP_TOKEN"
