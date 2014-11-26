@@ -16,7 +16,7 @@ class MessageFactory: VerbAPIProtocol {
     verbAPI.sendMessage(recipient, verb: verb, delegate: self.instance)
 
     // Provide a temporary Activity - gets overriden when actual server response is received.
-    var activityMessage = "You tried to \(verb.name) \(recipient.firstName)."
+    var activityMessage = "You tried to \(verb.verb) \(recipient.firstName)."
     var activity = ActivityModel(type: "sent", activityMessage: activityMessage)
 
     var userInfo: NSDictionary = ["activity": activity]
