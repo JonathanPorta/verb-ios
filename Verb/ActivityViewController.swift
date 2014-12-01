@@ -92,8 +92,7 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
       if !refreshControl!.refreshing {
         // Only show a message that there is no data if we couldn't find data.
         var messageLabel = UILabel(frame:CGRectMake(0, 0, view.bounds.size.width, view.bounds.size.height));
-
-        messageLabel.text = "No data is currently available. Please pull down to refresh."
+        messageLabel.text = "Oh no! You haven't been active! \n\n Try doing something and maybe something will show up here..."
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = NSTextAlignment.Center
         messageLabel.font = UIFont(name:"Palatino-Italic", size:20)

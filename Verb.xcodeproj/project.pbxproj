@@ -39,6 +39,9 @@
 		11C81F5519FF93B8004EB2C6 /* VerbRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C81F5419FF93B8004EB2C6 /* VerbRequest.swift */; };
 		11CC2B5A19B0607500E99EC9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CC2B5919B0607500E99EC9 /* Login.storyboard */; };
 		11CC2B6219B077AC00E99EC9 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */; };
+		11F5E2171A2BB8C500D85821 /* ConnectionFriendFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F5E2161A2BB8C500D85821 /* ConnectionFriendFactory.swift */; };
+		11F5E21A1A2BB8D900D85821 /* ConnectionFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F5E2191A2BB8D900D85821 /* ConnectionFriendViewController.swift */; };
+		11F5E21C1A2BB8F400D85821 /* ConnectionFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F5E21B1A2BB8F400D85821 /* ConnectionFriendModel.swift */; };
 		11FED9021A22E3C8009AE028 /* icomoon-standard.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11FED9011A22E3C8009AE028 /* icomoon-standard.ttf */; };
 		72CBEDC9E064017C2BCA501E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBD8A6F96D04114838ED370 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -126,6 +129,9 @@
 		11C81F5419FF93B8004EB2C6 /* VerbRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbRequest.swift; sourceTree = "<group>"; };
 		11CC2B5919B0607500E99EC9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
+		11F5E2161A2BB8C500D85821 /* ConnectionFriendFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionFriendFactory.swift; sourceTree = "<group>"; };
+		11F5E2191A2BB8D900D85821 /* ConnectionFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionFriendViewController.swift; sourceTree = "<group>"; };
+		11F5E21B1A2BB8F400D85821 /* ConnectionFriendModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionFriendModel.swift; path = Model/ConnectionFriendModel.swift; sourceTree = "<group>"; };
 		11FED9011A22E3C8009AE028 /* icomoon-standard.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "icomoon-standard.ttf"; sourceTree = "<group>"; };
 		1BBD8A6F96D04114838ED370 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F054F42551669CD6E82F7CF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +159,7 @@
 		112B604B1A063E01004D9F33 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				11F5E2161A2BB8C500D85821 /* ConnectionFriendFactory.swift */,
 				1111AC9D1A0F6C82006B3993 /* FriendFactory.swift */,
 				1111AC9A1A0F643D006B3993 /* CategoryFactory.swift */,
 				112B604C1A063E01004D9F33 /* ActivityFactory.swift */,
@@ -200,6 +207,7 @@
 				1195679A19E150C500D015CA /* Model */,
 				11944F8519AEDF5100D5BF6D /* AppDelegate.swift */,
 				11C81F5419FF93B8004EB2C6 /* VerbRequest.swift */,
+				11F5E2191A2BB8D900D85821 /* ConnectionFriendViewController.swift */,
 				110DD5A01A1C488B004809D7 /* StatusLabel.swift */,
 				1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */,
 				11944F8719AEDF5100D5BF6D /* LoginViewController.swift */,
@@ -248,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				116D268819FB8EA00039A948 /* CategoryModel.swift */,
+				11F5E21B1A2BB8F400D85821 /* ConnectionFriendModel.swift */,
 				116D268C19FB9B3C0039A948 /* VerbModel.swift */,
 				1195679D19E1530E00D015CA /* MessageModel.swift */,
 				11944FAA19AF0CA300D5BF6D /* UserModel.swift */,
@@ -453,6 +462,7 @@
 				11C81F5519FF93B8004EB2C6 /* VerbRequest.swift in Sources */,
 				11944FAF19AF100000D5BF6D /* ActivityViewController.swift in Sources */,
 				119217FA1A10BEA700EFA72F /* SwipeableCell.swift in Sources */,
+				11F5E21A1A2BB8D900D85821 /* ConnectionFriendViewController.swift in Sources */,
 				110DD5A11A1C488B004809D7 /* StatusLabel.swift in Sources */,
 				119217FD1A121FBA00EFA72F /* SwipeableModel.swift in Sources */,
 				11406D8E1A04C55300676EC6 /* Async.swift in Sources */,
@@ -463,6 +473,7 @@
 				112B604F1A063E01004D9F33 /* MessageFactory.swift in Sources */,
 				116D269319FE30000039A948 /* SelectableModel.swift in Sources */,
 				1111AC9B1A0F643D006B3993 /* CategoryFactory.swift in Sources */,
+				11F5E21C1A2BB8F400D85821 /* ConnectionFriendModel.swift in Sources */,
 				11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */,
 				11406D901A04D90900676EC6 /* Model.swift in Sources */,
 				116D268B19FB990D0039A948 /* VerbViewController.swift in Sources */,
@@ -471,6 +482,7 @@
 				11406D8819FFA97500676EC6 /* SwiftyJSON.swift in Sources */,
 				11944FAB19AF0CA300D5BF6D /* UserModel.swift in Sources */,
 				1111AC9E1A0F6C82006B3993 /* FriendFactory.swift in Sources */,
+				11F5E2171A2BB8C500D85821 /* ConnectionFriendFactory.swift in Sources */,
 				11CC2B6219B077AC00E99EC9 /* LogoutViewController.swift in Sources */,
 				116D269119FE12890039A948 /* FriendViewController.swift in Sources */,
 				116D268D19FB9B3C0039A948 /* VerbModel.swift in Sources */,
