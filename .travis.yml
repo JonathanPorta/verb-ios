@@ -3,6 +3,7 @@ osx_image: xcode61
 rvm:
 - 2.1.2
 before_install:
+- softwareupdate -l
 - travis_retry brew update && travis_retry brew uninstall xctool && travis_retry brew
   install xctool --build-from-source
 - travis_retry gem update --system --no-document && travis_retry gem update --no-document
