@@ -7,7 +7,7 @@ before_install:
   install xctool --build-from-source
 - travis_retry gem update --system --no-document && travis_retry gem update --no-document
   && travis_retry gem uninstall -ax cocoapods && travis_retry gem install --no-document
-  cocoapods
+  cocoapods && gem cleanup
 - pod --version
 - brew --version
 - xctool -version
