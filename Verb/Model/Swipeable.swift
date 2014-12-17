@@ -1,5 +1,5 @@
 //
-//  SwipeableModel.swift
+//  Swipeable.swift
 //  Verb
 //
 //  Created by Jonathan Porta on 11/11/14.
@@ -8,9 +8,8 @@
 
 import Foundation
 
-protocol SwipeableModel {
+protocol Swipeable {
   func promptMessage() -> String
-  func confirmMessage() -> String
   func workingMessage() -> String
   func isSwipeable() -> Bool
 }

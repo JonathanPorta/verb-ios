@@ -71,4 +71,21 @@ class VerbAPI {
 
     self.verbRequest.post(url, parameters: params)
   }
+
+  func getConnectionFriends(connection: String, delegate: VerbAPIProtocol){
+    var url = "/friends/\(connection).json"
+    self.verbRequest.get(url, delegate: delegate)
+  }
+
+  func requestFriendship(connectionFriend: ConnectionFriendModel, delegate: VerbAPIProtocol) {
+    var url = "/friendships.json"
+    var params:[String:AnyObject] = ["friend_id": connectionFriend.id]
+
+    self.verbRequest.post(url, parameters: params, delegate: delegate)
+  }
+
+  func acceptFriendship(friendshipModel: FriendshipModel, delegate: VerbAPIProtocol) {
+    var url = "/friendships/\(friendshipModel.id)/accept"
+    self.verbRequest.get(url, delegate: delegate)
+  }
 }

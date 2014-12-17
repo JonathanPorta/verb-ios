@@ -1,5 +1,5 @@
 //
-//  MessageModel.swift
+//  FriendshipModel.swift
 //  Verb
 //
 //  Created by Jonathan Porta on 8/27/14.
@@ -8,28 +8,26 @@
 
 import Foundation
 
-class MessageModel: Actionable {
+class FriendshipModel: Actionable {
   var id: Int
   var type: String
-  var verb: String
   var acknowledgedAt: Int
   var acknowlegedAtInWords: String
   var createdAt: Int
   var createdAtInWords: String
-  var sender: UserModel
-  var recipient: UserModel
+  var user: UserModel
+  var friend: UserModel
   var activity: ActivityModel?
 
   init(actionable: JSON, activity: ActivityModel? = nil) {
     self.id = actionable["id"].intValue
-    self.verb = actionable["verb"].stringValue
     self.type = actionable["type"].stringValue
     self.acknowledgedAt = actionable["acknowledged_at"].intValue
     self.acknowlegedAtInWords = actionable["acknowleged_at_in_words"].stringValue
     self.createdAt = actionable["created_at"].intValue
     self.createdAtInWords = actionable["created_at_in_words"].stringValue
-    self.sender = UserModel(user: actionable["sender"])
-    self.recipient = UserModel(user: actionable["recipient"])
+    self.user = UserModel(user: actionable["sender"])
+    self.friend = UserModel(user: actionable["recipient"])
 
     if activity != nil {
       self.activity = activity
@@ -52,27 +50,27 @@ class MessageModel: Actionable {
   }
 
   func acknowledge() {
-    MessageFactory.Acknowledge(self)
+    ConnectionFriendFactory.AcceptFriendship(self)
   }
 
   func canReciprocate() -> Bool {
-    return true
+    return false
   }
 
   func reciprocate() {
-    MessageFactory.Reciprocate(self)
+
   }
 
   // Implement Swipeable
   func isSwipeable() -> Bool {
-    return true
+    return false
   }
 
   func promptMessage() -> String {
-    return "\(verb) back!"
+    return ""
   }
 
   func workingMessage() -> String {
-    return "about to \(verb)!"
+    return ""
   }
 }

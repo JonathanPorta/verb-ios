@@ -18,7 +18,7 @@ class SwipeableCell: UITableViewCell, UIGestureRecognizerDelegate {
 
   let bounceValue: CGFloat = 20.0
 
-  var swipeableModel: SwipeableModel!
+  var swipeableModel: Swipeable!
   var didSwipe: ((Void)->())?
   var delegate: SwipeableCellDelegate?
   var backgroundColorPrompt = UIColor.whiteColor()

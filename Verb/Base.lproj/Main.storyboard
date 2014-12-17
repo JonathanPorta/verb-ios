@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tKG-f9-vlh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tKG-f9-vlh">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -281,18 +281,45 @@
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Send" style="done" id="1hZ-m8-gdF">
                             <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="31x-gL-sM5" kind="unwind" unwindAction="sendMessages:" id="tBK-6v-PRI"/>
+                                <segue destination="31x-gL-sM5" kind="unwind" identifier="SendMessages" unwindAction="sendMessages:" id="tBK-6v-PRI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sendBtn" destination="1hZ-m8-gdF" id="t7Y-yi-1q5"/>
+                        <segue destination="3Eg-DB-mku" kind="show" identifier="ShowConnectionFriends" id="BGu-bE-Kfg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Soh-Uy-LlJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="31x-gL-sM5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3733" y="-453"/>
+        </scene>
+        <!--Connection Friend View Controller-->
+        <scene sceneID="kOb-rN-QOH">
+            <objects>
+                <tableViewController id="3Eg-DB-mku" customClass="ConnectionFriendViewController" customModule="Verb" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bSd-ki-sTl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListPrototypeCell" id="fV7-fy-eRr">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fV7-fy-eRr" id="4Xn-DA-jJW">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3Eg-DB-mku" id="9LI-NL-9d0"/>
+                            <outlet property="delegate" destination="3Eg-DB-mku" id="ZcT-Eu-xGZ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ey-5P-Vr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4447" y="-453"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SSk-oy-LSJ">
