@@ -59,7 +59,7 @@ class CategoryViewController : UITableViewController {
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
     var categoryModel = categoryModelList.objectAtIndex(indexPath.row) as CategoryModel
-    cell.textLabel.text = categoryModel.name
+    cell.textLabel!.text = categoryModel.name
     return cell
   }
 

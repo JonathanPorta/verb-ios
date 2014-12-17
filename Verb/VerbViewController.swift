@@ -46,7 +46,7 @@ class VerbViewController : UITableViewController {
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
     var verbModel = verbModelList.objectAtIndex(indexPath.row) as VerbModel
-    cell.textLabel.text = verbModel.name
+    cell.textLabel!.text = verbModel.name
     return cell
   }
 

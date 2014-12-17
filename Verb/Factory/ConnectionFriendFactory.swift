@@ -39,4 +39,11 @@ class ConnectionFriendFactory: VerbAPIProtocol {
 
     verbAPI.requestFriendship(connectionFriend, delegate: self.instance)
   }
+
+  class func AcceptFriendship(friendshipModel: FriendshipModel) {
+    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    var verbAPI = appDelegate.getVerbAPI()
+
+    verbAPI.acceptFriendship(friendshipModel, delegate: self.instance)
+  }
 }

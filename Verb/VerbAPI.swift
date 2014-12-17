@@ -83,4 +83,9 @@ class VerbAPI {
 
     self.verbRequest.post(url, parameters: params, delegate: delegate)
   }
+
+  func acceptFriendship(friendshipModel: FriendshipModel, delegate: VerbAPIProtocol) {
+    var url = "/friendships/\(friendshipModel.id)/accept"
+    self.verbRequest.get(url, delegate: delegate)
+  }
 }

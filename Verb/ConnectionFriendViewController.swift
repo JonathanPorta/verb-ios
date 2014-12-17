@@ -71,7 +71,8 @@ class ConnectionFriendViewController : UITableViewController {
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
     var connectionFriendModel = friendModelList.objectAtIndex(indexPath.row) as ConnectionFriendModel
-    cell.textLabel.text = connectionFriendModel.firstName
+
+    cell.textLabel!.text = connectionFriendModel.firstName
     cell.tintColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
 
     if connectionFriendModel.isFriend {

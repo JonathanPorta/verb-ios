@@ -30,9 +30,16 @@ class FriendViewController : UITableViewController {
 
   override func viewWillAppear(animated: Bool) {
     self.title = "Friends"
-    sendBtn.tintColor = UIColor.whiteColor()
+    var font = UIFont(name: "icomoon-standard", size: 24.0)!
 
-    var findFriendsBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action: "showConnectionFriendsView:")
+    sendBtn.title = "\u{e848}"
+    sendBtn.tintColor = UIColor.whiteColor()
+    sendBtn.setTitleTextAttributes([ NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.whiteColor() ], forState: UIControlState.Normal)
+    sendBtn.setTitleTextAttributes([ NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor(white: 1.0, alpha: 0.5) ], forState: UIControlState.Disabled)
+
+    var findFriendsBtn = UIBarButtonItem(title: "\u{e852}", style: UIBarButtonItemStyle.Plain, target: self, action: "showConnectionFriendsView:")
+    findFriendsBtn.setTitleTextAttributes([ NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.whiteColor() ], forState: UIControlState.Normal)
+    //var findFriendsBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action: "showConnectionFriendsView:")
     var actionButtonItems = [sendBtn, findFriendsBtn]
     self.navigationItem.rightBarButtonItems = actionButtonItems
   }
@@ -115,7 +122,7 @@ class FriendViewController : UITableViewController {
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
     var friendModel = friendModelList.objectAtIndex(indexPath.row) as UserModel
-    cell.textLabel.text = friendModel.firstName
+    cell.textLabel!.text = friendModel.firstName
     cell.tintColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
 
     if friendModel.selected {
