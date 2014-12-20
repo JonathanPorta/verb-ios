@@ -1,7 +1,11 @@
 #!/bin/sh
 
+# Save path to current keychain so that we can restore it properly during cleanup.
+echo "Remembering the current default keychain: $ORIGINAL_KEYCHAIN"
+
 # An absolute path really cut down on confusion and made a couple mistakes obvious.
 mkdir -p /tmp/
+
 export APP_KEYCHAIN="/tmp/ios-$APP_NAME-build.keychain"
 
 # Create a custom keychain

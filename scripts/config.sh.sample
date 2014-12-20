@@ -7,6 +7,7 @@ export PROFILE_NAME=verbtravis
 export INFO_PLIST=Verb/Info.plist
 export BUNDLE_DISPLAY_NAME=Verb Travis
 export APP_KEYCHAIN="ios-$APP_NAME-build.keychain"
+export ORIGINAL_KEYCHAIN=`security default-keychain | sed -e 's/^ *//' -e 's/ *$//' | tr -d '"'`
 
 # Edit this for local testing only, DON'T COMMIT it:
 export ENCRYPTION_SECRET=...
