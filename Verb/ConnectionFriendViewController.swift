@@ -69,18 +69,10 @@ class ConnectionFriendViewController : UITableViewController {
     }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as SocialCell
     var connectionFriendModel = friendModelList.objectAtIndex(indexPath.row) as ConnectionFriendModel
 
-    cell.textLabel!.text = connectionFriendModel.firstName
-    cell.tintColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
-
-    if connectionFriendModel.isFriend {
-      cell.accessoryType = .Checkmark
-    }
-    else {
-      cell.accessoryType = .None
-    }
+    cell.setModel(connectionFriendModel)
 
     return cell
   }
@@ -88,7 +80,12 @@ class ConnectionFriendViewController : UITableViewController {
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     var connectionFriendModel = friendModelList.objectAtIndex(indexPath.row) as ConnectionFriendModel
     connectionFriendModel.requestFriendship()
-    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+
+    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as SocialCell
+    Async.main {
+      cell.showSpinner()
+      tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+    }
   }
 
   func refresh() {

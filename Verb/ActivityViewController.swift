@@ -44,6 +44,7 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
     cellsCurrentlyEditing = NSMutableSet()
     tableView.rowHeight = 60
 
+    // TODO: Like fonts, we need a way to manager the colors and inject them as dependencies.
     self.navigationController?.navigationBar.backgroundColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
     self.navigationController?.navigationBar.barTintColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
 

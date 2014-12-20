@@ -23,6 +23,8 @@
 		114105651A4148AB00F6EE95 /* Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114105641A4148AB00F6EE95 /* Actionable.swift */; };
 		114105671A4148BE00F6EE95 /* Swipeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114105661A4148BE00F6EE95 /* Swipeable.swift */; };
 		114105691A4148D400F6EE95 /* FriendshipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114105681A4148D400F6EE95 /* FriendshipModel.swift */; };
+		1150C8B61A451EC600B2589A /* SocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150C8B51A451EC600B2589A /* SocialCell.swift */; };
+		1150C8B91A45234500B2589A /* FontableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150C8B81A45234500B2589A /* FontableLabel.swift */; };
 		116D268919FB8EA00039A948 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268819FB8EA00039A948 /* CategoryModel.swift */; };
 		116D268B19FB990D0039A948 /* VerbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268A19FB990D0039A948 /* VerbViewController.swift */; };
 		116D268D19FB9B3C0039A948 /* VerbModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268C19FB9B3C0039A948 /* VerbModel.swift */; };
@@ -109,6 +111,8 @@
 		114105641A4148AB00F6EE95 /* Actionable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Actionable.swift; path = Model/Actionable.swift; sourceTree = "<group>"; };
 		114105661A4148BE00F6EE95 /* Swipeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swipeable.swift; path = Model/Swipeable.swift; sourceTree = "<group>"; };
 		114105681A4148D400F6EE95 /* FriendshipModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendshipModel.swift; path = Model/FriendshipModel.swift; sourceTree = "<group>"; };
+		1150C8B51A451EC600B2589A /* SocialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialCell.swift; sourceTree = "<group>"; };
+		1150C8B81A45234500B2589A /* FontableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontableLabel.swift; sourceTree = "<group>"; };
 		116D268819FB8EA00039A948 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryModel.swift; path = Model/CategoryModel.swift; sourceTree = "<group>"; };
 		116D268A19FB990D0039A948 /* VerbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbViewController.swift; sourceTree = "<group>"; };
 		116D268C19FB9B3C0039A948 /* VerbModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerbModel.swift; path = Model/VerbModel.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 				11944F8519AEDF5100D5BF6D /* AppDelegate.swift */,
 				11C81F5419FF93B8004EB2C6 /* VerbRequest.swift */,
 				11F5E2191A2BB8D900D85821 /* ConnectionFriendViewController.swift */,
+				1150C8B51A451EC600B2589A /* SocialCell.swift */,
+				1150C8B81A45234500B2589A /* FontableLabel.swift */,
 				110DD5A01A1C488B004809D7 /* StatusLabel.swift */,
 				1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */,
 				11944F8719AEDF5100D5BF6D /* LoginViewController.swift */,
@@ -483,11 +489,13 @@
 				1111AC9B1A0F643D006B3993 /* CategoryFactory.swift in Sources */,
 				11F5E21C1A2BB8F400D85821 /* ConnectionFriendModel.swift in Sources */,
 				11944FA319AEE1A200D5BF6D /* ActivityModel.swift in Sources */,
+				1150C8B61A451EC600B2589A /* SocialCell.swift in Sources */,
 				11406D901A04D90900676EC6 /* Model.swift in Sources */,
 				116D268B19FB990D0039A948 /* VerbViewController.swift in Sources */,
 				116D268919FB8EA00039A948 /* CategoryModel.swift in Sources */,
 				119567A019E1530E00D015CA /* MessageModel.swift in Sources */,
 				11406D8819FFA97500676EC6 /* SwiftyJSON.swift in Sources */,
+				1150C8B91A45234500B2589A /* FontableLabel.swift in Sources */,
 				11944FAB19AF0CA300D5BF6D /* UserModel.swift in Sources */,
 				1111AC9E1A0F6C82006B3993 /* FriendFactory.swift in Sources */,
 				11F5E2171A2BB8C500D85821 /* ConnectionFriendFactory.swift in Sources */,
