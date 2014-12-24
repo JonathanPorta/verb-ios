@@ -10,9 +10,11 @@ import Foundation
 
 class ConnectionFriendModel: UserModel {
   var isFriend: Bool
+  var isHidden: Bool
 
   override init(user: JSON) {
     isFriend = user["is_friend"].boolValue
+    self.isHidden = false
     super.init(user: user)
   }
 

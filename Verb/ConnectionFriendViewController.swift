@@ -83,7 +83,7 @@ class ConnectionFriendViewController : UITableViewController {
 
     var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as SocialCell
     Async.main {
-      cell.showSpinner()
+      cell.showSpinner(connectionFriendModel)
       tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
     }
   }

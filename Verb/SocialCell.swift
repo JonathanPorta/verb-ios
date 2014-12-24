@@ -11,13 +11,7 @@ import UIKit
 
 class SocialCell: UITableViewCell {
 
-  required init(coder aDecoder: NSCoder) {
-    isHidden = false
-    super.init(coder: aDecoder)
-  }
-
   var connectionFriendModel: ConnectionFriendModel!
-  var isHidden: Bool
 
   @IBOutlet var profileImageView: UIImageView!
   @IBOutlet var foregroundLabel: UILabel!
@@ -34,7 +28,7 @@ class SocialCell: UITableViewCell {
     var font = UIFont(name: "icomoon-standard", size: 24.0)!
     connectionFriendModel = model
 
-    if !isHidden {
+    if !model.isHidden {
       foregroundLabel.text = connectionFriendModel.firstName
       foregroundStatusLabel.setFont(font)
       foregroundStatusLabel.setText(connectionFriendModel.friendshipStatusIcon())
@@ -42,8 +36,8 @@ class SocialCell: UITableViewCell {
     }
   }
 
-  func showSpinner() {
-    isHidden = true
+  func showSpinner(model: ConnectionFriendModel) {
+    model.isHidden = true
     foregroundStatusLabel.setText("")
     foregroundStatusLabel.hide()
     foregroundStatusLabel.hidden = true
