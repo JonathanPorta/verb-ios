@@ -318,11 +318,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LrS-jS-I58" userLabel="Icon View">
                                             <rect key="frame" x="546" y="-1" width="44" height="45"/>
                                             <subviews>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Bxg-YE-08L">
-                                                    <rect key="frame" x="12" y="13" width="20" height="20"/>
-                                                </activityIndicatorView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7b-m5-kvX" customClass="FontableLabel" customModule="Verb" customModuleProvider="target">
-                                                    <rect key="frame" x="13" y="1" width="18" height="43"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7b-m5-kvX" customClass="FontableLabel" customModule="Verb" customModuleProvider="target">
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" none="YES"/>
                                                     </accessibility>
@@ -338,9 +334,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="h7b-m5-kvX" secondAttribute="centerY" id="KCM-sc-mQf"/>
                                                 <constraint firstAttribute="centerX" secondItem="h7b-m5-kvX" secondAttribute="centerX" id="LLQ-kn-Bbj"/>
-                                                <constraint firstAttribute="centerX" secondItem="Bxg-YE-08L" secondAttribute="centerX" id="gHt-3w-BBH"/>
                                                 <constraint firstAttribute="height" constant="44" id="h3Z-5L-5lH"/>
-                                                <constraint firstAttribute="centerY" secondItem="Bxg-YE-08L" secondAttribute="centerY" id="mx9-NX-bqm"/>
                                                 <constraint firstAttribute="width" constant="44" id="w08-rc-nGn"/>
                                             </constraints>
                                         </view>
@@ -363,7 +357,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="activityIndicator" destination="Bxg-YE-08L" id="YGP-SX-9Y9"/>
                                     <outlet property="foregroundLabel" destination="4gd-wZ-5py" id="twI-RC-8vF"/>
                                     <outlet property="foregroundStatusLabel" destination="h7b-m5-kvX" id="4Oe-sg-Vwl"/>
                                     <outlet property="iconUIView" destination="LrS-jS-I58" id="FwL-bt-O1Q"/>

@@ -9,26 +9,17 @@
 import Foundation
 
 class ConnectionFriendModel: UserModel {
-  var isFriend: Bool
-  var isHidden: Bool
+  var relationship: String
 
   override init(user: JSON) {
-    isFriend = user["is_friend"].boolValue
-    self.isHidden = false
+    relationship = user["relationship"].stringValue
     super.init(user: user)
   }
 
-  func friendshipStatusIcon() -> String {
-    // TODO: Make this actually return a relevant icon.
-    return "\u{e850}"
-  }
-
-  func friendshipStatusColor() -> UIColor {
-    return UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
-  }
-
   func requestFriendship() {
-    if !isFriend {
+    if relationship == "not friends" {
+      //Set a temporary value to help with UI lag
+      relationship = "friendship requested"
       ConnectionFriendFactory.RequestFriendship(self)
     }
   }

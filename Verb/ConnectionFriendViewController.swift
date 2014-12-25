@@ -81,11 +81,7 @@ class ConnectionFriendViewController : UITableViewController {
     var connectionFriendModel = friendModelList.objectAtIndex(indexPath.row) as ConnectionFriendModel
     connectionFriendModel.requestFriendship()
 
-    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as SocialCell
-    Async.main {
-      cell.showSpinner(connectionFriendModel)
-      tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-    }
+    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
   }
 
   func refresh() {

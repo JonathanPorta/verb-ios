@@ -27,21 +27,13 @@ class SocialCell: UITableViewCell {
     // TODO: Needs to figure out best way to inject fonts, instead of treating them as global.
     var font = UIFont(name: "icomoon-standard", size: 24.0)!
     connectionFriendModel = model
+    foregroundLabel.text = connectionFriendModel.firstName
+    foregroundStatusLabel.setFont(font)
 
-    if !model.isHidden {
-      foregroundLabel.text = connectionFriendModel.firstName
-      foregroundStatusLabel.setFont(font)
-      foregroundStatusLabel.setText(connectionFriendModel.friendshipStatusIcon())
-      foregroundStatusLabel.setTextColor(connectionFriendModel.friendshipStatusColor())
-    }
-  }
+    //if model.isHidden {
 
-  func showSpinner(model: ConnectionFriendModel) {
-    model.isHidden = true
-    foregroundStatusLabel.setText("")
-    foregroundStatusLabel.hide()
-    foregroundStatusLabel.hidden = true
-    activityIndicator.hidden = false
-    activityIndicator.startAnimating()
+      foregroundStatusLabel.setText(connectionFriendModel.relationship)
+      //foregroundStatusLabel.setTextColor(connectionFriendModel.friendshipStatusColor())
+    //}
   }
 }
