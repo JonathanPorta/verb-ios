@@ -13,11 +13,16 @@ class SocialCell: UITableViewCell {
 
   var connectionFriendModel: ConnectionFriendModel!
 
-  @IBOutlet var profileImageView: UIImageView!
   @IBOutlet var foregroundLabel: UILabel!
   @IBOutlet var foregroundStatusLabel: FontableLabel!
   @IBOutlet var iconUIView: UIView!
-  @IBOutlet var activityIndicator: UIActivityIndicatorView!
+
+  let statusIcons = [
+    "friends": "\u{e670}",
+    "not friends": "\u{e852}",
+    "friendship requested": "\u{e677}",
+    "friendship received": "\u{e852}"
+  ]
 
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -32,7 +37,7 @@ class SocialCell: UITableViewCell {
 
     //if model.isHidden {
 
-      foregroundStatusLabel.setText(connectionFriendModel.relationship)
+      foregroundStatusLabel.setText(statusIcons[connectionFriendModel.relationship]!)
       //foregroundStatusLabel.setTextColor(connectionFriendModel.friendshipStatusColor())
     //}
   }

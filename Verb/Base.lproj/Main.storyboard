@@ -309,8 +309,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fV7-fy-eRr" id="4Xn-DA-jJW">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gd-wZ-5py" userLabel="Friend's Name">
-                                            <rect key="frame" x="59" y="11" width="112" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gd-wZ-5py" userLabel="Friend's Name">
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -338,29 +337,18 @@
                                                 <constraint firstAttribute="width" constant="44" id="w08-rc-nGn"/>
                                             </constraints>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="LNx-iw-58C">
-                                            <rect key="frame" x="8" y="2" width="40" height="40"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="4q3-lK-eMx"/>
-                                                <constraint firstAttribute="width" constant="40" id="DLh-9h-Eu5"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="LrS-jS-I58" secondAttribute="trailing" constant="10" id="33k-rv-R3Z"/>
                                         <constraint firstAttribute="centerY" secondItem="4gd-wZ-5py" secondAttribute="centerY" id="JLU-Jy-3Lz"/>
-                                        <constraint firstItem="LNx-iw-58C" firstAttribute="leading" secondItem="4Xn-DA-jJW" secondAttribute="leading" constant="8" id="OgZ-sy-VGY"/>
-                                        <constraint firstItem="4gd-wZ-5py" firstAttribute="leading" secondItem="LNx-iw-58C" secondAttribute="trailing" constant="11" id="Sb9-fi-Aet"/>
-                                        <constraint firstAttribute="centerY" secondItem="LNx-iw-58C" secondAttribute="centerY" id="cRb-wu-Wrd"/>
                                         <constraint firstAttribute="centerY" secondItem="LrS-jS-I58" secondAttribute="centerY" id="eRE-zl-MHp"/>
-                                        <constraint firstItem="4gd-wZ-5py" firstAttribute="leading" secondItem="4Xn-DA-jJW" secondAttribute="leading" constant="59" id="rJT-ig-zHC"/>
+                                        <constraint firstItem="4gd-wZ-5py" firstAttribute="leading" secondItem="4Xn-DA-jJW" secondAttribute="leading" constant="12" id="rJT-ig-zHC"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="foregroundLabel" destination="4gd-wZ-5py" id="twI-RC-8vF"/>
                                     <outlet property="foregroundStatusLabel" destination="h7b-m5-kvX" id="4Oe-sg-Vwl"/>
                                     <outlet property="iconUIView" destination="LrS-jS-I58" id="FwL-bt-O1Q"/>
-                                    <outlet property="profileImageView" destination="LNx-iw-58C" id="A7P-AR-WQf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -414,8 +402,5 @@
             <point key="canvasLocation" x="1607" y="665"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Rectangle@3x.png" width="69" height="45"/>
-    </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
