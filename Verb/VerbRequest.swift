@@ -35,8 +35,6 @@ class VerbRequest {
         else {
           NSLog("GET Success: \(url)")
           var json = JSON(json!)
-          //TODO: Implement Toggleable Logging
-          //NSLog("GET Result: \(json)")
 
           if (delegate != nil) {
             delegate!.didReceiveResult(json)
