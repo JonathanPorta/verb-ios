@@ -11,8 +11,6 @@ import UIKit
 
 class SocialCell: UITableViewCell {
 
-  var connectionFriendModel: ConnectionFriendModel!
-
   @IBOutlet var foregroundLabel: UILabel!
   @IBOutlet var foregroundStatusLabel: FontableLabel!
   @IBOutlet var iconUIView: UIView!
@@ -31,14 +29,10 @@ class SocialCell: UITableViewCell {
   func setModel(model: ConnectionFriendModel) {
     // TODO: Needs to figure out best way to inject fonts, instead of treating them as global.
     var font = UIFont(name: "icomoon-standard", size: 24.0)!
-    connectionFriendModel = model
-    foregroundLabel.text = connectionFriendModel.firstName
     foregroundStatusLabel.setFont(font)
+    foregroundLabel.text = model.firstName
 
-    //if model.isHidden {
-
-      foregroundStatusLabel.setText(statusIcons[connectionFriendModel.relationship]!)
-      //foregroundStatusLabel.setTextColor(connectionFriendModel.friendshipStatusColor())
-    //}
+    var icon = statusIcons[model.relationship]!
+    foregroundStatusLabel.setText(icon)
   }
 }
