@@ -13,6 +13,8 @@ import Foundation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  var apiToken: String?
+  var hostname = "http://development.verb.social"
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
 
@@ -29,13 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       ]
     }
 
-    // Push Notifications
-    var types: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
-    var settings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
-
-    application.registerUserNotificationSettings(settings)
-    application.registerForRemoteNotifications()
-
     // FB SDK
     FBLoginView.self
     FBProfilePictureView.self
@@ -43,8 +38,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     FBSession.openActiveSessionWithAllowLoginUI(false)
 
     if hasValidFacebookSession() {
-      didLogin()
-      changeStoryBoard("Main")
+      // We need to login before we change to the main storyboard.
+      login({
+        println("AppDelegate::login() last closure before storyboard switch")
+        // Register for Push Notifications
+        var types: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
+        var settings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
+
+        self.changeStoryBoard("Main")
+      })
     }
     else {
       changeStoryBoard("Login")
@@ -53,12 +58,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
 
-  func didLogin() {
+  func login(closure: () -> ()) {
+    println("AppDelegate::login()")
     // Log into the API, backend will update the user's token if needed.
-    getVerbAPI().doLogin()
-    // Preload Some Data
-    CategoryFactory.All()
-    FriendFactory.All()
+    VerbAPI.Login(self.hostname, accessToken: getFacebookAccessToken(), closure: { (apiToken: String) -> Void in
+      self.apiToken = apiToken
+      println("AppDelegate::login() Closure with apiToken")
+      println(apiToken)
+      // Preload Some Data
+      CategoryFactory.All()
+      FriendFactory.All()
+      closure()
+    })
   }
 
   func hasValidFacebookSession() -> Bool {
@@ -76,8 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func getVerbAPI() -> VerbAPI {
-    var accessToken = getFacebookAccessToken()
-    return VerbAPI(hostname: "http://development.verb.social", accessToken: accessToken)
+    return VerbAPI(hostname: self.hostname, apiToken: self.apiToken!)
   }
 
   func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool{

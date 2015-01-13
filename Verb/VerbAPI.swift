@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol VerbAPIProtocol {
   func didReceiveResult(results: JSON)
@@ -14,78 +15,87 @@ protocol VerbAPIProtocol {
 
 class VerbAPI {
 
-  typealias Callback = (JSON) -> ()
+  class func Login(hostname: String, accessToken: String, closure: (String) -> ()) {
+    var url = "\(hostname)/auth/facebook_access_token/callback"
+    var params = ["access_token": accessToken]
+
+    VerbRequest.get(url, parameters: params, closure: { (results) -> Void in
+      var apiToken = results["api_token"].stringValue
+
+      closure(apiToken)
+    })
+  }
+
+  typealias Callback = (results: JSON) -> ()
 
   var hostname: String
-  var accessToken: String
-  var verbRequest: VerbRequest
+  var apiToken: String
 
-  init(hostname: String, accessToken: String) {
+  init(hostname: String, apiToken: String) {
     self.hostname = hostname
-    self.accessToken = accessToken
-    self.verbRequest = VerbRequest(hostname: hostname, accessToken: accessToken)
+    self.apiToken = apiToken
+
+    Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["api_token": self.apiToken]
   }
 
-  func doLogin(){
-    var url = "/auth/facebook_access_token/callback"
-    var params = ["access_token": self.accessToken]
-
-    self.verbRequest.get(url, parameters: params)
+  // URL Builder Helper
+  func url(path: String) -> String {
+    return "\(self.hostname)\(path)"
   }
 
-  func getActivities(delegate: VerbAPIProtocol){
-    var url = "/activities.json"
-    self.verbRequest.get(url, delegate: delegate)
+  func getActivities(delegate: VerbAPIProtocol) {
+    var endpoint = url("/activities.json")
+    VerbRequest.get(endpoint, delegate: delegate)
   }
 
-  func acknowledgeMessage(message: MessageModel, delegate: VerbAPIProtocol){
-    var url = "/messages/\(message.id)/acknowledge.json"
-    self.verbRequest.get(url, delegate: delegate)
+  func acknowledgeMessage(message: MessageModel, delegate: VerbAPIProtocol) {
+    var endpoint = url("/messages/\(message.id)/acknowledge.json")
+    VerbRequest.get(endpoint, delegate: delegate)
   }
 
-  func reciprocateMessage(message: MessageModel, delegate: VerbAPIProtocol){
-    var url = "/messages/\(message.id)/reciprocate.json"
-    self.verbRequest.get(url, delegate: delegate)
+  func reciprocateMessage(message: MessageModel, delegate: VerbAPIProtocol) {
+    var endpoint = url("/messages/\(message.id)/reciprocate.json")
+    VerbRequest.get(endpoint, delegate: delegate)
   }
 
-  func getCategories(delegate: VerbAPIProtocol){
-    var url = "/verbs.json"
-    self.verbRequest.get(url, delegate: delegate)
+  func getCategories(delegate: VerbAPIProtocol) {
+    var endpoint = url("/verbs.json")
+    VerbRequest.get(endpoint, delegate: delegate)
   }
 
-  func getFriends(delegate: VerbAPIProtocol){
-    var url = "/friends.json"
-    self.verbRequest.get(url, delegate: delegate)
+  func getFriends(delegate: VerbAPIProtocol) {
+    var endpoint = url("/friends.json")
+    VerbRequest.get(endpoint, delegate: delegate)
   }
 
-  func sendMessage(recipient: UserModel, verb: VerbModel, delegate: VerbAPIProtocol){
-    var url = "/messages.json"
+  func sendMessage(recipient: UserModel, verb: VerbModel, delegate: VerbAPIProtocol) {
+    var endpoint = url("/messages.json")
     var params:[String:AnyObject] = ["recipient_id": recipient.id, "verb": verb.verb]
 
-    self.verbRequest.post(url, parameters: params, delegate: delegate)
+    VerbRequest.post(endpoint, parameters: params, delegate: delegate)
   }
 
-  func registerDevice(token: String){
-    var url = "/devices.json"
+  func registerDevice(token: String) {
+    var endpoint = url("/devices.json")
     var params:[String:AnyObject] = ["token": token]
 
-    self.verbRequest.post(url, parameters: params)
+    VerbRequest.post(endpoint, parameters: params)
   }
 
-  func getConnectionFriends(connection: String, delegate: VerbAPIProtocol){
-    var url = "/friends/\(connection).json"
-    self.verbRequest.get(url, delegate: delegate)
+  func getConnectionFriends(connection: String, delegate: VerbAPIProtocol) {
+    var endpoint = url("/friends/\(connection).json")
+    VerbRequest.get(endpoint, delegate: delegate)
   }
 
   func requestFriendship(connectionFriend: ConnectionFriendModel, delegate: VerbAPIProtocol) {
-    var url = "/friendships.json"
+    var endpoint = url("/friendships.json")
     var params:[String:AnyObject] = ["friend_id": connectionFriend.id]
 
-    self.verbRequest.post(url, parameters: params, delegate: delegate)
+    VerbRequest.post(endpoint, parameters: params, delegate: delegate)
   }
 
   func acceptFriendship(friendshipModel: FriendshipModel, delegate: VerbAPIProtocol) {
-    var url = "/friendships/\(friendshipModel.id)/accept"
-    self.verbRequest.get(url, delegate: delegate)
+    var endpoint = url("/friendships/\(friendshipModel.id)/accept")
+    VerbRequest.get(endpoint, delegate: delegate)
   }
 }
