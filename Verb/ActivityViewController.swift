@@ -174,9 +174,10 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
     var activity = userInfo.objectForKey("activity") as ActivityModel
     activityModelList.insertObject(activity, atIndex: 0)
     var firstRow = NSIndexPath(forRow: 0, inSection: 0)
-    Async.main {
-      self.tableView.insertRowsAtIndexPaths([firstRow], withRowAnimation: UITableViewRowAnimation.Bottom)
-    }
+    self.tableView.beginUpdates()
+    self.tableView.insertRowsAtIndexPaths([firstRow], withRowAnimation: UITableViewRowAnimation.Bottom)
+    self.tableView.endUpdates()
+
   }
 
   func refresh() {
