@@ -12,6 +12,7 @@
 		110E1C1E19F734AB007BC736 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E1C1D19F734AB007BC736 /* CategoryViewController.swift */; };
 		1111AC9B1A0F643D006B3993 /* CategoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1111AC9A1A0F643D006B3993 /* CategoryFactory.swift */; };
 		1111AC9E1A0F6C82006B3993 /* FriendFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1111AC9D1A0F6C82006B3993 /* FriendFactory.swift */; };
+		112256381A66476D005A6D15 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112256371A66476D005A6D15 /* RegisterViewController.swift */; };
 		112B604E1A063E01004D9F33 /* ActivityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B604C1A063E01004D9F33 /* ActivityFactory.swift */; };
 		112B604F1A063E01004D9F33 /* MessageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B604D1A063E01004D9F33 /* MessageFactory.swift */; };
 		1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */; };
@@ -101,6 +102,7 @@
 		110E1C1D19F734AB007BC736 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		1111AC9A1A0F643D006B3993 /* CategoryFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryFactory.swift; sourceTree = "<group>"; };
 		1111AC9D1A0F6C82006B3993 /* FriendFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendFactory.swift; sourceTree = "<group>"; };
+		112256371A66476D005A6D15 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		112B604C1A063E01004D9F33 /* ActivityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFactory.swift; sourceTree = "<group>"; };
 		112B604D1A063E01004D9F33 /* MessageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFactory.swift; sourceTree = "<group>"; };
 		1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbAPI.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				110DD5A01A1C488B004809D7 /* StatusLabel.swift */,
 				11944F8719AEDF5100D5BF6D /* LoginViewController.swift */,
 				11944FAE19AF100000D5BF6D /* ActivityViewController.swift */,
+				112256371A66476D005A6D15 /* RegisterViewController.swift */,
 				119217F91A10BEA700EFA72F /* SwipeableCell.swift */,
 				110E1C1D19F734AB007BC736 /* CategoryViewController.swift */,
 				116D268A19FB990D0039A948 /* VerbViewController.swift */,
@@ -482,6 +485,7 @@
 				1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */,
 				11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */,
 				110E1C1E19F734AB007BC736 /* CategoryViewController.swift in Sources */,
+				112256381A66476D005A6D15 /* RegisterViewController.swift in Sources */,
 				112B604E1A063E01004D9F33 /* ActivityFactory.swift in Sources */,
 				114105671A4148BE00F6EE95 /* Swipeable.swift in Sources */,
 				112B604F1A063E01004D9F33 /* MessageFactory.swift in Sources */,

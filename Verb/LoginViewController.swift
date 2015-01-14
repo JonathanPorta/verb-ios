@@ -12,6 +12,7 @@ import Foundation
 class LoginViewController: UIViewController, FBLoginViewDelegate {
 
     @IBOutlet var fbLoginView : FBLoginView!
+    @IBOutlet var registerBtn: UIButton!
 
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
