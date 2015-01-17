@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="XlH-ZN-syh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -20,8 +21,8 @@
                                 <rect key="frame" x="20" y="383" width="280" height="153"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Uh, Please Login or Create an Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ZZ-oL-6WI">
-                                <rect key="frame" x="12" y="61" width="298" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uh, Please Login or Create an Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ZZ-oL-6WI">
+                                <rect key="frame" x="11" y="63" width="298" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -67,29 +68,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7JS-ih-qIo">
-                                <rect key="frame" x="47" y="32" width="224" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7JS-ih-qIo">
+                                <rect key="frame" x="16" y="30" width="288" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Pph-ln-f18"/>
+                                    <constraint firstAttribute="width" constant="288" id="qVb-om-hV1"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dHT-fv-l1W">
-                                <rect key="frame" x="47" y="100" width="224" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dHT-fv-l1W">
+                                <rect key="frame" x="16" y="144" width="288" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="jGm-b4-XLs"/>
+                                    <constraint firstAttribute="width" constant="288" id="nvy-MH-46b"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WyN-ZX-Nbd">
-                                <rect key="frame" x="47" y="169" width="224" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WyN-ZX-Nbd">
+                                <rect key="frame" x="16" y="201" width="288" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="JZg-Bj-YBr"/>
+                                    <constraint firstAttribute="height" constant="40" id="g3o-a8-uXf"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bX5-hG-PIC">
-                                <rect key="frame" x="47" y="238" width="224" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bX5-hG-PIC">
+                                <rect key="frame" x="16" y="87" width="288" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9ru-F5-s6b"/>
+                                    <constraint firstAttribute="width" constant="288" id="phJ-ux-IkJ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="bX5-hG-PIC" secondAttribute="centerX" id="16a-e5-a2e"/>
+                            <constraint firstAttribute="centerX" secondItem="7JS-ih-qIo" secondAttribute="centerX" id="7Oz-hj-3PO"/>
+                            <constraint firstAttribute="centerX" secondItem="WyN-ZX-Nbd" secondAttribute="centerX" id="JJz-gf-3aQ"/>
+                            <constraint firstItem="dHT-fv-l1W" firstAttribute="top" secondItem="bX5-hG-PIC" secondAttribute="bottom" constant="17" id="Sls-uL-F7k"/>
+                            <constraint firstItem="7JS-ih-qIo" firstAttribute="top" secondItem="LUt-jf-gV7" secondAttribute="topMargin" constant="30" id="Yuz-KX-e4g"/>
+                            <constraint firstItem="bX5-hG-PIC" firstAttribute="top" secondItem="7JS-ih-qIo" secondAttribute="bottom" constant="17" id="cIz-zi-7yP"/>
+                            <constraint firstItem="WyN-ZX-Nbd" firstAttribute="top" secondItem="dHT-fv-l1W" secondAttribute="bottom" constant="17" id="enQ-rT-23t"/>
+                            <constraint firstAttribute="centerX" secondItem="dHT-fv-l1W" secondAttribute="centerX" id="ndU-Z2-EOl"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create an account" id="knC-UF-HUD"/>
                 </viewController>
