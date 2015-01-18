@@ -38,7 +38,7 @@ class VerbRequest {
       }
   }
 
-  class func post(url: String, parameters: [String:AnyObject], delegate: VerbAPIProtocol? = nil){
+  class func post(url: String, parameters: [String:AnyObject], delegate: VerbAPIProtocol? = nil, closure: ((result: JSON) -> Void)? = nil){
     NSLog("Preparing for POST request to: \(url)")
 
     Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
@@ -57,6 +57,9 @@ class VerbRequest {
 
           if (delegate != nil) {
             delegate!.didReceiveResult(json)
+          }
+          if (closure != nil) {
+            closure!(result: json)
           }
         }
       }
