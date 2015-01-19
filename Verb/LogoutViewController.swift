@@ -27,9 +27,7 @@ class LogoutViewController: UIViewController {
 
   @IBAction func logout(sender : AnyObject) {
     println("logout func")
-    var activeSession = FBSession.activeSession()
-    activeSession.closeAndClearTokenInformation()
-    appDelegate.changeStoryBoard("Login")
+    appDelegate.logout()
   }
 
   @IBAction func cancel(sender : AnyObject) {
