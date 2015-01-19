@@ -24,20 +24,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet var registrationForm: UIView!
 
   override func viewWillAppear(animated: Bool) {
+    self.navigationController?.navigationBar.hidden = false
 
     // Set the button Text Color
     registerButton.setTitleColor(UIColor.whiteColor(), forState:UIControlState.Normal)
-    registerButton.setTitleColor(UIColor.redColor(), forState:UIControlState.Highlighted)
-
-    var btnGradient = CAGradientLayer()
-    btnGradient.frame = registerButton.bounds
-    btnGradient.colors = [
-      UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 0.5).CGColor,
-      UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0).CGColor
-    ]
-
-    registerButton.layer.insertSublayer(btnGradient, atIndex:0)
-    registerButton.backgroundColor = UIColor.whiteColor()
+    registerButton.setTitleColor(UIColor.grayColor(), forState:UIControlState.Highlighted)
+    registerButton.backgroundColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
     registerButton.layer.masksToBounds = true
     registerButton.layer.cornerRadius = 4.0
 
@@ -65,6 +57,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
     // TODO: Like fonts, we need a way to manager the colors and inject them as dependencies.
     self.navigationController?.navigationBar.backgroundColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
     self.navigationController?.navigationBar.barTintColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)

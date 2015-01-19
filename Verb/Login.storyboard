@@ -17,45 +17,116 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJX-OW-kXR" customClass="FBLoginView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJX-OW-kXR" userLabel="Facebook Login Button" customClass="FBLoginView">
                                 <rect key="frame" x="20" y="383" width="280" height="153"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Uh, Please Login or Create an Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ZZ-oL-6WI">
-                                <rect key="frame" x="11" y="63" width="298" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfQ-1w-oeh">
-                                <rect key="frame" x="64" y="289" width="193" height="22"/>
-                                <state key="normal" title="Create a new account">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="EMn-O5-P5k" kind="push" identifier="LoginToRegisterSegue" id="Mgg-2g-jBO"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZfX-SI-0dG" userLabel="Login Form">
+                                <rect key="frame" x="16" y="81" width="288" height="294"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iTK-gn-RJz">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="3UF-LQ-zuN"/>
+                                            <constraint firstAttribute="width" constant="288" id="KpW-oo-x4a"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="EMn-O5-P5k" id="f0y-Yc-fQG"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6oF-Vn-PMj">
+                                        <rect key="frame" x="0.0" y="57" width="288" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="2uW-la-o9s"/>
+                                            <constraint firstAttribute="width" constant="288" id="Lkx-l3-GrD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="EMn-O5-P5k" id="wqi-cS-tzg"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-gr-sWe" userLabel="Login Button">
+                                        <rect key="frame" x="44" y="114" width="200" height="40"/>
+                                        <color key="backgroundColor" red="0.55686274509803924" green="0.26666666666666666" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="Cxb-I2-RhT"/>
+                                            <constraint firstAttribute="height" constant="40" id="xR9-eQ-8QW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="submitRegistration" destination="EMn-O5-P5k" eventType="touchUpInside" id="iLi-cK-sU0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zu1-ov-VSW" userLabel="Register Button">
+                                        <rect key="frame" x="44" y="171" width="200" height="40"/>
+                                        <color key="backgroundColor" red="0.5568627451" green="0.2666666667" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="faU-sP-SCf"/>
+                                            <constraint firstAttribute="width" constant="200" id="y5P-OO-jwR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Register new account">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="submitRegistration" destination="EMn-O5-P5k" eventType="touchUpInside" id="myI-WV-Ua2"/>
+                                            <segue destination="EMn-O5-P5k" kind="push" id="6vq-cm-b9m"/>
+                                        </connections>
+                                    </button>
+                                    <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEf-ef-s2d" userLabel="Error Text">
+                                        <rect key="frame" x="0.0" y="226" width="288" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="6oF-Vn-PMj" secondAttribute="centerX" id="2nD-Ne-Yoc"/>
+                                    <constraint firstAttribute="trailing" secondItem="zEf-ef-s2d" secondAttribute="trailing" id="4EX-sq-2Ha"/>
+                                    <constraint firstItem="Uw0-gr-sWe" firstAttribute="top" secondItem="6oF-Vn-PMj" secondAttribute="bottom" constant="17" id="7KB-mr-5F9"/>
+                                    <constraint firstItem="iTK-gn-RJz" firstAttribute="top" secondItem="ZfX-SI-0dG" secondAttribute="top" id="Eq2-ve-o3f"/>
+                                    <constraint firstItem="zu1-ov-VSW" firstAttribute="top" secondItem="Uw0-gr-sWe" secondAttribute="bottom" constant="17" id="Ipo-2u-6fh"/>
+                                    <constraint firstAttribute="centerX" secondItem="iTK-gn-RJz" secondAttribute="centerX" id="Jni-ZI-Lit"/>
+                                    <constraint firstAttribute="centerX" secondItem="zu1-ov-VSW" secondAttribute="centerX" id="Ksa-bq-xOf"/>
+                                    <constraint firstAttribute="centerX" secondItem="Uw0-gr-sWe" secondAttribute="centerX" id="XCm-aj-DdR"/>
+                                    <constraint firstAttribute="centerX" secondItem="Uw0-gr-sWe" secondAttribute="centerX" id="ZYx-SR-2KY"/>
+                                    <constraint firstItem="6oF-Vn-PMj" firstAttribute="top" secondItem="ZfX-SI-0dG" secondAttribute="top" constant="57" id="e5Y-sT-Gst"/>
+                                    <constraint firstItem="zEf-ef-s2d" firstAttribute="leading" secondItem="ZfX-SI-0dG" secondAttribute="leading" id="oEC-OZ-5zY"/>
+                                    <constraint firstAttribute="bottom" secondItem="zEf-ef-s2d" secondAttribute="bottom" constant="8" id="sA3-6Q-d54"/>
+                                    <constraint firstItem="zEf-ef-s2d" firstAttribute="top" secondItem="Uw0-gr-sWe" secondAttribute="bottom" constant="72" id="sj6-AS-hyM"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MJX-OW-kXR" firstAttribute="top" secondItem="QeU-h2-8Ux" secondAttribute="top" constant="383" id="07q-oF-R7s"/>
-                            <constraint firstItem="3ZZ-oL-6WI" firstAttribute="top" secondItem="dH3-Eu-D00" secondAttribute="bottom" constant="43" id="1Hg-d3-RAt"/>
                             <constraint firstItem="hfd-X7-aJS" firstAttribute="top" secondItem="MJX-OW-kXR" secondAttribute="bottom" constant="32" id="70U-RH-wlp"/>
+                            <constraint firstItem="ZfX-SI-0dG" firstAttribute="top" secondItem="QeU-h2-8Ux" secondAttribute="top" constant="81" id="7Eg-Mb-2PW"/>
                             <constraint firstItem="MJX-OW-kXR" firstAttribute="leading" secondItem="QeU-h2-8Ux" secondAttribute="leading" constant="20" symbolic="YES" id="SaI-nn-Y9I"/>
+                            <constraint firstItem="MJX-OW-kXR" firstAttribute="top" secondItem="ZfX-SI-0dG" secondAttribute="bottom" constant="71" id="Xlt-SY-7ZD"/>
+                            <constraint firstItem="ZfX-SI-0dG" firstAttribute="trailing" secondItem="QeU-h2-8Ux" secondAttribute="trailingMargin" id="a3o-le-DMK"/>
                             <constraint firstAttribute="trailing" secondItem="MJX-OW-kXR" secondAttribute="trailing" constant="20" symbolic="YES" id="obG-ko-LE7"/>
-                            <constraint firstItem="3ZZ-oL-6WI" firstAttribute="centerX" secondItem="MJX-OW-kXR" secondAttribute="centerX" id="xID-gP-sZ3"/>
+                            <constraint firstItem="ZfX-SI-0dG" firstAttribute="leading" secondItem="QeU-h2-8Ux" secondAttribute="leadingMargin" id="tKp-Yk-Bcd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pbt-g3-q0T"/>
                     <connections>
                         <outlet property="fbLoginView" destination="MJX-OW-kXR" id="YgC-X6-JrV"/>
-                        <outlet property="registerBtn" destination="FfQ-1w-oeh" id="vJC-kK-cxd"/>
+                        <outlet property="loginButton" destination="Uw0-gr-sWe" id="wan-Ti-DVG"/>
+                        <outlet property="registerButton" destination="zu1-ov-VSW" id="voz-ZF-vSr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afF-Fb-p5s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1423" y="-352"/>
+            <point key="canvasLocation" x="1423" y="-448"/>
         </scene>
         <!--Register-->
         <scene sceneID="GKJ-j8-HVE">
@@ -208,4 +279,5 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

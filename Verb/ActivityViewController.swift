@@ -80,7 +80,6 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
 
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -180,7 +179,6 @@ class ActivityViewController: UITableViewController, SwipeableCellDelegate {
       self.tableView.insertRowsAtIndexPaths([firstRow], withRowAnimation: UITableViewRowAnimation.Bottom)
       self.tableView.endUpdates()
     }
-
   }
 
   func refresh() {
