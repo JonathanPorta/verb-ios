@@ -26,7 +26,7 @@ class VerbAPI {
     })
   }
 
-  class func Register(hostname: String, email: String, password: String, firstName: String, lastName: String, closure: (JSON) -> ()) {
+  class func Register(hostname: String, email: String, password: String, firstName: String, lastName: String, closure: (Int, JSON) -> ()) {
     var url = "\(hostname)/users"
     var params = ["user": [
       "email": email,
@@ -35,8 +35,8 @@ class VerbAPI {
       "last_name": lastName
     ]]
 
-    VerbRequest.post(url, parameters: params, closure: { (results) -> Void in
-      closure(results)
+    VerbRequest.post(url, parameters: params, closure: { (status: Int, result: JSON) -> Void in
+      closure(status, result)
     })
   }
 

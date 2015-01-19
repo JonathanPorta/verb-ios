@@ -11,44 +11,46 @@ import Foundation
 
 class LoginViewController: UIViewController, FBLoginViewDelegate {
 
-    @IBOutlet var fbLoginView : FBLoginView!
-    @IBOutlet var registerBtn: UIButton!
+  @IBOutlet var fbLoginView : FBLoginView!
+  @IBOutlet var registerBtn: UIButton!
 
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+  let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.fbLoginView.delegate = self
-        self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
-    }
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    self.title = ""
+  }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // Do any additional setup after loading the view, typically from a nib.
+    self.fbLoginView.delegate = self
+    self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
+  }
 
-    func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
-        println("LoginController:User Logged In")
-        self.appDelegate.login({
-          self.appDelegate.changeStoryBoard("Main")
-        })
-    }
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+  }
 
-    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
-        println("User: \(user)")
-        println("User ID: \(user.objectID)")
-        println("User Name: \(user.name)")
-        var userEmail = user.objectForKey("email") as String
-        println("User Email: \(userEmail)")
-    }
+  func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
+    println("LoginController:User Logged In")
+    self.appDelegate.login({
+      self.appDelegate.changeStoryBoard("Main")
+    })
+  }
 
-    func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
-        println("User Logged Out")
-    }
+  func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
+    var userEmail = user.objectForKey("email") as String
+    println("User: \(user)")
+    println("User ID: \(user.objectID)")
+    println("User Name: \(user.name)")
+    println("User Email: \(userEmail)")
+  }
 
-    func loginView(loginView : FBLoginView!, handleError:NSError) {
-        println("Error: \(handleError.localizedDescription)")
-    }
+  func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
+    println("User Logged Out")
+  }
 
+  func loginView(loginView : FBLoginView!, handleError:NSError) {
+    println("Error: \(handleError.localizedDescription)")
+  }
 }
