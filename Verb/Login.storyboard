@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-mn-t4U" userLabel="Social Icons">
-                                <rect key="frame" x="16" y="111" width="288" height="40"/>
+                                <rect key="frame" x="16" y="114" width="288" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQW-eY-1Y5" userLabel="Facebook">
                                         <rect key="frame" x="124" y="0.0" width="40" height="40"/>
@@ -112,7 +112,7 @@
                                     <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QKW-JM-b2m" userLabel="Registration Form">
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1e2-kM-Hk1">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
+                                                <rect key="frame" x="0.0" y="-332" width="288" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Dt0-Ts-6vo"/>
                                                     <constraint firstAttribute="width" constant="288" id="OZJ-Tz-DQ8"/>
@@ -211,7 +211,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pzx-UA-6BF" userLabel="Form Selector">
-                                <rect key="frame" x="16" y="66" width="288" height="41"/>
+                                <rect key="frame" x="16" y="67" width="288" height="41"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Iv1-Sr-DEO">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="41"/>
@@ -224,7 +224,7 @@
                                         </segments>
                                         <color key="tintColor" red="0.5568627451" green="0.2666666667" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <action selector="switchView:" destination="XlH-ZN-syh" eventType="valueChanged" id="Xof-pU-xR9"/>
+                                            <action selector="switchView:" destination="XlH-ZN-syh" eventType="valueChanged" id="SHi-VV-DsV"/>
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
@@ -244,10 +244,10 @@
                             <constraint firstItem="Pzx-UA-6BF" firstAttribute="leading" secondItem="QeU-h2-8Ux" secondAttribute="leadingMargin" id="HwC-14-50E"/>
                             <constraint firstItem="dxa-mn-t4U" firstAttribute="leading" secondItem="QeU-h2-8Ux" secondAttribute="leadingMargin" id="Igo-m9-zuV"/>
                             <constraint firstAttribute="centerX" secondItem="Pzx-UA-6BF" secondAttribute="centerX" id="MUP-ir-3Ci"/>
-                            <constraint firstItem="Pzx-UA-6BF" firstAttribute="top" secondItem="QeU-h2-8Ux" secondAttribute="top" constant="66" id="SgJ-gv-6JQ"/>
+                            <constraint firstItem="Pzx-UA-6BF" firstAttribute="top" secondItem="QeU-h2-8Ux" secondAttribute="top" constant="67" id="SgJ-gv-6JQ"/>
                             <constraint firstItem="ZfX-SI-0dG" firstAttribute="trailing" secondItem="QeU-h2-8Ux" secondAttribute="trailingMargin" id="a3o-le-DMK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dxa-mn-t4U" secondAttribute="trailing" id="hA6-cR-SYn"/>
-                            <constraint firstItem="dxa-mn-t4U" firstAttribute="top" secondItem="QeU-h2-8Ux" secondAttribute="topMargin" constant="111" id="hGx-Th-2ep"/>
+                            <constraint firstItem="dxa-mn-t4U" firstAttribute="top" secondItem="QeU-h2-8Ux" secondAttribute="topMargin" constant="114" id="hGx-Th-2ep"/>
                             <constraint firstItem="ZfX-SI-0dG" firstAttribute="leading" secondItem="QeU-h2-8Ux" secondAttribute="leadingMargin" id="tKp-Yk-Bcd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Pzx-UA-6BF" secondAttribute="trailing" id="yjq-lY-M5H"/>
                         </constraints>
@@ -256,6 +256,7 @@
                     <connections>
                         <outlet property="facebookLoginButton" destination="RQW-eY-1Y5" id="QSJ-Ow-9fP"/>
                         <outlet property="formContainer" destination="ZfX-SI-0dG" id="HcW-RY-RPQ"/>
+                        <outlet property="formSwitcher" destination="Iv1-Sr-DEO" id="1uo-I5-e4B"/>
                         <outlet property="loginButton" destination="x0s-KJ-PlE" id="Fpi-iT-6jy"/>
                         <outlet property="loginForm" destination="9DU-on-tmW" id="7rq-H5-KZi"/>
                         <outlet property="registerButton" destination="bO4-WA-SAn" id="04P-L6-1g8"/>
@@ -264,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afF-Fb-p5s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1423" y="-448"/>
+            <point key="canvasLocation" x="1297" y="-352"/>
         </scene>
         <!--Register-->
         <scene sceneID="GKJ-j8-HVE">
