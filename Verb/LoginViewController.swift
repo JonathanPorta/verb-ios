@@ -50,25 +50,10 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
   }
 
   override func viewWillAppear(animated: Bool) {
-    //formSwitcher.setDividerImage(UIImage(named: "lessline2-divider-none-selected.png")!.resizableImageWithCapInsets(UIEdgeInsets(top: 0,left: 11, bottom: 1, right: 10)), forLeftSegmentState: UIControlState.Normal, rightSegmentState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
-    //formSwitcher.setDividerImage(UIImage(named: "lessline2-divider-left-selected.png")!.resizableImageWithCapInsets(UIEdgeInsets(top: 0,left: 11, bottom: 1, right: 10)), forLeftSegmentState: UIControlState.Selected, rightSegmentState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
-    ///formSwitcher.setDividerImage(UIImage(named: "lessline2-divider-right-selected.png")!.resizableImageWithCapInsets(UIEdgeInsets(top: 0,left: 11, bottom: 1, right: 10)), forLeftSegmentState: UIControlState.Normal, rightSegmentState: UIControlState.Selected, barMetrics: UIBarMetrics.Default)
-    //formSwitcher.setDividerImage(UIImage(named: "lessline2-divider-both-selected.png")!.resizableImageWithCapInsets(UIEdgeInsets(top: 0,left: 11, bottom: 1, right: 10)), forLeftSegmentState: UIControlState.Selected, rightSegmentState: UIControlState.Selected, barMetrics: UIBarMetrics.Default)
 
-    // Set background images
-    //var normalBackgroundImage = UIImage(named: "lessline2-normal-bkgd.png")!.resizableImageWithCapInsets(UIEdgeInsets(top: 0,left: 11, bottom: 1, right: 10))
-    //var selectedBackgroundImage = UIImage(named: "lessline2-selected-bkgd.png")!.resizableImageWithCapInsets(UIEdgeInsets(top: 0,left: 11, bottom: 1, right: 10))
-
-    //formSwitcher.setBackgroundImage(normalBackgroundImage, forState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
-    //formSwitcher.setBackgroundImage(selectedBackgroundImage, forState: UIControlState.Selected, barMetrics: UIBarMetrics.Default)
-
-    formSwitcher.tintColor = UIColor.whiteColor()
+    formSwitcher.tintColor = UIColor.clearColor()
     formSwitcher.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Selected)
     formSwitcher.setTitleTextAttributes([NSForegroundColorAttributeName: verbPurple], forState: UIControlState.Normal)
-    //formSwitcher.layer.borderWidth = 0.0
-    //formSwitcher.layer.borderColor = UIColor.grayColor().CGColor
-
-
 
     self.title = "\u{e600}"
     var font = UIFont(name: "icomoon-standard", size: 24.0)!
@@ -92,13 +77,10 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
   }
 
   func updateSegmentBorders(activeSegment: Int) {
+      // We have to manually manage removal of the borders and keep a reference to them.
       for subview in formSwitcher.subviews {
         if(contains(segmentControllerBorderViews, subview as UIView)) {
-          NSLog("Subview is part of our extra curricular markup crap")
           subview.removeFromSuperview()
-        }
-        else {
-          NSLog("subview is NOOOOT one of us! EGGGGGGSterminate!")
         }
       }
       var controlHeight = formSwitcher.frame.height
@@ -106,6 +88,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
       var segmentCount = formSwitcher.numberOfSegments
       var segmentWidth = (controlWidth / CGFloat(segmentCount))
       var borderThickness = CGFloat(1)
+      var borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0)
       var originX = 0
       var originY = 0
 
@@ -115,14 +98,14 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
 
         if(i == activeSegment) {
           // Set the border of this segment to the active state
-          var topBorder = UIView(frame: CGRectMake(x-1, y-1, segmentWidth+2, borderThickness))
-          topBorder.backgroundColor = UIColor.redColor()
+          var topBorder = UIView(frame: CGRectMake(x, y, segmentWidth, borderThickness))
+          topBorder.backgroundColor = borderColor
 
-          var leftBorder = UIView(frame: CGRectMake(x-2, y-1, borderThickness, controlHeight+2))
-          leftBorder.backgroundColor = UIColor.redColor()
+          var leftBorder = UIView(frame: CGRectMake(x, y, borderThickness, controlHeight))
+          leftBorder.backgroundColor = borderColor
 
-          var rightBorder = UIView(frame: CGRectMake(segmentWidth + x, y-1, borderThickness, controlHeight+1))
-          rightBorder.backgroundColor = UIColor.redColor()
+          var rightBorder = UIView(frame: CGRectMake(segmentWidth + x, y, borderThickness, controlHeight))
+          rightBorder.backgroundColor = borderColor
 
           // We need to keep a reference to these so that we can remove them later.
           if(!contains(segmentControllerBorderViews, topBorder)) {
@@ -142,16 +125,15 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         }
         else {
           // Not the active view, so we add the desired borders.
-          var bottomBorder = UIView(frame: CGRectMake(x, y + controlHeight, segmentWidth, borderThickness))
-          bottomBorder.backgroundColor = UIColor.redColor()
+          var bottomBorder = UIView(frame: CGRectMake(x, y + controlHeight, segmentWidth + borderThickness, borderThickness))
+          bottomBorder.backgroundColor = borderColor
 
           if(!contains(segmentControllerBorderViews, bottomBorder)) {
             formSwitcher.addSubview(bottomBorder)
             segmentControllerBorderViews.insert(bottomBorder, atIndex: segmentControllerBorderViews.count)
           }
         }
-      }
-
+    }
   }
 
   override func viewDidLoad() {
@@ -160,23 +142,6 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     self.navigationController?.navigationBar.backgroundColor = verbPurple
     self.navigationController?.navigationBar.barTintColor = verbPurple
 
-    //self.fbLoginView.delegate = self
-    //self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
-    var segWidth = formSwitcher.frame.width / 2
-
-
-
-    //var rightBorder = UIView(frame: CGRectMake(formSwitcher.frame.size.width + 1, -1, 1, formSwitcher.frame.size.height + 2))
-    //rightBorder.backgroundColor = UIColor.redColor()
-
-    //var inactiveBorder = UIView(frame: CGRectMake(segWidth + 1, formSwitcher.frame.size.height + 1, segWidth, 1))
-    //inactiveBorder.backgroundColor = UIColor.redColor()
-
-    NSLog("first seg width: \(segWidth)")
-    NSLog("total width: \(formSwitcher.frame.width)")
-    NSLog("Seg count: \(formSwitcher.numberOfSegments)")
-
-    NSLog("Seg count: \(formSwitcher.numberOfSegments)")
     updateSegmentBorders(0)
   }
 
