@@ -72,7 +72,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfX-SI-0dG" userLabel="Form Container">
                                 <rect key="frame" x="16" y="171" width="288" height="397"/>
                                 <subviews>
-                                    <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9DU-on-tmW" userLabel="Login Form">
+                                    <view hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9DU-on-tmW" userLabel="Login Form">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="234"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GS4-Nr-9Na">
@@ -84,9 +84,6 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="EMn-O5-P5k" id="rdJ-js-Di5"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6eX-yo-M9o">
                                                 <rect key="frame" x="0.0" y="57" width="288" height="40"/>
@@ -96,9 +93,6 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="EMn-O5-P5k" id="mK1-Bi-7Xn"/>
-                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0s-KJ-PlE" userLabel="Login Button">
                                                 <rect key="frame" x="44" y="114" width="200" height="40"/>
@@ -111,9 +105,6 @@
                                                 <state key="normal" title="Login">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="submitRegistration" destination="EMn-O5-P5k" eventType="touchUpInside" id="wVe-W6-Tfi"/>
-                                                </connections>
                                             </button>
                                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYt-eN-sqf" userLabel="Error Text">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,7 +127,7 @@
                                             <constraint firstAttribute="centerX" secondItem="x0s-KJ-PlE" secondAttribute="centerX" id="y2F-tW-laG"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QKW-JM-b2m" userLabel="Registration Form">
+                                    <view hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QKW-JM-b2m" userLabel="Registration Form">
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1e2-kM-Hk1">
                                                 <rect key="frame" x="0.0" y="-332" width="288" height="40"/>
@@ -147,9 +138,6 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="EMn-O5-P5k" id="5p4-o8-aNG"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mbH-bo-NK7">
                                                 <rect key="frame" x="0.0" y="57" width="288" height="40"/>
@@ -159,9 +147,6 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="EMn-O5-P5k" id="dQu-LM-mPv"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RCc-eF-Ybw">
                                                 <rect key="frame" x="0.0" y="114" width="288" height="40"/>
@@ -171,9 +156,6 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="EMn-O5-P5k" id="FR3-pX-8fM"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HBg-Cy-euF">
                                                 <rect key="frame" x="0.0" y="171" width="288" height="40"/>
@@ -183,9 +165,6 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="EMn-O5-P5k" id="Ozl-UH-wU4"/>
-                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bO4-WA-SAn" userLabel="Registration Button">
                                                 <rect key="frame" x="44" y="171" width="200" height="40"/>
@@ -198,7 +177,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="submitRegistration" destination="EMn-O5-P5k" eventType="touchUpInside" id="oDF-ut-Y5e"/>
+                                                    <action selector="submitRegistration" destination="XlH-ZN-syh" eventType="touchUpInside" id="oPa-cH-DpQ"/>
                                                 </connections>
                                             </button>
                                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohH-Vq-e0U" userLabel="Error Text">
@@ -259,145 +238,29 @@
                         <outlet property="formContainer" destination="ZfX-SI-0dG" id="HcW-RY-RPQ"/>
                         <outlet property="formSwitcher" destination="Iv1-Sr-DEO" id="1uo-I5-e4B"/>
                         <outlet property="loginButton" destination="x0s-KJ-PlE" id="Fpi-iT-6jy"/>
+                        <outlet property="loginEmail" destination="GS4-Nr-9Na" id="TWK-Mj-gih"/>
+                        <outlet property="loginErrorText" destination="qYt-eN-sqf" id="eEU-mt-Bpl"/>
                         <outlet property="loginForm" destination="9DU-on-tmW" id="7rq-H5-KZi"/>
+                        <outlet property="loginPassword" destination="6eX-yo-M9o" id="r3u-SH-UnN"/>
+                        <outlet property="loginViewLeftConstraint" destination="gOB-SE-Vgy" id="PbN-Xv-D4h"/>
                         <outlet property="registerButton" destination="bO4-WA-SAn" id="04P-L6-1g8"/>
+                        <outlet property="registerEmail" destination="1e2-kM-Hk1" id="rz2-f3-raI"/>
+                        <outlet property="registerErrorText" destination="ohH-Vq-e0U" id="WST-0J-M9A"/>
+                        <outlet property="registerFirstName" destination="RCc-eF-Ybw" id="T7X-Pt-9AE"/>
                         <outlet property="registerForm" destination="QKW-JM-b2m" id="y9F-O3-bSV"/>
+                        <outlet property="registerLastName" destination="HBg-Cy-euF" id="Eqk-Wz-QRC"/>
+                        <outlet property="registerPassword" destination="mbH-bo-NK7" id="Kli-zm-HO3"/>
+                        <outlet property="registerViewLeftConstraint" destination="u4h-dy-IBt" id="Btn-2S-UnL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afF-Fb-p5s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1297" y="-352"/>
         </scene>
-        <!--Register-->
-        <scene sceneID="GKJ-j8-HVE">
-            <objects>
-                <viewController storyboardIdentifier="RegisterView" id="EMn-O5-P5k" customClass="RegisterViewController" customModule="Verb" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ybF-MR-jKw"/>
-                        <viewControllerLayoutGuide type="bottom" id="5R9-y7-mal"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LUt-jf-gV7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLO-Pl-Gl5" userLabel="Registration Form">
-                                <rect key="frame" x="16" y="81" width="288" height="437"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7JS-ih-qIo">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Pph-ln-f18"/>
-                                            <constraint firstAttribute="width" constant="288" id="qVb-om-hV1"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="EMn-O5-P5k" id="341-AG-wrk"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bX5-hG-PIC">
-                                        <rect key="frame" x="0.0" y="57" width="288" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="9ru-F5-s6b"/>
-                                            <constraint firstAttribute="width" constant="288" id="phJ-ux-IkJ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="EMn-O5-P5k" id="E3N-XM-Xoc"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dHT-fv-l1W">
-                                        <rect key="frame" x="0.0" y="115" width="288" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="jGm-b4-XLs"/>
-                                            <constraint firstAttribute="width" constant="288" id="nvy-MH-46b"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="EMn-O5-P5k" id="xNa-bJ-VLb"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WyN-ZX-Nbd">
-                                        <rect key="frame" x="0.0" y="172" width="288" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="288" id="JZg-Bj-YBr"/>
-                                            <constraint firstAttribute="height" constant="40" id="g3o-a8-uXf"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="EMn-O5-P5k" id="tIX-mD-Xd9"/>
-                                        </connections>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPE-Eb-sS9" userLabel="Registration Button">
-                                        <rect key="frame" x="45" y="229" width="200" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Lce-Ll-fHM"/>
-                                            <constraint firstAttribute="width" constant="200" id="toV-DR-1pS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Register">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="submitRegistration" destination="EMn-O5-P5k" eventType="touchUpInside" id="fR9-c9-pWy"/>
-                                        </connections>
-                                    </button>
-                                    <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byr-JK-GWB" userLabel="Error Text">
-                                        <rect key="frame" x="0.0" y="276" width="288" height="161"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="byr-JK-GWB" secondAttribute="trailing" id="6uV-vD-Ygx"/>
-                                    <constraint firstAttribute="centerX" secondItem="XPE-Eb-sS9" secondAttribute="centerX" id="Dmc-cT-a0R"/>
-                                    <constraint firstItem="bX5-hG-PIC" firstAttribute="top" secondItem="mLO-Pl-Gl5" secondAttribute="top" constant="57" id="E1W-ai-vaY"/>
-                                    <constraint firstItem="dHT-fv-l1W" firstAttribute="top" secondItem="mLO-Pl-Gl5" secondAttribute="top" constant="115" id="I0R-9d-kFA"/>
-                                    <constraint firstAttribute="centerX" secondItem="bX5-hG-PIC" secondAttribute="centerX" id="KMU-oW-GRG"/>
-                                    <constraint firstItem="byr-JK-GWB" firstAttribute="top" secondItem="XPE-Eb-sS9" secondAttribute="bottom" constant="17" id="Olb-jH-D60"/>
-                                    <constraint firstItem="byr-JK-GWB" firstAttribute="leading" secondItem="mLO-Pl-Gl5" secondAttribute="leading" id="PC6-dK-hCL"/>
-                                    <constraint firstItem="WyN-ZX-Nbd" firstAttribute="top" secondItem="mLO-Pl-Gl5" secondAttribute="top" constant="172" id="PPD-Mk-S6y"/>
-                                    <constraint firstAttribute="bottom" secondItem="byr-JK-GWB" secondAttribute="bottom" id="VcY-23-5wg"/>
-                                    <constraint firstItem="7JS-ih-qIo" firstAttribute="top" secondItem="mLO-Pl-Gl5" secondAttribute="top" id="YEF-xc-DcM"/>
-                                    <constraint firstAttribute="centerX" secondItem="dHT-fv-l1W" secondAttribute="centerX" id="gkt-cU-tPg"/>
-                                    <constraint firstItem="XPE-Eb-sS9" firstAttribute="top" secondItem="WyN-ZX-Nbd" secondAttribute="bottom" constant="17" id="gq9-pQ-SIR"/>
-                                    <constraint firstAttribute="centerX" secondItem="WyN-ZX-Nbd" secondAttribute="centerX" id="moC-d7-G5Y"/>
-                                    <constraint firstAttribute="centerX" secondItem="7JS-ih-qIo" secondAttribute="centerX" id="ywi-DW-Eg7"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="mLO-Pl-Gl5" firstAttribute="top" secondItem="LUt-jf-gV7" secondAttribute="topMargin" constant="81" id="9Ug-3f-DGo"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mLO-Pl-Gl5" secondAttribute="trailing" id="CaR-vh-tJI"/>
-                            <constraint firstItem="mLO-Pl-Gl5" firstAttribute="leading" secondItem="LUt-jf-gV7" secondAttribute="leadingMargin" id="kae-4e-gf8"/>
-                            <constraint firstItem="5R9-y7-mal" firstAttribute="top" secondItem="mLO-Pl-Gl5" secondAttribute="bottom" constant="50" id="rJA-Gk-OcB"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Register" id="knC-UF-HUD"/>
-                    <connections>
-                        <outlet property="email" destination="7JS-ih-qIo" id="z0M-Lk-SZ4"/>
-                        <outlet property="errorText" destination="byr-JK-GWB" id="YFG-gF-Gb0"/>
-                        <outlet property="firstName" destination="dHT-fv-l1W" id="dca-p9-4Uo"/>
-                        <outlet property="lastName" destination="WyN-ZX-Nbd" id="W6G-Dp-YxC"/>
-                        <outlet property="password" destination="bX5-hG-PIC" id="i81-AO-tkW"/>
-                        <outlet property="registerButton" destination="XPE-Eb-sS9" id="7Nd-x5-D9g"/>
-                        <outlet property="registrationForm" destination="mLO-Pl-Gl5" id="ypK-LF-QZ1"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bOO-LT-6pI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1926" y="-352"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="idw-Bc-u1e">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pZt-rC-UEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1hy-3J-CDw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yhl-Qm-XUG">
@@ -409,7 +272,6 @@
                         <segue destination="XlH-ZN-syh" kind="relationship" relationship="rootViewController" id="B6f-oj-wlh"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pZt-rC-UEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="891" y="-352"/>
         </scene>
