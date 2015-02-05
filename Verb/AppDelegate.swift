@@ -53,25 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
       // [loginButton setTitle:@"Log in with Facebook" forState:UIControlStateNormal];
     }
 
-
-    // // FB SDK
-    // FBLoginView.self
-    // FBProfilePictureView.self
-    //
-    // FBSession.openActiveSessionWithAllowLoginUI(false)
-    //
-    // if hasValidFacebookSession() {
-    //   // We need to login before we change to the main storyboard.
-    //   login({
-    //     println("AppDelegate::login() last closure before storyboard switch")
-    //     registerForPushNotifications()
-    //     self.changeStoryBoard("Main")
-    //   })
-    // }
-    // else {
-    //   changeStoryBoard("Login")
-    // }
-
     return true
   }
 
@@ -140,14 +121,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
   }
 
   func showMessage(message: String, title: String){
-    NSLog("=============================")
-    NSLog("ALERT MESSAGE")
-    NSLog("=============================")
-    NSLog("Title: \(title)")
-    NSLog("Message: \(message)")
-    NSLog("=============================")
-
-    UIAlertView(title: title, message: message, delegate: self, cancelButtonTitle: "OK!").show()
+    //UIAlertView(title: title, message: message, delegate: self, cancelButtonTitle: "OK!").show()
+    println("showMessage: Would have showed: ")
+    println("======================")
+    println(title)
+    println("----------------------")
+    println(message)
+    println("______________________")
   }
 
   func userLoggedOut() {

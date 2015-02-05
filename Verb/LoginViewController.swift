@@ -18,24 +18,8 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
   @IBOutlet var formSwitcher: UISegmentedControl!
 
   @IBOutlet var formContainer: UIView!
-  @IBOutlet var loginForm: UIView!
-  @IBOutlet var registerForm: UIView!
-
-  // Login Form Fields
-  @IBOutlet var loginErrorText: UITextView!
-  @IBOutlet var loginEmail: UITextField!
-  @IBOutlet var loginPassword: UITextField!
-
-  // Register Form Fields
-  @IBOutlet var registerErrorText: UITextView!
-  @IBOutlet var registerEmail: UITextField!
-  @IBOutlet var registerPassword: UITextField!
-  @IBOutlet var registerFirstName: UITextField!
-  @IBOutlet var registerLastName: UITextField!
-
-  @IBOutlet var registerViewLeftConstraint: NSLayoutConstraint!
-  @IBOutlet var loginViewLeftConstraint: NSLayoutConstraint!
-
+  var loginForm: UIView?
+  //var registerForm: UIView?
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
   let verbPurple = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
 
@@ -52,24 +36,78 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
 
   @IBAction func switchView(control: UISegmentedControl) {
     updateSegmentBorders(control.selectedSegmentIndex)
+    //registerForm!.removeFromSuperview()
+    //loginForm.removeFromSuperview()
     if(control.selectedSegmentIndex == 0) {
       // Show Login Form, Hide Register Form
-      registerForm.hidden = true
-      loginForm.hidden = false
-      formContainer.bringSubviewToFront(loginForm)
-      loginEmail.becomeFirstResponder()
+      //registerForm.hidden = true
+      //loginForm.hidden = false
+
+      //formContainer.addSubview(loginForm)
+      //formContainer.bringSubviewToFront(loginForm)
+      //formContainer.sendSubviewToBack(registerForm)
+      //loginEmail.becomeFirstResponder()
     }
     else if(control.selectedSegmentIndex == 1) {
       // Show Register Form, Hide Login Form
-      loginForm.hidden = true
-      registerForm.hidden = false
-      formContainer.bringSubviewToFront(registerForm)
-      registerEmail.becomeFirstResponder()
+      //loginForm.hidden = true
+      //registerForm.hidden = false
+
+      //formContainer.addSubview(registerForm!)
+      //formContainer.bringSubviewToFront(registerForm)
+      //formContainer.sendSubviewToBack(loginForm)
+      //registerEmail.becomeFirstResponder()
     }
   }
 
-  override func viewWillAppear(animated: Bool) {
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // TODO: Like fonts, we need a way to manager the colors and inject them as dependencies.
+    self.navigationController?.navigationBar.backgroundColor = verbPurple
+    self.navigationController?.navigationBar.barTintColor = verbPurple
 
+    var loginForm = LoginFormView()
+    formContainer.addSubview(loginForm)
+    //loginForm.center = CGPointMake(0,0)
+    loginForm.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+    // Pin to Bottom
+    formContainer.addConstraint(NSLayoutConstraint(
+      item: loginForm,
+      attribute: NSLayoutAttribute.Top,
+      relatedBy: NSLayoutRelation.Equal,
+      toItem: formContainer,
+      attribute: NSLayoutAttribute.Top,
+      multiplier: CGFloat(1.0),
+      constant: CGFloat(0.0)
+    ))
+
+    // Pin to Center
+    formContainer.addConstraint(NSLayoutConstraint(
+      item: loginForm,
+      attribute: NSLayoutAttribute.CenterX,
+      relatedBy: NSLayoutRelation.Equal,
+      toItem: formContainer,
+      attribute: NSLayoutAttribute.CenterX,
+      multiplier: CGFloat(1.0),
+      constant: CGFloat(0.0)
+    ))
+
+    // Expand to width of superview
+    formContainer.addConstraint(NSLayoutConstraint(
+      item: loginForm,
+      attribute: NSLayoutAttribute.Width,
+      relatedBy: NSLayoutRelation.Equal,
+      toItem: formContainer,
+      attribute: NSLayoutAttribute.Width,
+      multiplier: CGFloat(1.0),
+      constant: CGFloat(0.0)
+      ))
+
+    updateSegmentBorders(0)
+  }
+
+  override func viewWillAppear(animated: Bool) {
     formSwitcher.tintColor = UIColor.clearColor()
     formSwitcher.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Selected)
     formSwitcher.setTitleTextAttributes([NSForegroundColorAttributeName: verbPurple], forState: UIControlState.Normal)
@@ -77,22 +115,28 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     self.title = "\u{e600}"
     var font = UIFont(name: "icomoon-standard", size: 24.0)!
 
-    registerButton.setTitleColor(UIColor.whiteColor(), forState:UIControlState.Normal)
-    registerButton.setTitleColor(UIColor.grayColor(), forState:UIControlState.Highlighted)
-    registerButton.backgroundColor = verbPurple
-    registerButton.layer.masksToBounds = true
-    registerButton.layer.cornerRadius = 4.0
-
-    loginButton.setTitleColor(UIColor.whiteColor(), forState:UIControlState.Normal)
-    loginButton.setTitleColor(UIColor.grayColor(), forState:UIControlState.Highlighted)
-    loginButton.backgroundColor = verbPurple
-    loginButton.layer.masksToBounds = true
-    loginButton.layer.cornerRadius = 4.0
+    // registerButton.setTitleColor(UIColor.whiteColor(), forState:UIControlState.Normal)
+    // registerButton.setTitleColor(UIColor.grayColor(), forState:UIControlState.Highlighted)
+    // registerButton.backgroundColor = verbPurple
+    // registerButton.layer.masksToBounds = true
+    // registerButton.layer.cornerRadius = 4.0
+    //
+    // loginButton.setTitleColor(UIColor.whiteColor(), forState:UIControlState.Normal)
+    // loginButton.setTitleColor(UIColor.grayColor(), forState:UIControlState.Highlighted)
+    // loginButton.backgroundColor = verbPurple
+    // loginButton.layer.masksToBounds = true
+    // loginButton.layer.cornerRadius = 4.0
 
     // Start off with the Login Form
-    loginForm.hidden = false
-    registerForm.hidden = true
+    // loginForm.hidden = false
+    // registerForm.hidden = false
 
+
+    // loginForm.removeFromSuperview()
+
+
+    println("formContainer: ")
+    println(formContainer.subviews)
   }
 
   func updateSegmentBorders(activeSegment: Int) {
@@ -102,6 +146,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
           subview.removeFromSuperview()
         }
       }
+
       var controlHeight = formSwitcher.frame.height
       var controlWidth = formSwitcher.frame.width
       var segmentCount = formSwitcher.numberOfSegments
@@ -155,15 +200,6 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     }
   }
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // TODO: Like fonts, we need a way to manager the colors and inject them as dependencies.
-    self.navigationController?.navigationBar.backgroundColor = verbPurple
-    self.navigationController?.navigationBar.barTintColor = verbPurple
-
-    updateSegmentBorders(0)
-  }
-
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
@@ -192,26 +228,26 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
   }
 
   @IBAction func submitRegistration() {
-    var textfieldsByKey = ["email": self.registerEmail, "password": self.registerPassword, "first_name": self.registerFirstName, "last_name": self.registerLastName]
-    var textfieldLabelsByKey = ["email": "Email", "password": "Password", "first_name": "First name", "last_name": "Last name"]
-
-    VerbAPI.Register(appDelegate.hostname, email: registerEmail.text, password: registerPassword.text, firstName: registerFirstName.text, lastName: registerLastName.text, closure: { (status: Int, result: JSON) -> Void in
-      NSLog("Register callback")
-      NSLog("Status: \(status)")
-      NSLog(result.debugDescription)
-      if (status == 422){
-        self.registerErrorText.text = "Oops! Something went wrong.\n"
-        for (field: String, errors: JSON) in result {
-          var errorField = textfieldsByKey[field]
-          var errorFieldLabel = textfieldLabelsByKey[field]
-
-          errorField!.layer.borderColor = UIColor.redColor().CGColor
-          self.registerErrorText.text = "\(self.registerErrorText.text)\n\(errorFieldLabel!) \(errors[0].stringValue)"
-        }
-        self.registerErrorText.hidden = false
-        self.registerErrorText.font = UIFont(name: "Helvetica", size: 17)
-        self.registerErrorText.textAlignment = NSTextAlignment.Center
-      }
-    })
+    // var textfieldsByKey = ["email": self.registerEmail, "password": self.registerPassword, "first_name": self.registerFirstName, "last_name": self.registerLastName]
+    // var textfieldLabelsByKey = ["email": "Email", "password": "Password", "first_name": "First name", "last_name": "Last name"]
+    //
+    // VerbAPI.Register(appDelegate.hostname, email: registerEmail.text, password: registerPassword.text, firstName: registerFirstName.text, lastName: registerLastName.text, closure: { (status: Int, result: JSON) -> Void in
+    //   NSLog("Register callback")
+    //   NSLog("Status: \(status)")
+    //   NSLog(result.debugDescription)
+    //   if (status == 422){
+    //     self.registerErrorText.text = "Oops! Something went wrong.\n"
+    //     for (field: String, errors: JSON) in result {
+    //       var errorField = textfieldsByKey[field]
+    //       var errorFieldLabel = textfieldLabelsByKey[field]
+    //
+    //       errorField!.layer.borderColor = UIColor.redColor().CGColor
+    //       self.registerErrorText.text = "\(self.registerErrorText.text)\n\(errorFieldLabel!) \(errors[0].stringValue)"
+    //     }
+    //     self.registerErrorText.hidden = false
+    //     self.registerErrorText.font = UIFont(name: "Helvetica", size: 17)
+    //     self.registerErrorText.textAlignment = NSTextAlignment.Center
+    //   }
+    // })
   }
 }
