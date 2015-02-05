@@ -11,19 +11,18 @@ import Foundation
 
 class LoginViewController: UIViewController, FBLoginViewDelegate {
 
-  @IBOutlet var registerButton: UIButton!
-  @IBOutlet var loginButton: UIButton!
-  @IBOutlet var facebookLoginButton: UIButton!
-
-  @IBOutlet var formSwitcher: UISegmentedControl!
-
-  @IBOutlet var formContainer: UIView!
-  var loginForm: UIView?
-  //var registerForm: UIView?
   let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
   let verbPurple = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
 
+  @IBOutlet var registerButton: UIButton!
+  @IBOutlet var loginButton: UIButton!
+  @IBOutlet var facebookLoginButton: UIButton!
+  @IBOutlet var formSwitcher: UISegmentedControl!
+  @IBOutlet var formContainer: UIView!
+
   var segmentControllerBorderViews: Array<UIView> = []
+  var loginForm: UIView?
+  var registrationForm: UIView?
 
   @IBAction func facebookLogin(button: UIButton) {
     NSLog("LoginViewController::facebookLogin()")
@@ -36,27 +35,14 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
 
   @IBAction func switchView(control: UISegmentedControl) {
     updateSegmentBorders(control.selectedSegmentIndex)
-    //registerForm!.removeFromSuperview()
-    //loginForm.removeFromSuperview()
+
     if(control.selectedSegmentIndex == 0) {
       // Show Login Form, Hide Register Form
-      //registerForm.hidden = true
-      //loginForm.hidden = false
-
-      //formContainer.addSubview(loginForm)
-      //formContainer.bringSubviewToFront(loginForm)
-      //formContainer.sendSubviewToBack(registerForm)
-      //loginEmail.becomeFirstResponder()
+      showLoginForm()
     }
     else if(control.selectedSegmentIndex == 1) {
       // Show Register Form, Hide Login Form
-      //loginForm.hidden = true
-      //registerForm.hidden = false
-
-      //formContainer.addSubview(registerForm!)
-      //formContainer.bringSubviewToFront(registerForm)
-      //formContainer.sendSubviewToBack(loginForm)
-      //registerEmail.becomeFirstResponder()
+      showRegistrationForm()
     }
   }
 
@@ -66,14 +52,22 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     self.navigationController?.navigationBar.backgroundColor = verbPurple
     self.navigationController?.navigationBar.barTintColor = verbPurple
 
-    var loginForm = LoginFormView()
-    formContainer.addSubview(loginForm)
-    //loginForm.center = CGPointMake(0,0)
-    loginForm.setTranslatesAutoresizingMaskIntoConstraints(false)
+    // Build our two possible form views and keep a reference arround
+    loginForm = LoginFormView()
+    registrationForm = RegistrationFormView()
 
-    // Pin to Bottom
+    showLoginForm()
+    updateSegmentBorders(0)
+  }
+
+  func showLoginForm() {
+    registrationForm!.removeFromSuperview()
+    formContainer.insertSubview(loginForm!, atIndex: 0)
+    loginForm!.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+    // Pin to Top
     formContainer.addConstraint(NSLayoutConstraint(
-      item: loginForm,
+      item: loginForm!,
       attribute: NSLayoutAttribute.Top,
       relatedBy: NSLayoutRelation.Equal,
       toItem: formContainer,
@@ -84,7 +78,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
 
     // Pin to Center
     formContainer.addConstraint(NSLayoutConstraint(
-      item: loginForm,
+      item: loginForm!,
       attribute: NSLayoutAttribute.CenterX,
       relatedBy: NSLayoutRelation.Equal,
       toItem: formContainer,
@@ -95,16 +89,75 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
 
     // Expand to width of superview
     formContainer.addConstraint(NSLayoutConstraint(
-      item: loginForm,
+      item: loginForm!,
       attribute: NSLayoutAttribute.Width,
       relatedBy: NSLayoutRelation.Equal,
       toItem: formContainer,
       attribute: NSLayoutAttribute.Width,
       multiplier: CGFloat(1.0),
       constant: CGFloat(0.0)
-      ))
+    ))
 
-    updateSegmentBorders(0)
+    // Expand to height of superview
+    formContainer.addConstraint(NSLayoutConstraint(
+      item: loginForm!,
+      attribute: NSLayoutAttribute.Height,
+      relatedBy: NSLayoutRelation.Equal,
+      toItem: formContainer,
+      attribute: NSLayoutAttribute.Height,
+      multiplier: CGFloat(1.0),
+      constant: CGFloat(0.0)
+    ))
+  }
+
+  func showRegistrationForm() {
+    loginForm!.removeFromSuperview()
+    formContainer.insertSubview(registrationForm!, atIndex: 0)
+    registrationForm!.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+    // Pin to Top
+    formContainer.addConstraint(NSLayoutConstraint(
+      item: registrationForm!,
+      attribute: NSLayoutAttribute.Top,
+      relatedBy: NSLayoutRelation.Equal,
+      toItem: formContainer,
+      attribute: NSLayoutAttribute.Top,
+      multiplier: CGFloat(1.0),
+      constant: CGFloat(0.0)
+    ))
+
+    // Pin to Center
+    formContainer.addConstraint(NSLayoutConstraint(
+      item: registrationForm!,
+      attribute: NSLayoutAttribute.CenterX,
+      relatedBy: NSLayoutRelation.Equal,
+      toItem: formContainer,
+      attribute: NSLayoutAttribute.CenterX,
+      multiplier: CGFloat(1.0),
+      constant: CGFloat(0.0)
+    ))
+
+    // Expand to width of superview
+    formContainer.addConstraint(NSLayoutConstraint(
+      item: registrationForm!,
+      attribute: NSLayoutAttribute.Width,
+      relatedBy: NSLayoutRelation.Equal,
+      toItem: formContainer,
+      attribute: NSLayoutAttribute.Width,
+      multiplier: CGFloat(1.0),
+      constant: CGFloat(0.0)
+    ))
+
+    // Expand to height of superview
+    formContainer.addConstraint(NSLayoutConstraint(
+      item: registrationForm!,
+      attribute: NSLayoutAttribute.Height,
+      relatedBy: NSLayoutRelation.Equal,
+      toItem: formContainer,
+      attribute: NSLayoutAttribute.Height,
+      multiplier: CGFloat(1.0),
+      constant: CGFloat(0.0)
+    ))
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -114,29 +167,6 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
 
     self.title = "\u{e600}"
     var font = UIFont(name: "icomoon-standard", size: 24.0)!
-
-    // registerButton.setTitleColor(UIColor.whiteColor(), forState:UIControlState.Normal)
-    // registerButton.setTitleColor(UIColor.grayColor(), forState:UIControlState.Highlighted)
-    // registerButton.backgroundColor = verbPurple
-    // registerButton.layer.masksToBounds = true
-    // registerButton.layer.cornerRadius = 4.0
-    //
-    // loginButton.setTitleColor(UIColor.whiteColor(), forState:UIControlState.Normal)
-    // loginButton.setTitleColor(UIColor.grayColor(), forState:UIControlState.Highlighted)
-    // loginButton.backgroundColor = verbPurple
-    // loginButton.layer.masksToBounds = true
-    // loginButton.layer.cornerRadius = 4.0
-
-    // Start off with the Login Form
-    // loginForm.hidden = false
-    // registerForm.hidden = false
-
-
-    // loginForm.removeFromSuperview()
-
-
-    println("formContainer: ")
-    println(formContainer.subviews)
   }
 
   func updateSegmentBorders(activeSegment: Int) {

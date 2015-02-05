@@ -70,29 +70,21 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfX-SI-0dG" userLabel="Form Container">
-                                <rect key="frame" x="16" y="171" width="288" height="177"/>
-                                <color key="backgroundColor" red="0.99215686270000003" green="0.84705882349999995" blue="0.20392156859999999" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2I8-Nc-gir" userLabel="Form Container" customClass="LoginFormView" customModule="Verb" customModuleProvider="target">
-                                <rect key="frame" x="16" y="363" width="288" height="177"/>
-                                <color key="backgroundColor" red="0.99215686270000003" green="0.84705882349999995" blue="0.20392156859999999" alpha="1" colorSpace="deviceRGB"/>
+                                <rect key="frame" x="16" y="171" width="288" height="397"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hfd-X7-aJS" firstAttribute="top" secondItem="ZfX-SI-0dG" secondAttribute="bottom" constant="220" id="4vW-xG-Wg0"/>
-                            <constraint firstItem="2I8-Nc-gir" firstAttribute="leading" secondItem="ZfX-SI-0dG" secondAttribute="leading" id="74r-W9-Swt"/>
+                            <constraint firstItem="hfd-X7-aJS" firstAttribute="top" secondItem="ZfX-SI-0dG" secondAttribute="bottom" id="3jL-pe-QUu"/>
                             <constraint firstItem="ZfX-SI-0dG" firstAttribute="top" secondItem="QeU-h2-8Ux" secondAttribute="top" constant="171" id="7Eg-Mb-2PW"/>
                             <constraint firstItem="Pzx-UA-6BF" firstAttribute="leading" secondItem="QeU-h2-8Ux" secondAttribute="leadingMargin" id="HwC-14-50E"/>
                             <constraint firstItem="dxa-mn-t4U" firstAttribute="leading" secondItem="QeU-h2-8Ux" secondAttribute="leadingMargin" id="Igo-m9-zuV"/>
                             <constraint firstAttribute="centerX" secondItem="Pzx-UA-6BF" secondAttribute="centerX" id="MUP-ir-3Ci"/>
-                            <constraint firstItem="2I8-Nc-gir" firstAttribute="trailing" secondItem="ZfX-SI-0dG" secondAttribute="trailing" id="MlL-7t-zLL"/>
-                            <constraint firstItem="2I8-Nc-gir" firstAttribute="top" secondItem="ZfX-SI-0dG" secondAttribute="bottom" constant="15" id="NPc-6b-cWU"/>
                             <constraint firstItem="Pzx-UA-6BF" firstAttribute="top" secondItem="QeU-h2-8Ux" secondAttribute="top" constant="77" id="SgJ-gv-6JQ"/>
                             <constraint firstItem="ZfX-SI-0dG" firstAttribute="trailing" secondItem="QeU-h2-8Ux" secondAttribute="trailingMargin" id="a3o-le-DMK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dxa-mn-t4U" secondAttribute="trailing" id="hA6-cR-SYn"/>
                             <constraint firstItem="dxa-mn-t4U" firstAttribute="top" secondItem="QeU-h2-8Ux" secondAttribute="topMargin" constant="124" id="hGx-Th-2ep"/>
-                            <constraint firstItem="hfd-X7-aJS" firstAttribute="top" secondItem="2I8-Nc-gir" secondAttribute="bottom" constant="28" id="mMH-v8-K7G"/>
                             <constraint firstItem="ZfX-SI-0dG" firstAttribute="leading" secondItem="QeU-h2-8Ux" secondAttribute="leadingMargin" id="tKp-Yk-Bcd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Pzx-UA-6BF" secondAttribute="trailing" id="yjq-lY-M5H"/>
                         </constraints>
