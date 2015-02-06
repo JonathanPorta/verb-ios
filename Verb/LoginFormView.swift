@@ -9,8 +9,19 @@
 import Foundation
 
 class LoginFormView: UIView {
-  let nibTemplateName = "LoginForm"
+  let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+  let verbPurple = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
+
   @IBOutlet var view: UIView!
+
+  @IBOutlet var emailField: UITextField!
+  @IBOutlet var passwordField: UITextField!
+
+  @IBOutlet var submitButton: UIButton!
+
+  @IBOutlet var messageTextView: UITextView!
+
+  let nibTemplateName = "LoginForm"
   var intrinsiceContentSize: CGSize?
 
   override init() {
@@ -40,6 +51,35 @@ class LoginFormView: UIView {
 
   override func intrinsicContentSize() -> CGSize {
     return intrinsiceContentSize!
+  }
+
+  @IBAction func submit() {
+    println("submit button tapped!")
+    self.messageTextView.text = "Oops! Haven't implemented that API route...Use Facebook to login!\n"
+    self.messageTextView.font = UIFont(name: "Helvetica", size: 17)
+    self.messageTextView.textAlignment = NSTextAlignment.Center
+
+    // var textfieldsByKey = ["email": self.emailField, "password": self.passwordField]
+    // var textfieldLabelsByKey = ["email": "Email", "password": "Password"]
+    //
+    // VerbAPI.Login(appDelegate.hostname, email: emailField.text, password: passwordField.text, closure: { (status: Int, result: JSON) -> Void in
+    //   NSLog("Login callback")
+    //   NSLog("Status: \(status)")
+    //   NSLog(result.debugDescription)
+    //   if (status == 422){
+    //     self.messageTextView.text = "Oops! Something went wrong.\n"
+    //     for (field: String, errors: JSON) in result {
+    //       var errorField = textfieldsByKey[field]
+    //       var errorFieldLabel = textfieldLabelsByKey[field]
+    //
+    //       errorField!.layer.borderColor = UIColor.redColor().CGColor
+    //       self.messageTextView.text = "\(self.messageTextView.text)\n\(errorFieldLabel!) \(errors[0].stringValue)"
+    //     }
+    //     self.messageTextView.hidden = false
+    //     self.messageTextView.font = UIFont(name: "Helvetica", size: 17)
+    //     self.messageTextView.textAlignment = NSTextAlignment.Center
+    //   }
+    // })
   }
 
    // Login Form Fields

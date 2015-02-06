@@ -256,28 +256,4 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
   func loginView(loginView : FBLoginView!, handleError:NSError) {
     println("Error: \(handleError.localizedDescription)")
   }
-
-  @IBAction func submitRegistration() {
-    // var textfieldsByKey = ["email": self.registerEmail, "password": self.registerPassword, "first_name": self.registerFirstName, "last_name": self.registerLastName]
-    // var textfieldLabelsByKey = ["email": "Email", "password": "Password", "first_name": "First name", "last_name": "Last name"]
-    //
-    // VerbAPI.Register(appDelegate.hostname, email: registerEmail.text, password: registerPassword.text, firstName: registerFirstName.text, lastName: registerLastName.text, closure: { (status: Int, result: JSON) -> Void in
-    //   NSLog("Register callback")
-    //   NSLog("Status: \(status)")
-    //   NSLog(result.debugDescription)
-    //   if (status == 422){
-    //     self.registerErrorText.text = "Oops! Something went wrong.\n"
-    //     for (field: String, errors: JSON) in result {
-    //       var errorField = textfieldsByKey[field]
-    //       var errorFieldLabel = textfieldLabelsByKey[field]
-    //
-    //       errorField!.layer.borderColor = UIColor.redColor().CGColor
-    //       self.registerErrorText.text = "\(self.registerErrorText.text)\n\(errorFieldLabel!) \(errors[0].stringValue)"
-    //     }
-    //     self.registerErrorText.hidden = false
-    //     self.registerErrorText.font = UIFont(name: "Helvetica", size: 17)
-    //     self.registerErrorText.textAlignment = NSTextAlignment.Center
-    //   }
-    // })
-  }
 }

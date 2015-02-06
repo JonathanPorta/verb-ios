@@ -7,6 +7,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegistrationFormView" customModule="Verb" customModuleProvider="target">
             <connections>
+                <outlet property="emailField" destination="Tnm-Xw-6XB" id="kv8-9U-zBb"/>
+                <outlet property="firstNameField" destination="ZCb-l3-kEb" id="YDN-5G-Zmi"/>
+                <outlet property="lastNameField" destination="UQK-ta-een" id="aIs-Es-p4q"/>
+                <outlet property="messageTextView" destination="Ems-1h-fkC" id="yYw-ai-qC9"/>
+                <outlet property="passwordField" destination="f2h-fJ-qGs" id="uJe-fX-oP7"/>
+                <outlet property="submitButton" destination="PCs-ia-txe" id="N1t-El-nOx"/>
                 <outlet property="view" destination="iN0-l3-epB" id="H8z-gk-jst"/>
             </connections>
         </placeholder>
@@ -48,16 +54,6 @@
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                 </textField>
-                <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1a-yd-foD" userLabel="Error Text">
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="6" id="kIX-I8-KpS"/>
-                        <constraint firstAttribute="width" id="szz-hP-rlt"/>
-                    </constraints>
-                    <inset key="scrollIndicatorInsets" minX="0.0" minY="211" maxX="0.0" maxY="0.0"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCs-ia-txe" userLabel="Registration Button">
                     <rect key="frame" x="107" y="200" width="200" height="40"/>
                     <color key="backgroundColor" red="0.5568627451" green="0.2666666667" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -70,14 +66,21 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="submit" destination="-1" eventType="touchUpInside" id="OxJ-VM-1fC"/>
+                    </connections>
                 </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ems-1h-fkC">
+                    <rect key="frame" x="0.0" y="260" width="414" height="154"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="UQK-ta-een" secondAttribute="centerX" id="0DW-9X-9bU"/>
                 <constraint firstAttribute="trailing" secondItem="Tnm-Xw-6XB" secondAttribute="trailing" id="3kq-AH-1kn"/>
                 <constraint firstAttribute="centerX" secondItem="ZCb-l3-kEb" secondAttribute="centerX" id="4n6-dU-AbO"/>
                 <constraint firstItem="Tnm-Xw-6XB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Ox-7h-pbV"/>
-                <constraint firstAttribute="centerX" secondItem="L1a-yd-foD" secondAttribute="centerX" id="89J-If-OJq"/>
                 <constraint firstItem="f2h-fJ-qGs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8kU-S2-BNU"/>
                 <constraint firstAttribute="centerX" secondItem="f2h-fJ-qGs" secondAttribute="centerX" id="9vm-B6-2mr"/>
                 <constraint firstItem="ZCb-l3-kEb" firstAttribute="top" secondItem="f2h-fJ-qGs" secondAttribute="bottom" constant="8" symbolic="YES" id="BWs-po-WR5"/>
@@ -85,8 +88,11 @@
                 <constraint firstItem="f2h-fJ-qGs" firstAttribute="top" secondItem="Tnm-Xw-6XB" secondAttribute="bottom" constant="8" symbolic="YES" id="G0w-Yl-tsu"/>
                 <constraint firstAttribute="trailing" secondItem="ZCb-l3-kEb" secondAttribute="trailing" id="HHJ-7w-Big"/>
                 <constraint firstItem="ZCb-l3-kEb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="IRu-LV-o93"/>
+                <constraint firstItem="Ems-1h-fkC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JxA-gB-HW6"/>
                 <constraint firstAttribute="trailing" secondItem="UQK-ta-een" secondAttribute="trailing" id="O4E-3z-c90"/>
-                <constraint firstItem="L1a-yd-foD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="269" id="ZOb-cC-img"/>
+                <constraint firstAttribute="bottom" secondItem="Ems-1h-fkC" secondAttribute="bottom" id="Vn5-K4-5x9"/>
+                <constraint firstAttribute="trailing" secondItem="Ems-1h-fkC" secondAttribute="trailing" id="X6S-4X-QAc"/>
+                <constraint firstItem="Ems-1h-fkC" firstAttribute="top" secondItem="PCs-ia-txe" secondAttribute="bottom" constant="20" id="bVf-fu-eox"/>
                 <constraint firstItem="Tnm-Xw-6XB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="bk6-zN-9aq"/>
                 <constraint firstItem="Tnm-Xw-6XB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="byh-nZ-8Wi"/>
                 <constraint firstItem="UQK-ta-een" firstAttribute="top" secondItem="ZCb-l3-kEb" secondAttribute="bottom" constant="8" symbolic="YES" id="e1v-Ka-bXA"/>
