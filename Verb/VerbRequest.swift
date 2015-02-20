@@ -11,17 +11,9 @@ import Alamofire
 
 class VerbRequest {
 
-  var hostname: String
-  var accessToken: String
+  typealias Callback = (JSON) -> ()
 
-  init(hostname: String, accessToken: String) {
-    self.hostname = hostname
-    self.accessToken = accessToken
-    Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["access_token": self.accessToken]
-  }
-
-  func get(path: String, parameters: [String: AnyObject]? = nil, delegate: VerbAPIProtocol? = nil){
-    let url = "\(self.hostname)\(path)"
+  class func get(url: String, parameters: [String: AnyObject]? = nil, delegate: VerbAPIProtocol? = nil, closure: ((result: JSON) -> Void)? = nil){
     NSLog("Preparing for GET request to: \(url)")
 
     Alamofire.request(.GET, url, parameters: parameters)
@@ -39,12 +31,14 @@ class VerbRequest {
           if (delegate != nil) {
             delegate!.didReceiveResult(json)
           }
+          if (closure != nil) {
+            closure!(result: json)
+          }
         }
       }
   }
 
-  func post(path: String, parameters: [String:AnyObject], delegate: VerbAPIProtocol? = nil){
-    let url = "\(self.hostname)\(path)"
+  class func post(url: String, parameters: [String:AnyObject], delegate: VerbAPIProtocol? = nil, closure: ((status: Int, result: JSON) -> Void)? = nil){
     NSLog("Preparing for POST request to: \(url)")
 
     Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
@@ -63,6 +57,9 @@ class VerbRequest {
 
           if (delegate != nil) {
             delegate!.didReceiveResult(json)
+          }
+          if (closure != nil) {
+            closure!(status: res!.statusCode, result: json)
           }
         }
       }

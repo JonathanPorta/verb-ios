@@ -12,6 +12,7 @@
 		110E1C1E19F734AB007BC736 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E1C1D19F734AB007BC736 /* CategoryViewController.swift */; };
 		1111AC9B1A0F643D006B3993 /* CategoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1111AC9A1A0F643D006B3993 /* CategoryFactory.swift */; };
 		1111AC9E1A0F6C82006B3993 /* FriendFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1111AC9D1A0F6C82006B3993 /* FriendFactory.swift */; };
+		112256381A66476D005A6D15 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112256371A66476D005A6D15 /* RegisterViewController.swift */; };
 		112B604E1A063E01004D9F33 /* ActivityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B604C1A063E01004D9F33 /* ActivityFactory.swift */; };
 		112B604F1A063E01004D9F33 /* MessageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B604D1A063E01004D9F33 /* MessageFactory.swift */; };
 		1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */; };
@@ -30,6 +31,10 @@
 		116D268D19FB9B3C0039A948 /* VerbModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D268C19FB9B3C0039A948 /* VerbModel.swift */; };
 		116D269119FE12890039A948 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D269019FE12890039A948 /* FriendViewController.swift */; };
 		116D269319FE30000039A948 /* SelectableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D269219FE30000039A948 /* SelectableModel.swift */; };
+		116D88BD1A839A6E00EAAC24 /* RegistrationForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116D88BC1A839A6E00EAAC24 /* RegistrationForm.xib */; };
+		116D88C01A839F2400EAAC24 /* RegistrationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D88BF1A839F2400EAAC24 /* RegistrationFormView.swift */; };
+		116D88C21A83ADCA00EAAC24 /* LoginForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116D88C11A83ADCA00EAAC24 /* LoginForm.xib */; };
+		116D88C41A83AE9300EAAC24 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D88C31A83AE9300EAAC24 /* LoginFormView.swift */; };
 		119217FA1A10BEA700EFA72F /* SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119217F91A10BEA700EFA72F /* SwipeableCell.swift */; };
 		11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8519AEDF5100D5BF6D /* AppDelegate.swift */; };
 		11944F8819AEDF5100D5BF6D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944F8719AEDF5100D5BF6D /* LoginViewController.swift */; };
@@ -101,6 +106,7 @@
 		110E1C1D19F734AB007BC736 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		1111AC9A1A0F643D006B3993 /* CategoryFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryFactory.swift; sourceTree = "<group>"; };
 		1111AC9D1A0F6C82006B3993 /* FriendFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendFactory.swift; sourceTree = "<group>"; };
+		112256371A66476D005A6D15 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		112B604C1A063E01004D9F33 /* ActivityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFactory.swift; sourceTree = "<group>"; };
 		112B604D1A063E01004D9F33 /* MessageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFactory.swift; sourceTree = "<group>"; };
 		1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbAPI.swift; sourceTree = "<group>"; };
@@ -118,6 +124,10 @@
 		116D268C19FB9B3C0039A948 /* VerbModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerbModel.swift; path = Model/VerbModel.swift; sourceTree = "<group>"; };
 		116D269019FE12890039A948 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		116D269219FE30000039A948 /* SelectableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectableModel.swift; path = Model/SelectableModel.swift; sourceTree = "<group>"; };
+		116D88BC1A839A6E00EAAC24 /* RegistrationForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationForm.xib; sourceTree = "<group>"; };
+		116D88BF1A839F2400EAAC24 /* RegistrationFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationFormView.swift; sourceTree = "<group>"; };
+		116D88C11A83ADCA00EAAC24 /* LoginForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginForm.xib; sourceTree = "<group>"; };
+		116D88C31A83AE9300EAAC24 /* LoginFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
 		119217F91A10BEA700EFA72F /* SwipeableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableCell.swift; sourceTree = "<group>"; };
 		11944F8019AEDF5100D5BF6D /* Verb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11944F8419AEDF5100D5BF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -214,13 +224,14 @@
 				112B604B1A063E01004D9F33 /* Factory */,
 				1195679A19E150C500D015CA /* Model */,
 				11944F8519AEDF5100D5BF6D /* AppDelegate.swift */,
+				1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */,
 				11C81F5419FF93B8004EB2C6 /* VerbRequest.swift */,
 				11F5E2191A2BB8D900D85821 /* ConnectionFriendViewController.swift */,
 				1150C8B51A451EC600B2589A /* SocialCell.swift */,
 				1150C8B81A45234500B2589A /* FontableLabel.swift */,
 				110DD5A01A1C488B004809D7 /* StatusLabel.swift */,
-				1136FC6D19D8DEE000A14DFA /* VerbAPI.swift */,
 				11944F8719AEDF5100D5BF6D /* LoginViewController.swift */,
+				112256371A66476D005A6D15 /* RegisterViewController.swift */,
 				11944FAE19AF100000D5BF6D /* ActivityViewController.swift */,
 				119217F91A10BEA700EFA72F /* SwipeableCell.swift */,
 				110E1C1D19F734AB007BC736 /* CategoryViewController.swift */,
@@ -229,6 +240,10 @@
 				11CC2B6119B077AC00E99EC9 /* LogoutViewController.swift */,
 				11944F8919AEDF5100D5BF6D /* Main.storyboard */,
 				11CC2B5919B0607500E99EC9 /* Login.storyboard */,
+				116D88BC1A839A6E00EAAC24 /* RegistrationForm.xib */,
+				116D88C11A83ADCA00EAAC24 /* LoginForm.xib */,
+				116D88C31A83AE9300EAAC24 /* LoginFormView.swift */,
+				116D88BF1A839F2400EAAC24 /* RegistrationFormView.swift */,
 				11944F8C19AEDF5100D5BF6D /* Images.xcassets */,
 				11944F8319AEDF5100D5BF6D /* Supporting Files */,
 			);
@@ -415,7 +430,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				11FED9021A22E3C8009AE028 /* icomoon-standard.ttf in Resources */,
+				116D88C21A83ADCA00EAAC24 /* LoginForm.xib in Resources */,
 				11944F8B19AEDF5100D5BF6D /* Main.storyboard in Resources */,
+				116D88BD1A839A6E00EAAC24 /* RegistrationForm.xib in Resources */,
 				11944F8D19AEDF5100D5BF6D /* Images.xcassets in Resources */,
 				113E46821A248D0800B780AD /* verb-logo.ttf in Resources */,
 				11CC2B5A19B0607500E99EC9 /* Login.storyboard in Resources */,
@@ -477,14 +494,17 @@
 				119217FA1A10BEA700EFA72F /* SwipeableCell.swift in Sources */,
 				114105691A4148D400F6EE95 /* FriendshipModel.swift in Sources */,
 				11F5E21A1A2BB8D900D85821 /* ConnectionFriendViewController.swift in Sources */,
+				116D88C01A839F2400EAAC24 /* RegistrationFormView.swift in Sources */,
 				110DD5A11A1C488B004809D7 /* StatusLabel.swift in Sources */,
 				11406D8E1A04C55300676EC6 /* Async.swift in Sources */,
 				1136FC6E19D8DEE000A14DFA /* VerbAPI.swift in Sources */,
 				11944F8619AEDF5100D5BF6D /* AppDelegate.swift in Sources */,
 				110E1C1E19F734AB007BC736 /* CategoryViewController.swift in Sources */,
+				112256381A66476D005A6D15 /* RegisterViewController.swift in Sources */,
 				112B604E1A063E01004D9F33 /* ActivityFactory.swift in Sources */,
 				114105671A4148BE00F6EE95 /* Swipeable.swift in Sources */,
 				112B604F1A063E01004D9F33 /* MessageFactory.swift in Sources */,
+				116D88C41A83AE9300EAAC24 /* LoginFormView.swift in Sources */,
 				116D269319FE30000039A948 /* SelectableModel.swift in Sources */,
 				1111AC9B1A0F643D006B3993 /* CategoryFactory.swift in Sources */,
 				11F5E21C1A2BB8F400D85821 /* ConnectionFriendModel.swift in Sources */,
